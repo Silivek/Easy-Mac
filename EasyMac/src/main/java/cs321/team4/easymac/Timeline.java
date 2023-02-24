@@ -9,5 +9,5 @@ package cs321.team4.easymac;
  * @author benspurlock
  */
 public class Timeline {
-    //Test Commit
+    //TODO data structure for Timeline
 }
