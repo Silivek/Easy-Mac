@@ -10,6 +10,6 @@ package cs321.team4.easymac.nodes;
  */
 public class FileGenerator {
     public void fileGen() {
-System.out.println("Hello World!");
+System.out.println("Hello World!"); // TODO begin setting up the file generator classes
     } 
 }
