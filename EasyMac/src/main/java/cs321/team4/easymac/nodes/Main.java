@@ -12,7 +12,7 @@ public class Main {
     /** Generic description here again
      * 
      */
-    //TODO set up Main class
+    //TODO try to set up Main class
     void recordTimeline(){
         
     }
