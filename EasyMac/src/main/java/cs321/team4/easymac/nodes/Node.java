@@ -12,4 +12,15 @@ public class Node {
     //TODO Node Class
     Node prevNode;
     Node nextNode;
+    int delay; //Delay in milliseconds
+    
+    public Node getPrevNode() {
+        return prevNode;
+    }
+    
+    public Node getNextNode() {
+        return nextNode;
+    }
+    
+    //TODO add setters for node class
 }
