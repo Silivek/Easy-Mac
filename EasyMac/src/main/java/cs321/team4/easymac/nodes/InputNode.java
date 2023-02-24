@@ -9,8 +9,10 @@ package cs321.team4.easymac.nodes;
  * @author Brian
  */
 public class InputNode extends Node{
+    int button; //Keystroke or button press
     int holdDuration; //Duration input will be held.
     int delayDuration; //Delay until next input.
+    
     void getInput(){
         // TODO add definition
     }
