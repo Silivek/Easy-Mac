@@ -9,5 +9,7 @@ package cs321.team4.easymac.nodes;
  * @author benspurlock
  */
 public class Node {
-    //Test commit
+    //TODO Node Class
+    Node prevNode;
+    Node nextNode;
 }
