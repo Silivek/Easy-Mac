@@ -10,9 +10,8 @@ package cs321.team4.easymac.nodes;
  */
 public class KeyInputNode extends InputNode {
     int button; //type of key press. to be used with Robot.
-    void getInput(int duration, int delay, int button){
+    void getInput(){
         // TODO add definition to getInput
-        this.button = button;
     }
     // TODO add Robot capabilities
 }
