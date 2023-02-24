@@ -9,5 +9,7 @@ package cs321.team4.easymac.nodes;
  * @author icedr
  */
 public class FileGenerator {
-    
+    public void fileGen() {
+System.out.println("Hello World!");
+    } 
 }
