@@ -17,4 +17,5 @@ public class MouseInputNode extends InputNode {
         this.x = x;
         this.y = y;
     }
+    // TODO add Robot capabilities
 }

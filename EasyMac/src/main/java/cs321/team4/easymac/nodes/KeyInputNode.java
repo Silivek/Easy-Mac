@@ -14,4 +14,5 @@ public class KeyInputNode extends InputNode {
         // TODO add definition to getInput
         this.button = button;
     }
+    // TODO add Robot capabilities
 }
