@@ -6,10 +6,17 @@ package cs321.team4.easymac.nodes;
 
 /**
  *
- * @author benspurlock
+ * @author Brian
  */
-public class Node {
-    //TODO Node Class
-    Node prevNode;
-    Node nextNode;
+public class AuxillaryNode extends Node{
+    boolean start;
+    boolean end;
+    boolean loopStart;
+    boolean loopEnd;
+    AuxillaryNode other;
+    
+    void LoopTimeline()
+    {
+        // TODO create definition
+    }
 }
