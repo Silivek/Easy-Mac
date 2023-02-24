@@ -9,7 +9,7 @@ package cs321.team4.easymac.nodes;
  * @author moosi
  */
 public class Main {
-    /** Generic description here
+    /** Generic description here again
      * 
      */
     void recordTimeline(){
