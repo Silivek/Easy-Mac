@@ -9,6 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>cs321.team4.easymac.EasyMac</exec.mainClass>
+        <exec.mainClass>cs321.team4.easymac.Main</exec.mainClass>
     </properties>
 </project>
