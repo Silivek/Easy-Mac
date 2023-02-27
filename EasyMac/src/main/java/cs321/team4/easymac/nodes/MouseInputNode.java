@@ -12,6 +12,9 @@ import java.util.logging.Logger;
  *
  * @author wkilp
  */
+
+// TODO determine if MouseInputNode requires more methods
+
 public class MouseInputNode extends InputNode {
     int x; int y; //coordinates for mouse clicks
     public MouseInputNode(int button, int holdDuration, int delayDuration, int x, int y){

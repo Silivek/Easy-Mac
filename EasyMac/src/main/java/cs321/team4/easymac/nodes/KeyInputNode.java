@@ -12,6 +12,9 @@ import java.util.logging.Logger;
  *
  * @author wkilp
  */
+
+// TODO determine if KeyInputNode requires more methods
+
 public class KeyInputNode extends InputNode {
     public KeyInputNode(int button, int holdDuration, int delayDuration){
         this.button = button;
