@@ -13,9 +13,10 @@ public class LoopNode extends Node{
     Node loopDestination;
     Node actualNext;
     
-    LoopNode(Node other)
+    LoopNode(Node loopDestination)
     {
         super();
+        this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
     
