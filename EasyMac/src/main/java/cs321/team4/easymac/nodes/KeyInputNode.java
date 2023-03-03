@@ -16,27 +16,29 @@ import java.util.logging.Logger;
 // TODO determine if KeyInputNode requires more methods
 
 public class KeyInputNode extends InputNode {
-    public KeyInputNode(int button, int holdDuration, int delayDuration){
+    public KeyInputNode(int button, int delayDuration, boolean pressRelease){
         this.button = button;
-        this.holdDuration = holdDuration;
         this.delayDuration = delayDuration;
+        this.pressRelease = pressRelease;
     }
     @Override
     public void getInput(){
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            robot.keyPress(button);
-            robot.delay(holdDuration);
-            robot.keyRelease(button);
+            if(pressRelease){
+                robot.keyPress(button);
+            }
+            else{
+                robot.keyRelease(button);
+            }
             robot.delay(delayDuration);
         } catch (AWTException ex) {
             System.out.println("Robot Error in KeyInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setInput(int button, int holdDuration, int delayDuration){
+    public void setInput(int button, int delayDuration){
         this.button = button;
-        this.holdDuration = holdDuration;
         this.delayDuration = delayDuration;
     }
 }

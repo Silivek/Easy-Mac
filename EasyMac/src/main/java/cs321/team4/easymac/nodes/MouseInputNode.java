@@ -17,9 +17,8 @@ import java.util.logging.Logger;
 
 public class MouseInputNode extends InputNode {
     int x; int y; //coordinates for mouse clicks
-    public MouseInputNode(int button, int holdDuration, int delayDuration, int x, int y){
+    public MouseInputNode(int button, int delayDuration, int x, int y){
         this.button = button;
-        this.holdDuration = holdDuration;
         this.delayDuration = delayDuration;
         this.x = x;
         this.y = y;
@@ -28,19 +27,21 @@ public class MouseInputNode extends InputNode {
     public void getInput(){
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            robot.mouseMove(x,y);
-            robot.mousePress(button);
-            robot.delay(holdDuration);
-            robot.mouseRelease(button);
+            if(pressRelease){
+                robot.mouseMove(x,y);
+                robot.mousePress(button);
+            }
+            else{
+                robot.mouseRelease(button);
+            }
             robot.delay(delayDuration);
         } catch (AWTException ex) {
             System.out.println("Robot Error in MouseInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setInput(int button, int holdDuration, int delayDuration, int x, int y){
+    public void setInput(int button, int delayDuration, int x, int y){
         this.button = button;
-        this.holdDuration = holdDuration;
         this.delayDuration = delayDuration;
         this.x = x;
         this.y = y;
