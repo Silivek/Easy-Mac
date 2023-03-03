@@ -11,8 +11,7 @@ package cs321.team4.easymac.nodes;
 public class AuxillaryNode extends Node{
     boolean start;
     boolean end;
-    boolean loopStart;
-    boolean loopEnd;
+    boolean startEnd;
     AuxillaryNode other;
     
     void LoopTimeline()
