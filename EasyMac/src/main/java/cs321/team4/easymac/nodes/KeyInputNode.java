@@ -16,9 +16,9 @@ import java.util.logging.Logger;
 // TODO determine if KeyInputNode requires more methods
 
 public class KeyInputNode extends InputNode {
-    public KeyInputNode(int button, int delayDuration, boolean pressRelease){
-        this.button = button;
+    public KeyInputNode(int delayDuration,int button, boolean pressRelease){
         this.delayDuration = delayDuration;
+        this.button = button;
         this.pressRelease = pressRelease;
     }
     @Override
@@ -37,8 +37,9 @@ public class KeyInputNode extends InputNode {
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setInput(int button, int delayDuration){
-        this.button = button;
+    public void setInput(int delayDuration,int button, boolean pressRelease){
         this.delayDuration = delayDuration;
+        this.button = button;
+        this.pressRelease = pressRelease;
     }
 }

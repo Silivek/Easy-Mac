@@ -17,9 +17,10 @@ import java.util.logging.Logger;
 
 public class MouseInputNode extends InputNode {
     int x; int y; //coordinates for mouse clicks
-    public MouseInputNode(int button, int delayDuration, int x, int y){
-        this.button = button;
+    public MouseInputNode(int delayDuration,int button, boolean pressRelease, int x, int y){
         this.delayDuration = delayDuration;
+        this.button = button;
+        this.pressRelease = pressRelease;
         this.x = x;
         this.y = y;
     }
@@ -40,9 +41,10 @@ public class MouseInputNode extends InputNode {
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setInput(int button, int delayDuration, int x, int y){
-        this.button = button;
+    public void setInput(int delayDuration,int button, boolean pressRelease, int x, int y){
         this.delayDuration = delayDuration;
+        this.button = button;
+        this.pressRelease = pressRelease;
         this.x = x;
         this.y = y;
     }
