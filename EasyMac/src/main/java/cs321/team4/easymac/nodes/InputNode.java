@@ -9,11 +9,15 @@ package cs321.team4.easymac.nodes;
  * @author Brian
  */
 public class InputNode extends Node{
+    boolean pressRelease; //true for press, false for release
     int button; //Keystroke or button press
-    int holdDuration; //Duration input will be held.
-    int delayDuration; //Delay until next input.
+    
+    public InputNode(boolean pressRelease, int button, int delayDuration){
+        super();
+        this.pressRelease = pressRelease;
+        this.button = button;
+    }
     
     void getInput(){
-        // TODO add definition
     }
 }
