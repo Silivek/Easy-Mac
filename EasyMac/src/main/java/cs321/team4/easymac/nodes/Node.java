@@ -15,10 +15,10 @@ public class Node {
     int delayDuration; //Delay in milliseconds
     
     //Empty Constructor
-    Node() {};
+    public Node() {};
     
     //Main Constructor
-    Node(Node prev, Node next, int delay) {
+    public Node(Node prev, Node next, int delay) {
         prevNode = prev;
         nextNode = next;
         delayDuration = delay;
@@ -35,6 +35,19 @@ public class Node {
     
     public Node getDelayDuration() {
         return delayDuration;
+    }
+    
+    //Setters
+    public Node setPrevNode(Node prev) {
+        prevNode = prev;
+    }
+    
+    public Node setNextNode(Node next) {
+        nextNode = next;
+    }
+    
+    public Node setDelayDuration(int delay) {
+        delayDuration = delay;
     }
     
     //TODO add setters for node class
