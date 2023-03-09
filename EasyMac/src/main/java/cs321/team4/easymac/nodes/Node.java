@@ -12,14 +12,42 @@ public class Node {
     //TODO Node Class
     Node prevNode;
     Node nextNode;
-    int delay; //Delay in milliseconds
+    int delayDuration; //Delay in milliseconds
     
+    //Empty Constructor
+    public Node() {};
+    
+    //Main Constructor
+    public Node(Node prev, Node next, int delay) {
+        prevNode = prev;
+        nextNode = next;
+        delayDuration = delay;
+    }
+    
+    //Getters
     public Node getPrevNode() {
         return prevNode;
     }
     
     public Node getNextNode() {
         return nextNode;
+    }
+    
+    public Node getDelayDuration() {
+        return delayDuration;
+    }
+    
+    //Setters
+    public Node setPrevNode(Node prev) {
+        prevNode = prev;
+    }
+    
+    public Node setNextNode(Node next) {
+        nextNode = next;
+    }
+    
+    public Node setDelayDuration(int delay) {
+        delayDuration = delay;
     }
     
     //TODO add setters for node class
