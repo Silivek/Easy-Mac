@@ -16,6 +16,11 @@ import java.util.logging.Logger;
 public class Timeline {
     //TODO data structure for Timeline
     //TODO add node insertion/removal for timeline class
+    //TODO print timeline contents to console
+    //TODO Undo/redo functionality?
+    
+   final int MAX_SIZE = 100;
+   int num_of_nodes = 0;
    Node startNode, endNode, currentNode = null; //endNode currently unused
 
    int delayTimer; //Timer for playback (May be unused?)
@@ -25,7 +30,12 @@ public class Timeline {
             currentNode = currentNode.getNextNode();
    }
    
+   //Adds a node to the end of the timeline
    public void addNode(int delay) {
+       //Return an error if the node limit is reached
+       if (num_of_nodes > MAX_SIZE) {
+           return;
+       }
        
        //Add the first node in the list (Auxilliary start node?)
        if (startNode == null) {
@@ -36,12 +46,44 @@ public class Timeline {
        //Create new node
        Node newNode;
        newNode = new Node(currentNode, null, delay);
+       num_of_nodes++;
        
        //Connect previous node to new node
        currentNode.setNextNode(newNode);
                
        //Set current node to new node
        updateCurrentNode();
+       
+       //Set new endNode to newNode
+       endNode = newNode;
+   }
+   
+   //Removes the last node in the timeline
+   public void removeEndNode() {
+       
+       Node prevNode;
+       prevNode = endNode.getPrevNode();
+       
+       //Disconnect prev node from end node
+       prevNode.setNextNode(null);
+       
+       //Unassign endNode (?)
+       endNode = null;
+       
+       num_of_nodes--;
+       
+       //Update new endNode
+       endNode = prevNode;
+   }
+   
+   //Insert a node (?)
+   public void insertNode() {
+       
+   }
+   
+   //Print timeline to console
+   public void printTimeline() {
+       
    }
    
    
