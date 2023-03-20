@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cs321.team4.easymac;
-import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.AWTException;
 import java.awt.Robot;
