@@ -20,7 +20,7 @@ public class Main {
         // write timeline Object to file
         // use name for name of file
     }
-
+    
     ;
     
     //TODO write loadTimeline function

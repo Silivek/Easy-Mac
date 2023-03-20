@@ -5,6 +5,7 @@
 package cs321.team4.easymac.nodes;
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,13 +17,11 @@ import java.util.logging.Logger;
 // TODO determine if KeyInputNode requires more methods
 
 public class KeyInputNode extends InputNode {
-    public KeyInputNode(int delayDuration,int button, boolean pressRelease){
-        this.delayDuration = delayDuration;
-        this.button = button;
-        this.pressRelease = pressRelease;
+    public KeyInputNode(int delayDuration, boolean pressRelease, int button){
+        super(delayDuration, pressRelease, button);
     }
     @Override
-    public void getInput(){
+    public void runNode(){
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             if(pressRelease){

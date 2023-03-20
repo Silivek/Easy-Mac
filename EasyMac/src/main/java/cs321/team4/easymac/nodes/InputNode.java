@@ -12,12 +12,9 @@ public class InputNode extends Node{
     boolean pressRelease; //true for press, false for release
     int button; //Keystroke or button press
     
-    public InputNode(boolean pressRelease, int button, int delayDuration){
-        super();
+    public InputNode(int delayDuration, boolean pressRelease, int button){
+        super(delayDuration);
         this.pressRelease = pressRelease;
         this.button = button;
-    }
-    
-    void getInput(){
     }
 }
