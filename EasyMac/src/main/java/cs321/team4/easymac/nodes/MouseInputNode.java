@@ -33,7 +33,6 @@ public class MouseInputNode extends InputNode {
             else{
                 robot.mouseRelease(button);
             }
-            robot.delay(delayDuration);
         } catch (AWTException ex) {
             System.out.println("Robot Error in MouseInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);

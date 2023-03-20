@@ -8,6 +8,7 @@ import java.util.Scanner;
 import cs321.team4.easymac.FileGenerator;
 import cs321.team4.easymac.FileReader;
 import cs321.team4.easymac.nodes.Node;
+import java.awt.event.KeyEvent;
 
 /**
  * @author Melissa
@@ -70,22 +71,26 @@ public class Main {
         System.out.println("Please make your selection and press enter: ");
         // store user input
         int selection = userSelection.nextInt();
-
         if (selection == 1) {
             // I'm aware this isn't practical, but just wanted something to get testing
-            System.out.println("Enter your desired key strokes, press 3 when finished");
-            Scanner scanner = new Scanner(System.in);
-            // Need to only create scanner input once
-            int userInput = scanner.nextInt();            // will inputs be read into node?
-            while (userInput != 3) {
-                // int userInput = userSelection.nextInt(); 
-                // Start with just key inputs
-                // then differentiate to mouse inputs
-                // take user input, create node                Node userCreatedNode = getInput(userInput);
-                // add node to timeline
-                // delete node
-                //create a new scanner item                Scanner input${inputNum} = new Scanner(System.in);
-                userInput = userSelection.nextInt();
+            String keyPress = "";
+            System.out.println("Enter -1 at any time to escape the program.");
+            while(!keyPress.equals("-1"))
+            {
+                System.out.print("Enter an input: ");
+                keyPress = userSelection.next();
+                if(keyPress.equals("left")||keyPress.equals("Left"))
+                {
+                    // TODO left click node stuff
+                }
+                else if(keyPress.equals("right")||keyPress.equals("Right"))
+                {
+                    // TODO right click node stuff
+                }
+                else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
+                {
+                    // TODO key node stuff
+                }
             }
         }
     }

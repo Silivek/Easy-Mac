@@ -5,7 +5,6 @@
 package cs321.team4.easymac.nodes;
 import java.awt.AWTException;
 import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +20,7 @@ public class KeyInputNode extends InputNode {
         super(delayDuration, pressRelease, button);
     }
     @Override
-    public void runNode(){
+    public void runNode(){ //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             if(pressRelease){
@@ -30,7 +29,6 @@ public class KeyInputNode extends InputNode {
             else{
                 robot.keyRelease(button);
             }
-            robot.delay(delayDuration);
         } catch (AWTException ex) {
             System.out.println("Robot Error in KeyInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
