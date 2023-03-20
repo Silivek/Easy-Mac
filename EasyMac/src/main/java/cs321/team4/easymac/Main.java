@@ -74,19 +74,18 @@ public class Main {
         if (selection == 1) {
             // I'm aware this isn't practical, but just wanted something to get testing
             System.out.println("Enter your desired key strokes, press 3 when finished");
-            Scanner input = new Scanner(System.in);
-            int userInput = userSelection.nextInt();            // will inputs be read into node?
+            Scanner scanner = new Scanner(System.in);
+            // Need to only create scanner input once
+            int userInput = scanner.nextInt();            // will inputs be read into node?
             while (userInput != 3) {
                 // int userInput = userSelection.nextInt(); 
                 // Start with just key inputs
                 // then differentiate to mouse inputs
-                // take user input, create node
-                Node userCreatedNode = getInput(userInput);
+                // take user input, create node                Node userCreatedNode = getInput(userInput);
                 // add node to timeline
                 // delete node
-                //create a new scanner item
-                Scanner input = new Scanner(System.in);
-                int userInput = userSelection.nextInt();
+                //create a new scanner item                Scanner input${inputNum} = new Scanner(System.in);
+                userInput = userSelection.nextInt();
             }
         }
     }
