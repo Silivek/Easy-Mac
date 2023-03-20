@@ -17,15 +17,13 @@ import java.util.logging.Logger;
 
 public class MouseInputNode extends InputNode {
     int x; int y; //coordinates for mouse clicks
-    public MouseInputNode(int delayDuration,int button, boolean pressRelease, int x, int y){
-        this.delayDuration = delayDuration;
-        this.button = button;
-        this.pressRelease = pressRelease;
+    public MouseInputNode(int delayDuration, boolean pressRelease, int button, int x, int y){
+        super(delayDuration, pressRelease, button);
         this.x = x;
         this.y = y;
     }
     @Override
-    public void getInput(){
+    public void runNode(){ //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             if(pressRelease){

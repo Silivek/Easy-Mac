@@ -33,20 +33,20 @@ public class Node {
         return nextNode;
     }
     
-    public Node getDelayDuration() {
+    public int getDelayDuration() {
         return delayDuration;
     }
     
     //Setters
-    public Node setPrevNode(Node prev) {
+    public void setPrevNode(Node prev) {
         prevNode = prev;
     }
     
-    public Node setNextNode(Node next) {
+    public void setNextNode(Node next) {
         nextNode = next;
     }
     
-    public Node setDelayDuration(int delay) {
+    public void setDelayDuration(int delay) {
         delayDuration = delay;
     }
     
