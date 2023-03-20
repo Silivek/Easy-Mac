@@ -17,6 +17,9 @@ public class Node {
     //Empty Constructor
     public Node() {};
     
+    //Constructor with delayDuration
+    public Node(int delayDuration) {};
+    
     //Main Constructor
     public Node(Node prev, Node next, int delay) {
         prevNode = prev;
@@ -38,17 +41,18 @@ public class Node {
     }
     
     //Setters
-    public void setPrevNode(Node prev) {
-        prevNode = prev;
+    public void setPrevNode(Node prevNode) {
+        this.prevNode = prevNode;
     }
     
-    public void setNextNode(Node next) {
-        nextNode = next;
+    public void setNextNode(Node nextNode) {
+        this.nextNode = nextNode;
     }
     
-    public void setDelayDuration(int delay) {
-        delayDuration = delay;
+    public void setDelayDuration(int delayDuration) {
+        this.delayDuration = delayDuration;
     }
     
-    //TODO add setters for node class
+    //Essentially a function prototype of runNode, which performs the node's action
+    public void runNode() {};
 }
