@@ -3,7 +3,11 @@
  */
 package cs321.team4.easymac;
 
+
 import java.util.Scanner;
+import cs321.team4.easymac.FileGenerator;
+import cs321.team4.easymac.FileReader;
+import cs321.team4.easymac.nodes.Node;
 
 /**
  * @author Melissa
@@ -12,7 +16,7 @@ import java.util.Scanner;
 public class Main {
 
     //TODO write saveTimeline function
-    void saveTimeline(String name, Timeline recordedTimeline) {
+    public void saveTimeline(String name, Timeline recordedTimeline) {
         // write timeline Object to file
         // use name for name of file
     }
@@ -20,16 +24,19 @@ public class Main {
     ;
     
     //TODO write loadTimeline function
-    Timeline loadTimeline(String name) {
+    public Timeline loadTimeline(String name) {
         // find file on file path
         // return timeline object
-        return Timeline;
+        Timeline timelineToLoad = new Timeline();
+        // look to see if the file is there
+        // if the file is there, store it in timelineToLoad
+        return timelineToLoad;
     }
 
     ;
     
     //TODO write editTimeline function
-    Timeline editTimeline(Timeline recordedTimeline) {
+    public Timeline editTimeline(Timeline recordedTimeline) {
         // find and return timeline
         // use the Timeline functions to edit timeline
         // save to tile
@@ -71,7 +78,8 @@ public class Main {
             int userInput = userSelection.nextInt();            // will inputs be read into node?
             while (userInput != 3) {
                 // int userInput = userSelection.nextInt(); 
-
+                // Start with just key inputs
+                // then differentiate to mouse inputs
                 // take user input, create node
                 Node userCreatedNode = getInput(userInput);
                 // add node to timeline
