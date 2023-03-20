@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cs321.team4.easymac;
+import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,6 +43,19 @@ public class Timeline {
                
        //Set current node to new node
        updateCurrentNode();
+   }
+   
+   
+   //Runs the delay time using another object of robot
+   public void runNodeDelay() {
+       
+       try { // try/catch in case Robot is in wrong environment
+            Robot robot = new Robot();
+            robot.delay(currentNode.getDelayDuration());
+        } catch (AWTException ex) {
+            System.out.println("Robot Error in Timeline.");
+            Logger.getLogger(Timeline.class.getName()).log(Level.SEVERE, null, ex);
+        }
    }
    
    //TODO update comments
