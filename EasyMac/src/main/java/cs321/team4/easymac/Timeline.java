@@ -75,7 +75,8 @@ public class Timeline {
    }
    
    //Insert a node before the specified node (?)
-   public void insertNode(Node currentNode, int delay) {
+   // TODO fix functionality to pass a node and use currently displayed node (unimplemented)
+   public void insertBeforeNode(Node currentNode, int delay) {
        //Prevent user from exceeding node limit
        if (num_of_nodes > MAX_SIZE) {
            System.out.println("Cannot exceed node limit.");
