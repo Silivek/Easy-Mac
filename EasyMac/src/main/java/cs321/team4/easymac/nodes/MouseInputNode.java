@@ -29,13 +29,10 @@ public class MouseInputNode extends InputNode {
     public void runNode(){ //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            if(pressRelease){
-                //robot.mouseMove(x,y);
-                robot.mousePress(button);
-            }
-            else{
-                robot.mouseRelease(button);
-            }
+            //robot.mouseMove(x,y);
+            robot.mousePress(button);
+            robot.delay(delayDuration);
+            robot.mouseRelease(button);
         } catch (AWTException ex) {
             System.out.println("Robot Error in MouseInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);

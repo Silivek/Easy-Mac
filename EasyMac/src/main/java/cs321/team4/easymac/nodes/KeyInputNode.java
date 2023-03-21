@@ -26,12 +26,9 @@ public class KeyInputNode extends InputNode {
     public void runNode(){ //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            if(pressRelease){
-                robot.keyPress(button);
-            }
-            else{
-                robot.keyRelease(button);
-            }
+            robot.keyPress(button);
+            robot.delay(delayDuration);
+            robot.keyRelease(button);
         } catch (AWTException ex) {
             System.out.println("Robot Error in KeyInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);

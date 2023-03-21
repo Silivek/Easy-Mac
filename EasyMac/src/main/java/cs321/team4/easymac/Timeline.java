@@ -27,6 +27,12 @@ public class Timeline {
 
    int delayTimer; //Timer for playback (May be unused?)
    
+   public Timeline() {
+       startNode = null;
+       endNode = null;
+       currentNode = null;
+   }
+   
    void updateCurrentNode() {
        if (currentNode != null)
             currentNode = currentNode.getNextNode();
@@ -129,11 +135,14 @@ public class Timeline {
    public void runTimeline(){
         if(startNode == null){return;}
         currentNode = startNode;
-        do{
+        while(true){
             currentNode.runNode();
-            runNodeDelay();
-            currentNode = currentNode.getNextNode();
-        }while(currentNode != endNode);
+            // TODO use runNodeDelay(); once pressRelease is implemented
+            if(currentNode != endNode)
+                currentNode = currentNode.getNextNode();
+            else
+                return;
+        }
    }
    //TODO update comments
 }

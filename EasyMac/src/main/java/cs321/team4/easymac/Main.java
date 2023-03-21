@@ -81,12 +81,12 @@ public class Main {
              
             while(!keyPress.equals("-1"))
             {
+                System.out.print("Enter an input: ");
+                keyPress = userSelection.next();
                 if (keyPress.equals("-2")){
                     userCreatedTimeline.runTimeline();
                 }
-                System.out.print("Enter an input: ");
-                keyPress = userSelection.next();
-                if(keyPress.equals("left")||keyPress.equals("Left"))
+                else if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
                    
                    
