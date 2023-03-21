@@ -8,6 +8,8 @@ import java.util.Scanner;
 import cs321.team4.easymac.FileGenerator;
 import cs321.team4.easymac.FileReader;
 import cs321.team4.easymac.nodes.Node;
+import cs321.team4.easymac.nodes.KeyInputNode;
+import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
 
 
@@ -71,35 +73,40 @@ public class Main {
         // prompt user
         System.out.println("Please make your selection and press enter: ");
         // store user input
+        Timeline userCreatedTimeline = new Timeline();  
         int selection = userSelection.nextInt();
         if (selection == 1) {
             String keyPress = "";
             System.out.println("Enter -1 at any time to escape the program.");
-            
-          
+             
             while(!keyPress.equals("-1"))
             {
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
                 if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
-                    
+                   // MouseInputNode mouseNodeToAdd = new mouseNodeToAdd();
+                   // mouseNodeToAdd = mouseNodeToAdd(keyPress);
                     
                     // TODO left click node stuff
                 }
                 else if(keyPress.equals("right")||keyPress.equals("Right"))
                 {
-                    
+                    //MouseInputNode mouseNodeToAdd = new mouseNodeToAdd();
+                    //mouseNodeToAdd = mouseNodeToAdd(keyPress);
                     // TODO right click node stuff
                 }
                 else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
                     keyPress = keyPress.toUpperCase();
-                    String[] inputArray = new String[10];
-                    inputArray[0]=keyPress;
-                    // Node() doesn't take a parameter
-                    //Node nodeToAdd = new Node(inputArray[0]);
-                    //nodeToAdd = inputArray[0];
+                    char vkValue = keyPress.toCharArray()[0];
+                    
+                          
+                    KeyInputNode nodeToAdd = new KeyInputNode();
+                    
+                            //if previous node = NULL 
+                   // KeyInputNode nodeToAdd = new KeyInputNode(inputArray[0]);                    
+
                    
                 }
             }
