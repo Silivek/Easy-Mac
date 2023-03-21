@@ -10,6 +10,7 @@ import cs321.team4.easymac.FileReader;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.event.KeyEvent;
 
+
 /**
  * @author Melissa
  */
@@ -72,24 +73,34 @@ public class Main {
         // store user input
         int selection = userSelection.nextInt();
         if (selection == 1) {
-            // I'm aware this isn't practical, but just wanted something to get testing
             String keyPress = "";
             System.out.println("Enter -1 at any time to escape the program.");
+            
+          
             while(!keyPress.equals("-1"))
             {
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
                 if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
+                    
+                    
                     // TODO left click node stuff
                 }
                 else if(keyPress.equals("right")||keyPress.equals("Right"))
                 {
+                    
                     // TODO right click node stuff
                 }
                 else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
-                    // TODO key node stuff
+                    keyPress = keyPress.toUpperCase();
+                    String[] inputArray = new String[10];
+                    inputArray[0]=keyPress;
+                    // Node() doesn't take a parameter
+                    //Node nodeToAdd = new Node(inputArray[0]);
+                    //nodeToAdd = inputArray[0];
+                   
                 }
             }
         }
