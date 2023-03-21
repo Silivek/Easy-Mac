@@ -34,11 +34,10 @@ public class LoopNode extends Node{
     }
     LoopNode(Node prev, Node loopDestination, int repeatCount)
     {
-        super(prev, 50);
+        super(prev, null, 50);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
-    
     
     public int getRepeatCount()
     {
