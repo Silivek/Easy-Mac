@@ -20,11 +20,21 @@ public class Node {
     //Constructor with delayDuration
     public Node(int delayDuration) {};
     
+    //Constructor with prev only
+    public Node(Node prev) {
+        prevNode = prev;
+    }
+    //Constructor with prev and delay
+    public Node(Node prev, int delayDuration){
+        prevNode = prev;
+        this.delayDuration = delayDuration;
+    }
+    
     //Main Constructor
-    public Node(Node prev, Node next, int delay) {
+    public Node(Node prev, Node next, int delayDuration) {
         prevNode = prev;
         nextNode = next;
-        delayDuration = delay;
+        this.delayDuration = delayDuration;
     }
     
     //Getters
