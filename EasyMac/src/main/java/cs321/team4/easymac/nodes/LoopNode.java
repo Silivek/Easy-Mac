@@ -14,8 +14,8 @@ public class LoopNode extends Node{
     
     /**
      * 
-     * @param prev Reference to the previous node.
-     * @param next Reference to the next node.
+     * @param prev The previous node in the list.
+     * @param next The next node in the list.
      * @param delayDuration How long until the next node is called in milliseconds.
      * @param loopDestination While looping, this is the nextNode.
      * @param repeatCount Number of times node will loop before reverting. Negative number for an infinite loop.
