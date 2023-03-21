@@ -77,10 +77,13 @@ public class Main {
         int selection = userSelection.nextInt();
         if (selection == 1) {
             String keyPress = "";
-            System.out.println("Enter -1 at any time to escape the program.");
+            System.out.println("Enter -1 at any time to escape the program. Press -2 at any time to run your macro");
              
             while(!keyPress.equals("-1"))
             {
+                if (keyPress.equals("-2")){
+                    userCreatedTimeline.runTimeline();
+                }
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
                 if(keyPress.equals("left")||keyPress.equals("Left"))
@@ -102,13 +105,11 @@ public class Main {
                     char vkValue = keyPress.toCharArray()[0];
                                               
                     KeyInputNode nodeToAdd = new KeyInputNode(null, vkValue);
-                    userCreatedTimeline.insertNode(nodeToAdd, 5);
+                    userCreatedTimeline.addNode(nodeToAdd);
                     
                    //if userCreatedTimeline.getHead() == NULL
                    // add nodeToAdd at head;
                                        
-
-                   
                 }
             }
         }
