@@ -14,9 +14,9 @@ import java.util.logging.Logger;
  * @author benspurlock
  */
 public class Timeline {
-    //TODO data structure for Timeline
-    //TODO add node insertion/removal for timeline class
-    //TODO print timeline contents to console
+    //TODO Test timeline
+    //TODO Ensure addNode() and insertNode() can store key info
+    //TODO print node contents to console
     //TODO Undo/redo functionality?
     
    final int MAX_SIZE = 100;
@@ -34,6 +34,7 @@ public class Timeline {
    public void addNode(int delay) {
        //Return an error if the node limit is reached
        if (num_of_nodes > MAX_SIZE) {
+           System.out.println("Cannot exceed node limit.");
            return;
        }
        
@@ -77,7 +78,13 @@ public class Timeline {
    }
    
    //Insert a node before the specified node (?)
-   public void insertNode(Node currentNode) {
+   public void insertNode(Node currentNode, int delay) {
+       //Prevent user from exceeding node limit
+       if (num_of_nodes > MAX_SIZE) {
+           System.out.println("Cannot exceed node limit.");
+           return;
+       }
+       
        //Create new node
        Node newNode;
        newNode = new Node(currentNode, null, delay);
