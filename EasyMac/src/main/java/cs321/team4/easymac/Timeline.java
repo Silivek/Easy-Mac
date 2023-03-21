@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cs321.team4.easymac;
+import cs321.team4.easymac.nodes.KeyInputNode;
+import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -33,7 +35,7 @@ public class Timeline {
    //Adds a node to the end of the timeline
    public void addNode(int delay) {
        //Return an error if the node limit is reached
-       if (num_of_nodes > MAX_SIZE) {
+       if (num_of_nodes >= MAX_SIZE) {
            System.out.println("Cannot exceed node limit.");
            return;
        }
@@ -57,6 +59,45 @@ public class Timeline {
        
        //Set new endNode to newNode
        endNode = newNode;
+   }
+   
+   //Adds a new KeyInputNode to the end of the timeline
+   public void addKeyInputNode(int button) {
+       if (num_of_nodes >= MAX_SIZE) {
+           System.out.println("Cannot exceed node limit.");
+           return;
+       }
+       if (startNode == null) {
+           startNode = new KeyInputNode(null, button);
+           currentNode = startNode;
+           num_of_nodes++;
+       }
+       else{
+           Node newNode = new KeyInputNode(currentNode, button);
+           currentNode.setNextNode(newNode);
+           currentNode = newNode;
+           num_of_nodes++;
+       }
+   }
+   //Adds a new KeyInputNode to the end of the timeline
+   public void addMouseInputNode(int button) {
+       if (num_of_nodes >= MAX_SIZE) {
+           System.out.println("Cannot exceed node limit.");
+           return;
+       }
+       if (startNode == null) {
+           startNode = new MouseInputNode(null, button);
+           currentNode = startNode;
+           endNode = startNode;
+           num_of_nodes++;
+       }
+       else{
+           Node newNode = new MouseInputNode(currentNode, button);
+           currentNode.setNextNode(newNode);
+           currentNode = newNode;
+           endNode = newNode;
+           num_of_nodes++;
+       }
    }
    
    //Removes the last node in the timeline
