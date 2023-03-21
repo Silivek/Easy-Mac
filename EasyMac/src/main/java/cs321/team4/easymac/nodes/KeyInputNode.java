@@ -16,8 +16,11 @@ import java.util.logging.Logger;
 // TODO determine if KeyInputNode requires more methods
 
 public class KeyInputNode extends InputNode {
-    public KeyInputNode(int delayDuration, boolean pressRelease, int button){
-        super(delayDuration, pressRelease, button);
+    public KeyInputNode(Node prev, int button){
+        super(prev, button);
+    }
+    public KeyInputNode(Node prev, int delayDuration, boolean pressRelease, int button){
+        super(prev, delayDuration, pressRelease, button);
     }
     @Override
     public void runNode(){ //runs node contents

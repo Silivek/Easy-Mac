@@ -17,8 +17,11 @@ import java.util.logging.Logger;
 
 public class MouseInputNode extends InputNode {
     int x; int y; //coordinates for mouse clicks
-    public MouseInputNode(int delayDuration, boolean pressRelease, int button, int x, int y){
-        super(delayDuration, pressRelease, button);
+    public MouseInputNode(Node prev, int button){
+        super(prev, button);
+    }
+    public MouseInputNode(Node prev, int delayDuration, boolean pressRelease, int button, int x, int y){
+        super(prev, delayDuration, pressRelease, button);
         this.x = x;
         this.y = y;
     }
