@@ -15,18 +15,16 @@ public class Node {
     int delayDuration; //Delay in milliseconds
     
     //Empty Constructor
-    public Node() {};
+    public Node() {
+        prevNode = null;
+        nextNode = null;
+        delayDuration = 50;
+    }
     
     //Constructor with delayDuration
-    public Node(int delayDuration) {};
-    
-    //Constructor with prev only
-    public Node(Node prev) {
-        prevNode = prev;
-    }
-    //Constructor with prev and delay
-    public Node(Node prev, int delayDuration){
-        prevNode = prev;
+    public Node(int delayDuration) {
+        prevNode = null;
+        nextNode = null;
         this.delayDuration = delayDuration;
     }
     

@@ -23,7 +23,7 @@ public class Timeline {
     
    final int MAX_SIZE = 100;
    int num_of_nodes = 0;
-   Node startNode, endNode, currentNode = null; //endNode currently unused
+   Node startNode, endNode, currentNode; //startNode and endNode are for structuring, currentNode is for running the Timeline
 
    int delayTimer; //Timer for playback (May be unused?)
    
@@ -31,70 +31,26 @@ public class Timeline {
        if (currentNode != null)
             currentNode = currentNode.getNextNode();
    }
-   
+   // TODO fix addNode to be passed a node instead of parameters
    //Adds a node to the end of the timeline
-   public void addNode(int delay) {
+   public void addNode(Node newNode) {
        //Return an error if the node limit is reached
        if (num_of_nodes >= MAX_SIZE) {
            System.out.println("Cannot exceed node limit.");
            return;
        }
        
-       //Add the first node in the list (Auxilliary start node?)
+       //Add the first node in the list
        if (startNode == null) {
-           startNode = new Node(null, null, delay);
-           currentNode = startNode;
-       }
-       
-       //Create new node
-       Node newNode;
-       newNode = new Node(currentNode, null, delay);
-       num_of_nodes++;
-       
-       //Connect previous node to new node
-       currentNode.setNextNode(newNode);
-               
-       //Set current node to new node
-       updateCurrentNode();
-       
-       //Set new endNode to newNode
-       endNode = newNode;
-   }
-   
-   //Adds a new KeyInputNode to the end of the timeline
-   public void addKeyInputNode(int button) {
-       if (num_of_nodes >= MAX_SIZE) {
-           System.out.println("Cannot exceed node limit.");
-           return;
-       }
-       if (startNode == null) {
-           startNode = new KeyInputNode(null, button);
-           currentNode = startNode;
-           num_of_nodes++;
-       }
-       else{
-           Node newNode = new KeyInputNode(currentNode, button);
-           currentNode.setNextNode(newNode);
-           currentNode = newNode;
-           num_of_nodes++;
-       }
-   }
-   //Adds a new KeyInputNode to the end of the timeline
-   public void addMouseInputNode(int button) {
-       if (num_of_nodes >= MAX_SIZE) {
-           System.out.println("Cannot exceed node limit.");
-           return;
-       }
-       if (startNode == null) {
-           startNode = new MouseInputNode(null, button);
-           currentNode = startNode;
+           newNode.setPrevNode(null);
+           newNode.setNextNode(null);
+           startNode = newNode;
            endNode = startNode;
            num_of_nodes++;
        }
        else{
-           Node newNode = new MouseInputNode(currentNode, button);
-           currentNode.setNextNode(newNode);
-           currentNode = newNode;
+           endNode.setNextNode(newNode);
+           newNode.setPrevNode(endNode);
            endNode = newNode;
            num_of_nodes++;
        }
@@ -145,7 +101,6 @@ public class Timeline {
    //Print timeline to console
    public void printTimeline() {
        int i = 0;
-       Node currentNode;
        currentNode = this.startNode;
        
         do {
@@ -169,5 +124,15 @@ public class Timeline {
         }
    }
    
+   //Runs the timeline
+   public void runTimeline(){
+        if(startNode == null){return;}
+        currentNode = startNode;
+        do{
+            currentNode.runNode();
+            runNodeDelay();
+            currentNode = currentNode.getNextNode();
+        }while(currentNode != endNode);
+   }
    //TODO update comments
 }
