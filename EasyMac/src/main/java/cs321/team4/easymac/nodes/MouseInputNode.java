@@ -30,7 +30,7 @@ public class MouseInputNode extends InputNode {
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             if(pressRelease){
-                robot.mouseMove(x,y);
+                //robot.mouseMove(x,y);
                 robot.mousePress(button);
             }
             else{
