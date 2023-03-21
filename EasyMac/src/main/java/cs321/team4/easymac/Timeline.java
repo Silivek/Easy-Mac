@@ -76,14 +76,36 @@ public class Timeline {
        endNode = prevNode;
    }
    
-   //Insert a node (?)
-   public void insertNode() {
+   //Insert a node before the specified node (?)
+   public void insertNode(Node currentNode) {
+       //Create new node
+       Node newNode;
+       newNode = new Node(currentNode, null, delay);
+       num_of_nodes++;
        
+       //Connect prev node to new node
+       if (currentNode.getPrevNode() == null) {
+            currentNode.getPrevNode().setNextNode(newNode);
+       } else { //Set new starting node if necessary
+           this.startNode = newNode;
+       }
+       
+       //Connect new node to node it was inserted before
+       newNode.setNextNode(currentNode);
    }
    
    //Print timeline to console
    public void printTimeline() {
+       int i = 0;
+       Node currentNode;
+       currentNode = this.startNode;
        
+        do {
+        System.out.println(i + ".  " + "Delay: " + currentNode.getDelayDuration());
+
+        currentNode = currentNode.getNextNode();
+        i++;
+       } while (currentNode != this.endNode);
    }
    
    
