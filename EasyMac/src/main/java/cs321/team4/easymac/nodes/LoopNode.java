@@ -10,17 +10,32 @@ package cs321.team4.easymac.nodes;
  */
 public class LoopNode extends Node{
     int repeatCount;
-    Node loopDestination;
+    Node loopNext;
     Node actualNext;
     
-    LoopNode(Node loopDestination)
+    LoopNode(Node prev, int delayDuration, Node loopDestination)
     {
-        super();
+        super(prev, null, delayDuration);
+        this.actualNext = this.nextNode;
+        this.nextNode = loopDestination;
+    }
+    LoopNode(Node prev, Node next, int delayDuration, Node loopDestination)
+    {
+        super(prev, next, delayDuration);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
     
-    void activate()
+    public int getRepeatCount()
+    {
+        return repeatCount;
+    }
+    public void setRepeatCount(int repeatCount)
+    {
+        this.repeatCount = repeatCount;
+    }
+    
+    public void runNode()
     {
         if(repeatCount > 0) 
         {
@@ -28,6 +43,5 @@ public class LoopNode extends Node{
             if(repeatCount == 0)
                 this.nextNode = actualNext;
         }
-        
     }
 }
