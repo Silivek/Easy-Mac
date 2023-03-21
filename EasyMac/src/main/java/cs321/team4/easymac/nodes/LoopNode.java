@@ -18,16 +18,23 @@ public class LoopNode extends Node{
      * @param next Reference to the next node.
      * @param delayDuration How long until the next node is called in milliseconds.
      * @param loopDestination While looping, this is the nextNode.
+     * @param repeatCount Number of times node will loop before reverting. Negative number for an infinite loop.
      */
-    LoopNode(Node prev, Node next, int delayDuration, Node loopDestination)
+    LoopNode(Node prev, Node next, int delayDuration, Node loopDestination, int repeatCount)
     {
         super(prev, next, delayDuration);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
-    LoopNode(Node prev, int delayDuration, Node loopDestination)
+    LoopNode(Node prev, int delayDuration, Node loopDestination, int repeatCount)
     {
         super(prev, null, delayDuration);
+        this.actualNext = this.nextNode;
+        this.nextNode = loopDestination;
+    }
+    LoopNode(Node prev, Node loopDestination, int repeatCount)
+    {
+        super(prev, 50);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
