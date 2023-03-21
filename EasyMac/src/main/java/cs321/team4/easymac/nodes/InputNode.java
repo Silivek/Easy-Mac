@@ -12,29 +12,34 @@ public class InputNode extends Node{
     boolean pressRelease; //true for press, false for release
     int button; //Keystroke or button press
     
-    public InputNode(Node prev, int button){
-        super(prev, null, 50);
-        this.button = button;
-    }
-    
-    public InputNode(int delayDuration, boolean pressRelease, int button){
-        super(null, null, delayDuration);
-        this.pressRelease = pressRelease;
-        this.button = button;
-    }
-    
-    public InputNode(Node prev, int delayDuration, boolean pressRelease, int button){
-        super(prev, null, delayDuration);
-        this.pressRelease = pressRelease;
-        this.button = button;
-    }
-    
+    /**
+     * 
+     * @param prev Reference to the previous node.
+     * @param next Reference to the next node.
+     * @param delayDuration How long until the next node is called in milliseconds.
+     * @param pressRelease True indicates to press our button, false to release it.
+     * @param button Identifier for mouse button or key.
+     * 
+     */
     public InputNode(Node prev, Node next, int delayDuration, boolean pressRelease, int button){
         super(prev, next, delayDuration);
         this.pressRelease = pressRelease;
         this.button = button;
     }
-    
+    public InputNode(Node prev, int delayDuration, boolean pressRelease, int button){
+        super(prev, null, delayDuration);
+        this.pressRelease = pressRelease;
+        this.button = button;
+    }
+    public InputNode(int delayDuration, boolean pressRelease, int button){
+        super(null, null, delayDuration);
+        this.pressRelease = pressRelease;
+        this.button = button;
+    }
+    public InputNode(Node prev, int button){
+        super(prev, null, 50);
+        this.button = button;
+    }
     public boolean getPressRelease()
     {
         return pressRelease;
@@ -43,6 +48,7 @@ public class InputNode extends Node{
     {
         this.pressRelease = pressRelease;
     }
+    
     public int getButton()
     {
         return button;

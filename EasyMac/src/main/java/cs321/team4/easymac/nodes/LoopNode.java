@@ -10,21 +10,28 @@ package cs321.team4.easymac.nodes;
  */
 public class LoopNode extends Node{
     int repeatCount;
-    Node loopNext;
     Node actualNext;
     
-    LoopNode(Node prev, int delayDuration, Node loopDestination)
-    {
-        super(prev, null, delayDuration);
-        this.actualNext = this.nextNode;
-        this.nextNode = loopDestination;
-    }
+    /**
+     * 
+     * @param prev Reference to the previous node.
+     * @param next Reference to the next node.
+     * @param delayDuration How long until the next node is called in milliseconds.
+     * @param loopDestination While looping, this is the nextNode.
+     */
     LoopNode(Node prev, Node next, int delayDuration, Node loopDestination)
     {
         super(prev, next, delayDuration);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
+    LoopNode(Node prev, int delayDuration, Node loopDestination)
+    {
+        super(prev, null, delayDuration);
+        this.actualNext = this.nextNode;
+        this.nextNode = loopDestination;
+    }
+    
     
     public int getRepeatCount()
     {

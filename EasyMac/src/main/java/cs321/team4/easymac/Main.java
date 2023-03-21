@@ -85,8 +85,8 @@ public class Main {
                 keyPress = userSelection.next();
                 if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
-                   // MouseInputNode mouseNodeToAdd = new mouseNodeToAdd();
-                   // mouseNodeToAdd = mouseNodeToAdd(keyPress);
+                   
+                   
                     
                     // TODO left click node stuff
                 }
@@ -100,12 +100,13 @@ public class Main {
                 {
                     keyPress = keyPress.toUpperCase();
                     char vkValue = keyPress.toCharArray()[0];
+                                              
+                    KeyInputNode nodeToAdd = new KeyInputNode(null, vkValue);
+                    userCreatedTimeline.insertNode(nodeToAdd, 5);
                     
-                          
-                    KeyInputNode nodeToAdd = new KeyInputNode();
-                    
-                            //if previous node = NULL 
-                   // KeyInputNode nodeToAdd = new KeyInputNode(inputArray[0]);                    
+                   //if userCreatedTimeline.getHead() == NULL
+                   // add nodeToAdd at head;
+                                       
 
                    
                 }
