@@ -24,11 +24,11 @@ public class InputNode extends Node{
         this.button = button;
     }
     
-    public boolean getHeldState()
+    public boolean getPressRelease()
     {
         return pressRelease;
     }
-    public void setHeldState(boolean heldState)
+    public void setPressRelease(boolean pressRelease)
     {
         this.pressRelease = pressRelease;
     }
