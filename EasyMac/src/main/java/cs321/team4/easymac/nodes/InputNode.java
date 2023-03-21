@@ -14,8 +14,8 @@ public class InputNode extends Node{
     
     /**
      * 
-     * @param prev Reference to the previous node.
-     * @param next Reference to the next node.
+     * @param prev The previous node in the list.
+     * @param next The next node in the list.
      * @param delayDuration How long until the next node is called in milliseconds.
      * @param pressRelease True indicates to press our button, false to release it.
      * @param button Identifier for mouse button or key.
