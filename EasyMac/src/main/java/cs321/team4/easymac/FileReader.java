@@ -12,10 +12,10 @@ import java.io.ObjectInputStream;
  */
 public class FileReader {
     // TODO set up the File Reader classes
-    public void ReadTimeline () throws ClassNotFoundException
+    public void ReadTimeline (String filePath) throws ClassNotFoundException
     {
         try {
-            FileInputStream fIn = new FileInputStream(".Documents/Timeline.txt"); //designates the location to read from
+            FileInputStream fIn = new FileInputStream(".Documents/" + filePath + ".txt"); //designates the location to read from
             try (ObjectInputStream oIn = new ObjectInputStream(fIn)) //creates the object reader
             {
                 while (oIn.available()!= 0)    //Runs as long as there are objects in the file
