@@ -112,15 +112,15 @@ public class Main {
                                        
                 }
             }
-            System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
+            /*System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
             keyPress = userSelection.next();
-            if(keyPress.equals(1)){
+            if(keyPress.equals("1")){
                 System.out.println("Please enter the name of your macro");
                 keyPress = userSelection.next();
                 String name = keyPress;
                 
-                FileGeneration(userCreatedTimeline, name);
-            }
+                FileGenerator.fileGeneration(userCreatedTimeline, name);
+            }*/
             
         }
     }

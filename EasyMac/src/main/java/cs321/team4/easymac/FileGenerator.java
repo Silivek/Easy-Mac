@@ -11,9 +11,9 @@ import java.io.ObjectOutputStream;
  * @author Logan Price
  */
 public class FileGenerator {
-    public void fileGeneration(Timeline tLine, String filePath) {
+    public static void fileGeneration(Timeline tLine, String filePath) {
         try {
-            FileOutputStream fout = new FileOutputStream(".Documents/" + filePath + ".txt"); //create the file to print the object to
+            FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
             try (ObjectOutputStream oOut = new ObjectOutputStream(fout)) //creates the object printer
             {
                 oOut.writeObject(tLine);  //write the timeline to the file
