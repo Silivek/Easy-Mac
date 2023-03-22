@@ -5,14 +5,10 @@ package cs321.team4.easymac;
 
 
 import java.util.Scanner;
-import cs321.team4.easymac.FileGenerator;
-import cs321.team4.easymac.FileReader;
-import cs321.team4.easymac.nodes.Node;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import cs321.team4.easymac.FileGenerator;
 
 
 /**
@@ -79,7 +75,7 @@ public class Main {
         int selection = userSelection.nextInt();
         if (selection == 1) {
             String keyPress = "";
-            System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro");
+            System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
              
             while(!keyPress.equals("-1"))
             {
@@ -90,25 +86,22 @@ public class Main {
                 }
                 else if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
-                   MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON1); // left click node
+                   MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON1_DOWN_MASK); // left click node
                    userCreatedTimeline.addNode(nodeToAdd);
                    
                 }
                 else if(keyPress.equals("right")||keyPress.equals("Right"))
                 {
-                     MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON2); // right click node
+                     MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON2_DOWN_MASK); // right click node
                    userCreatedTimeline.addNode(nodeToAdd);
                 }
                 else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
                     keyPress = keyPress.toUpperCase();
-                    char vkValue = keyPress.toCharArray()[0];
-                                              
-                    KeyInputNode nodeToAdd = new KeyInputNode(null, vkValue);
+                    char vkValueChar = keyPress.toCharArray()[0];
+                    int vkValueInt = vkValueChar;
+                    KeyInputNode nodeToAdd = new KeyInputNode(null, vkValueInt);
                     userCreatedTimeline.addNode(nodeToAdd);
-                    
-                   //if userCreatedTimeline.getHead() == NULL
-                   // add nodeToAdd at head;
                                        
                 }
             }

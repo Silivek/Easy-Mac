@@ -26,9 +26,14 @@ public class KeyInputNode extends InputNode {
     public void runNode(){ //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            robot.keyPress(button);
-            robot.delay(delayDuration);
-            robot.keyRelease(button);
+            try {
+                robot.keyPress(button);
+                robot.delay(delayDuration);
+                robot.keyRelease(button);
+            } catch (IllegalArgumentException ilEx) {
+                System.out.println("An invalid character was used in a node.");
+                Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ilEx);
+            }
         } catch (AWTException ex) {
             System.out.println("Robot Error in KeyInputNode.");
             Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ex);
