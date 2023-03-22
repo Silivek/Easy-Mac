@@ -11,6 +11,8 @@ import cs321.team4.easymac.nodes.Node;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import cs321.team4.easymac.FileGenerator;
 
 
 /**
@@ -77,7 +79,7 @@ public class Main {
         int selection = userSelection.nextInt();
         if (selection == 1) {
             String keyPress = "";
-            System.out.println("Enter -1 at any time to escape the program. Press -2 at any time to run your macro");
+            System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro");
              
             while(!keyPress.equals("-1"))
             {
@@ -88,16 +90,14 @@ public class Main {
                 }
                 else if(keyPress.equals("left")||keyPress.equals("Left"))
                 {
+                   MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON1); // left click node
+                   userCreatedTimeline.addNode(nodeToAdd);
                    
-                   
-                    
-                    // TODO left click node stuff
                 }
                 else if(keyPress.equals("right")||keyPress.equals("Right"))
                 {
-                    //MouseInputNode mouseNodeToAdd = new mouseNodeToAdd();
-                    //mouseNodeToAdd = mouseNodeToAdd(keyPress);
-                    // TODO right click node stuff
+                     MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON2); // right click node
+                   userCreatedTimeline.addNode(nodeToAdd);
                 }
                 else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
@@ -112,6 +112,16 @@ public class Main {
                                        
                 }
             }
+            System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
+            keyPress = userSelection.next();
+            if(keyPress.equals(1)){
+                System.out.println("Please enter the name of your macro");
+                keyPress = userSelection.next();
+                String name = keyPress;
+                
+                FileGeneration(userCreatedTimeline, name);
+            }
+            
         }
     }
 }
