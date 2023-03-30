@@ -16,12 +16,11 @@ import java.io.ObjectInputStream;
 public class FileReader {
 
     // TODO set up the File Reader classes
-    /**
-     * Reads the macro from the file.
-     *
-     * @param filePath location where the data is saved.
-     * @throws ClassNotFoundException.
-     */
+   /**
+    * Reads the macro from the file.
+    * @param filePath where the saved macro is located.
+    * @throws ClassNotFoundException if file is not found.
+    */
     public static void ReadTimeline(String filePath) throws ClassNotFoundException {
         try {
             FileInputStream fIn = new FileInputStream(filePath + ".ezm"); //designates the location to read from
