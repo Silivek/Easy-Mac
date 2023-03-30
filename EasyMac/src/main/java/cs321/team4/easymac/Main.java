@@ -3,29 +3,37 @@
  */
 package cs321.team4.easymac;
 
-
 import java.util.Scanner;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-
 /**
+ * A class to run the EasyMac program.
+ *
  * @author Melissa
  */
-
 public class Main {
 
-    //TODO write saveTimeline function
+    /**
+     * Saves a recorded timeline.
+     * @param name the name of the timeline provided by the user.
+     * @param recordedTimeline the timeline created by the user.
+     */
     public void saveTimeline(String name, Timeline recordedTimeline) {
         // write timeline Object to file
         // use name for name of file
     }
-    
+
     ;
     
     //TODO write loadTimeline function
+    /**
+     * Loads the timeline object from the file.
+     * @param name the name of the timeline to load.
+     * @return the timeline
+     */
     public Timeline loadTimeline(String name) {
         // find file on file path
         // return timeline object
@@ -38,6 +46,11 @@ public class Main {
     ;
     
     //TODO write editTimeline function
+    /**
+     * Edits the timeline object.
+     * @param recordedTimeline the timeline to be edited.
+     * @return the edited timeline.
+     */
     public Timeline editTimeline(Timeline recordedTimeline) {
         // find and return timeline
         // use the Timeline functions to edit timeline
@@ -71,38 +84,32 @@ public class Main {
         // prompt user
         System.out.println("Please make your selection and press enter: ");
         // store user input
-        Timeline userCreatedTimeline = new Timeline();  
+        Timeline userCreatedTimeline = new Timeline();
         int selection = userSelection.nextInt();
         if (selection == 1) {
             String keyPress = "";
             System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
-             
-            while(!keyPress.equals("-1"))
-            {
+
+            while (!keyPress.equals("-1")) {
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
-                if (keyPress.equals("-2")){
+                if (keyPress.equals("-2")) {
                     userCreatedTimeline.runTimeline();
-                }
-                else if(keyPress.equals("left")||keyPress.equals("Left"))
-                {
-                   MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON1_DOWN_MASK); // left click node
-                   userCreatedTimeline.addNode(nodeToAdd);
-                   
-                }
-                else if(keyPress.equals("right")||keyPress.equals("Right"))
-                {
-                     MouseInputNode nodeToAdd = new MouseInputNode(null,MouseEvent.BUTTON2_DOWN_MASK); // right click node
-                   userCreatedTimeline.addNode(nodeToAdd);
-                }
-                else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
+                } else if (keyPress.equals("left") || keyPress.equals("Left")) {
+                    MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON1_DOWN_MASK); // left click node
+                    userCreatedTimeline.addNode(nodeToAdd);
+
+                } else if (keyPress.equals("right") || keyPress.equals("Right")) {
+                    MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON2_DOWN_MASK); // right click node
+                    userCreatedTimeline.addNode(nodeToAdd);
+                } else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
                     keyPress = keyPress.toUpperCase();
                     char vkValueChar = keyPress.toCharArray()[0];
                     int vkValueInt = vkValueChar;
                     KeyInputNode nodeToAdd = new KeyInputNode(null, vkValueInt);
                     userCreatedTimeline.addNode(nodeToAdd);
-                                       
+
                 }
             }
             /*System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
@@ -114,7 +121,7 @@ public class Main {
                 
                 FileGenerator.fileGeneration(userCreatedTimeline, name);
             }*/
-            
+
         }
     }
 }

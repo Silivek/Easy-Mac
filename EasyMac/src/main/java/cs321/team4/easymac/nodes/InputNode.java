@@ -5,56 +5,114 @@
 package cs321.team4.easymac.nodes;
 
 /**
+ * A class for creating an input node.
  *
  * @author Brian
  */
-public class InputNode extends Node{
+public class InputNode extends Node {
+
     boolean pressRelease; //true for press, false for release
     int button; //Keystroke or button press
-    
+
     /**
-     * 
+     * Constructs an InputNode object specifying previous node, next node, the
+     * delay duration, the press release, and the button.
+     *
      * @param prev The previous node in the list.
      * @param next The next node in the list.
-     * @param delayDuration How long until the next node is called in milliseconds.
-     * @param pressRelease True indicates to press our button, false to release it.
+     * @param delayDuration How long until the next node is called in
+     * milliseconds.
+     * @param pressRelease True indicates to press our button, false to release
+     * it.
      * @param button Identifier for mouse button or key.
-     * 
+     *
      */
-    public InputNode(Node prev, Node next, int delayDuration, boolean pressRelease, int button){
+    public InputNode(Node prev, Node next, int delayDuration, boolean pressRelease, int button) {
         super(prev, next, delayDuration);
         this.pressRelease = pressRelease;
         this.button = button;
     }
-    public InputNode(Node prev, int delayDuration, boolean pressRelease, int button){
+
+    /**
+     * Constructs an InputNode object specifying previous node, the delay
+     * duration, the press release, and the button.
+     *
+     * @param prev The previous node in the list.
+     * @param delayDuration How long until the next node is called in
+     * milliseconds.
+     * @param pressRelease True indicates to press our button, false to release
+     * it.
+     * @param button Identifier for mouse button or key.
+     */
+    public InputNode(Node prev, int delayDuration, boolean pressRelease, int button) {
         super(prev, null, delayDuration);
         this.pressRelease = pressRelease;
         this.button = button;
     }
-    public InputNode(int delayDuration, boolean pressRelease, int button){
+
+    /**
+     * Constructs an InputNode object specifying the delay duration, the press
+     * release, and the button.
+     *
+     * @param delayDuration How long until the next node is called in
+     * milliseconds.
+     * @param pressRelease True indicates to press our button, false to release
+     * it.
+     * @param button Identifier for mouse button or key.
+     */
+    public InputNode(int delayDuration, boolean pressRelease, int button) {
         super(null, null, delayDuration);
         this.pressRelease = pressRelease;
         this.button = button;
     }
-    public InputNode(Node prev, int button){
+
+    /**
+     * Constructs an InputNode object specifying the previous node and the
+     * button.
+     *
+     * @param prev Indicates the previous node in the timeline.
+     * @param button Identifier for mouse button or key.
+     */
+    public InputNode(Node prev, int button) {
         super(prev, null, 50);
         this.button = button;
     }
-    public boolean getPressRelease()
-    {
+
+    /**
+     * Indicates if a button has been released.
+     *
+     * @return boolean value where true indicates to press our button, false to
+     * release it.
+     */
+    public boolean getPressRelease() {
         return pressRelease;
     }
-    public void setPressRelease(boolean pressRelease)
-    {
+
+    /**
+     * Stores the boolean value to indicate if the press release has occurred.
+     *
+     * @param pressRelease stores the pressRelease.
+     */
+    public void setPressRelease(boolean pressRelease) {
         this.pressRelease = pressRelease;
     }
-    
-    public int getButton()
-    {
+
+    /**
+     * Provides the button value.
+     *
+     * @return button integer value.
+     */
+    public int getButton() {
         return button;
     }
-    public void setButton(int button)
-    {
+
+    /**
+     * Sets the button value.
+     *
+     * @param button integer value which is the identifier for mouse button or
+     * key.
+     */
+    public void setButton(int button) {
         this.button = button;
     }
 }

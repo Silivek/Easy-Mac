@@ -5,56 +5,96 @@
 package cs321.team4.easymac.nodes;
 
 /**
+ * A class that provides looping capabilities for the macro.
  *
  * @author Brian
  */
-public class LoopNode extends Node{
+public class LoopNode extends Node {
+
     int repeatCount;
     Node actualNext;
-    
+
     /**
-     * 
-     * @param prev The previous node in the list.
-     * @param next The next node in the list.
-     * @param delayDuration How long until the next node is called in milliseconds.
-     * @param loopDestination While looping, this is the nextNode.
-     * @param repeatCount Number of times node will loop before reverting. Negative number for an infinite loop.
+     * Constructs a LoopNode object specifying the previous node, the next node,
+     * the timing until the next node is called, the looping location, and the
+     * number of times the loop occurs.
+     *
+     * @param prev the previous node in the list.
+     * @param next the next node in the list.
+     * @param delayDuration how long until the next node is called in
+     * milliseconds.
+     * @param loopDestination while looping, this is the nextNode.
+     * @param repeatCount the number of times node will loop before reverting.
+     * Negative number for an infinite loop.
      */
-    LoopNode(Node prev, Node next, int delayDuration, Node loopDestination, int repeatCount)
-    {
+    LoopNode(Node prev, Node next, int delayDuration, Node loopDestination, int repeatCount) {
         super(prev, next, delayDuration);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
-    LoopNode(Node prev, int delayDuration, Node loopDestination, int repeatCount)
-    {
+
+    /**
+     * Constructs a LoopNode object specifying the previous node, the timing
+     * until the next node is called, the looping location, and the number of
+     * times the loop occurs.
+     *
+     * @param prev the previous node in the list.
+     * @param delayDuration how long until the next node is called in
+     * milliseconds.
+     * @param loopDestination while looping, this is the nextNode.
+     * @param repeatCount the number of times node will loop before reverting.
+     * Negative number for an infinite loop.
+     */
+    LoopNode(Node prev, int delayDuration, Node loopDestination, int repeatCount) {
         super(prev, null, delayDuration);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
-    LoopNode(Node prev, Node loopDestination, int repeatCount)
-    {
+
+    /**
+     * Constructs a LoopNode object specifying the previous node, the looping
+     * location, and the number of times the loop occurs.
+     *
+     * @param prev the previous node in the list.
+     * @param loopDestination while looping, this is the nextNode.
+     * @param repeatCount the number of times node will loop before reverting.
+     * Negative number for an infinite loop.
+     */
+    LoopNode(Node prev, Node loopDestination, int repeatCount) {
         super(prev, null, 50);
         this.actualNext = this.nextNode;
         this.nextNode = loopDestination;
     }
-    
-    public int getRepeatCount()
-    {
+
+    /**
+     * Gets the repeat count.
+     *
+     * @return the number of times the node will loop before reverting.
+     */
+    public int getRepeatCount() {
         return repeatCount;
     }
-    public void setRepeatCount(int repeatCount)
-    {
+
+    /**
+     * Gets the repeat count.
+     *
+     * @param repeatCount the number of times the node will loop before
+     * reverting.
+     */
+    public void setRepeatCount(int repeatCount) {
         this.repeatCount = repeatCount;
     }
-    
-    public void runNode()
-    {
-        if(repeatCount > 0) 
-        {
+
+    /**
+     * Runs the node's contents.
+     */
+    @Override
+    public void runNode() {
+        if (repeatCount > 0) {
             repeatCount--;
-            if(repeatCount == 0)
+            if (repeatCount == 0) {
                 this.nextNode = actualNext;
+            }
         }
     }
 }
