@@ -25,7 +25,7 @@ public class MouseInputNode extends InputNode {
      * next node.
      *
      * @param prev indicates the previous node in the list.
-     * @param button the identifier for the mouse location/action????
+     * @param button the identifier for the type of mouse press.
      */
     public MouseInputNode(Node prev, int button) {
         super(prev, button);
@@ -39,7 +39,7 @@ public class MouseInputNode extends InputNode {
      * @param prev the previous node in the list.
      * @param delayDuration how long until the next node is called in
      * milliseconds.
-     * @param button the mouse location/action????
+     * @param button the identifier for the type of mouse press.
      * @param pressRelease true indicates to press our button, false to release
      * it.
      * @param x the x value of the mouse action location
