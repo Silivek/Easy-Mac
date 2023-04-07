@@ -48,7 +48,7 @@ public class Main {
      * @param userCreatedTimeline the timeline that the user is building
      * @param userSelection reads in the user's selections
      */
-    public static void createNewMarco(int selection, Timeline userCreatedTimeline, Scanner userSelection){
+    public static void createNewMacro(int selection, Timeline userCreatedTimeline, Scanner userSelection){
         if (selection == 1) {
             String keyPress = "";
             System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
@@ -140,7 +140,7 @@ public class Main {
         // store user input
         Timeline userCreatedTimeline = new Timeline();
         int selection = userSelection.nextInt();
-        createNewMarco(selection, userCreatedTimeline, userSelection);
+        createNewMacro(selection, userCreatedTimeline, userSelection);
 //        if (selection == 1) {
 //            String keyPress = "";
 //            System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
