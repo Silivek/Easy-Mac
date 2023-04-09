@@ -9,7 +9,7 @@ package cs321.team4.easymac.gui;
  * @author wkilp
  */
 public class MainGUI extends javax.swing.JFrame {
-
+    java.io.File currentFile;
     /**
      * Creates new form MainGUI
      */
@@ -33,6 +33,13 @@ public class MainGUI extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        openButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        fileName = new javax.swing.JTextPane();
+        fileLabel = new javax.swing.JLabel();
+        newButton = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -85,16 +92,48 @@ public class MainGUI extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
-        );
+        jPanel1.setBackground(new java.awt.Color(54, 75, 154));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        openButton.setText("Open...");
+        openButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(openButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        fileName.setEditable(false);
+        fileName.setBackground(new java.awt.Color(80, 80, 80));
+        jScrollPane1.setViewportView(fileName);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 170, -1));
+
+        fileLabel.setBackground(new java.awt.Color(232, 208, 51));
+        fileLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fileLabel.setLabelFor(fileName);
+        fileLabel.setText("Current File");
+        fileLabel.setOpaque(true);
+        jPanel1.add(fileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 70, 20));
+
+        newButton.setText("New...");
+        newButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(newButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        jButton5.setText("Save As...");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         jTabbedPane1.addTab("File", jPanel1);
 
@@ -102,7 +141,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(232, 208, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/leftArrow (2).png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/leftArrow.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -111,7 +150,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
 
         jButton2.setBackground(new java.awt.Color(232, 208, 51));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/rightArrow (2).png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/rightArrow.png"))); // NOI18N
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 120, 120));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
@@ -204,10 +243,6 @@ public class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -215,6 +250,35 @@ public class MainGUI extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
+        // open a filechooser dialog menu.
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        if (fileChooser.showOpenDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+            // load from file
+            currentFile = fileChooser.getSelectedFile();
+            fileName.setText(currentFile.getName());
+        }
+    }//GEN-LAST:event_openButtonActionPerformed
+
+    private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        if(currentFile != null) {
+            //save timeline to preexisting file if it exists
+        }
+        else {
+            //else default to save as... functionality
+        }
+        
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,10 +316,13 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fileLabel;
+    private javax.swing.JTextPane fileName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -271,11 +338,15 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton newButton;
+    private javax.swing.JButton openButton;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
