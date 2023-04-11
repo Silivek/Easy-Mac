@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cs321.team4.easymac.gui;
+import cs321.team4.easymac.Timeline;
 
 /**
  *
@@ -41,8 +42,8 @@ public class MainGUI extends javax.swing.JFrame {
         newButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        leftArrow = new javax.swing.JButton();
+        rightArrow = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -140,18 +141,23 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(54, 75, 154));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(232, 208, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/leftArrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        leftArrow.setBackground(new java.awt.Color(232, 208, 51));
+        leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/leftArrow.png"))); // NOI18N
+        leftArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                leftArrowActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
+        jPanel3.add(leftArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
 
-        jButton2.setBackground(new java.awt.Color(232, 208, 51));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/rightArrow.png"))); // NOI18N
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 120, 120));
+        rightArrow.setBackground(new java.awt.Color(232, 208, 51));
+        rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/rightArrow.png"))); // NOI18N
+        rightArrow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightArrowActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rightArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 120, 120));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -276,9 +282,17 @@ public class MainGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        // Timeline currentTimeline = getTimeline();
+        // currentTimeline.getPrevNode();
+    }//GEN-LAST:event_leftArrowActionPerformed
+
+    private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
+        // TODO add your handling code here:
+        // Timeline currentTimeline = getTimeline();
+        // currentTimeline.getNextNode();
+    }//GEN-LAST:event_rightArrowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,8 +332,6 @@ public class MainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fileLabel;
     private javax.swing.JTextPane fileName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -345,8 +357,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton leftArrow;
     private javax.swing.JButton newButton;
     private javax.swing.JButton openButton;
+    private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import cs321.team4.easymac.gui;
 
 /**
  * A class to run the EasyMac program.
@@ -129,18 +130,20 @@ public class Main {
      */
  
     public static void main(String args[]) {
-        introMenu();
-        optionMenu();
+        
+        new MainGUI();
+//        introMenu();
+//        optionMenu();
 
-      
+      // When we get to creating the macro in the gui, this will need to go in that portion
         // create a scanner object
-        Scanner userSelection = new Scanner(System.in);
-        // prompt user
-        System.out.println("Please make your selection and press enter: ");
-        // store user input
-        Timeline userCreatedTimeline = new Timeline();
-        int selection = userSelection.nextInt();
-        createNewMacro(selection, userCreatedTimeline, userSelection);
+//        Scanner userSelection = new Scanner(System.in);
+//        // prompt user
+//        System.out.println("Please make your selection and press enter: ");
+//        // store user input
+//        Timeline userCreatedTimeline = new Timeline();
+//        int selection = userSelection.nextInt();
+//        createNewMacro(selection, userCreatedTimeline, userSelection);
 //        if (selection == 1) {
 //            String keyPress = "";
 //            System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
