@@ -8,7 +8,7 @@ import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import cs321.team4.easymac.gui;
+import cs321.team4.easymac.gui.MainGUI;
 
 /**
  * A class to run the EasyMac program.
