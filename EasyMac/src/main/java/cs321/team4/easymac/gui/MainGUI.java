@@ -3,14 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cs321.team4.easymac.gui;
-import cs321.team4.easymac.Timeline;
+
+import cs321.team4.easymac.nodes.Node;
+import javax.swing.JButton;
 
 /**
  *
  * @author wkilp
  */
 public class MainGUI extends javax.swing.JFrame {
+
     java.io.File currentFile;
+
     /**
      * Creates new form MainGUI
      */
@@ -277,26 +281,52 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        if(currentFile != null) {
+        if (currentFile != null) {
             //save timeline to preexisting file if it exists
-        }
-        else {
+        } else {
             //else default to save as... functionality
         }
-        
+
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
-        // TODO add your handling code here:
-        // Timeline currentTimeline = getTimeline();
-        // currentTimeline.getPrevNode();
+        removeLeftArrow(leftArrow);
+        if (currentNode.getPrevNode() != null) {
+            currentNode = currentNode.getPrevNode();
+            return currentNode;
+        }
     }//GEN-LAST:event_leftArrowActionPerformed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-        // TODO add your handling code here:
-        // Timeline currentTimeline = getTimeline();
-        // currentTimeline.getNextNode();
+        removeRightArrow(rightArrow);  
+        if (currentNode.getNextNode() != null) {
+//            currentNode = currentNode.getNextNode();
+//            return currentNode;
+        }
     }//GEN-LAST:event_rightArrowActionPerformed
+
+    /**
+     *When there are no longer any next nodes, the button to access the next node disappears.
+     * @param rightArrow which is the button to access the next node.
+     */
+    public void removeRightArrow(JButton rightArrow) {
+        if (currentNode.getNextNode().equals(null)) {
+            rightArrow.setVisible(false);
+        } else {
+            rightArrow.setVisible(true);
+        }
+    }
+    /**
+     * When there are no longer any more previous nodes, the button to access the previous node disappears.
+     * @param leftArrow the button to access the previous node.
+     */
+    public void removeLeftArrow(JButton leftArrow) {
+        if (curretNode.getPrevNode().equals(null)) {
+            leftArrow.setVisible(false);
+        } else {
+            leftArrow.setVisible(true);
+        }
+    }
 
     /**
      * @param args the command line arguments
