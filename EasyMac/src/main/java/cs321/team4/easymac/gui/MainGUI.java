@@ -46,23 +46,23 @@ public class MainGUI extends javax.swing.JFrame {
         newButton = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        leftArrow = new javax.swing.JButton();
-        rightArrow = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        LeftButton = new javax.swing.JButton();
+        RightArrow = new javax.swing.JButton();
+        PressReleaseComboBox = new javax.swing.JComboBox<>();
+        DelayTextField = new javax.swing.JTextField();
+        ButtonTextField = new javax.swing.JTextField();
+        ButtonLabel = new javax.swing.JLabel();
+        NodeTypeLabel = new javax.swing.JLabel();
+        DelayLabel = new javax.swing.JLabel();
+        PressReleaseLabel = new javax.swing.JLabel();
+        NodeTypeComboBox = new javax.swing.JComboBox<>();
+        StopButton = new javax.swing.JButton();
+        StartButton = new javax.swing.JButton();
+        XTextField = new javax.swing.JTextField();
+        XLabel = new javax.swing.JLabel();
+        YTextField = new javax.swing.JTextField();
+        YLabel = new javax.swing.JLabel();
+        NodeDisplay = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -145,97 +145,111 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(54, 75, 154));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        leftArrow.setBackground(new java.awt.Color(232, 208, 51));
-        leftArrow.setIcon(new javax.swing.ImageIcon("resources/leftArrow.png"));
-        leftArrow.addActionListener(new java.awt.event.ActionListener() {
+        LeftButton.setBackground(new java.awt.Color(232, 208, 51));
+        LeftButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        LeftButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\wkilp\\Documents\\GitHub\\Easy-Mac\\EasyMac\\src\\main\\java\\resources\\leftArrow.png")); // NOI18N
+        LeftButton.setToolTipText("");
+        LeftButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leftArrowActionPerformed(evt);
+                LeftButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(leftArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
+        jPanel3.add(LeftButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 110, 110));
 
-        rightArrow.setBackground(new java.awt.Color(232, 208, 51));
-        rightArrow.setIcon(new javax.swing.ImageIcon("resources/rightArrow.png"));
-        rightArrow.addActionListener(new java.awt.event.ActionListener() {
+        RightArrow.setBackground(new java.awt.Color(232, 208, 51));
+        RightArrow.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        RightArrow.setIcon(new javax.swing.ImageIcon("C:\\Users\\wkilp\\Documents\\GitHub\\Easy-Mac\\EasyMac\\src\\main\\java\\resources\\rightArrow.png")); // NOI18N
+        RightArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rightArrowActionPerformed(evt);
+                RightArrowActionPerformed(evt);
             }
         });
-        jPanel3.add(rightArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 120, 120));
+        jPanel3.add(RightArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 110, 110));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        PressReleaseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
+        PressReleaseComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                PressReleaseComboBoxActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 90, -1));
+        jPanel3.add(PressReleaseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 90, -1));
 
-        jTextField1.setText("Delay");
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 90, -1));
-
-        jTextField3.setText("Button");
-        jTextField3.setToolTipText("");
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 90, -1));
-
-        jLabel1.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Key");
-        jLabel1.setOpaque(true);
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 80, 20));
-
-        jLabel2.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Type");
-        jLabel2.setOpaque(true);
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 20));
-
-        jLabel3.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Delay");
-        jLabel3.setOpaque(true);
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, 20));
-
-        jLabel4.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Press/Release");
-        jLabel4.setOpaque(true);
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 80, 20));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keyboard", "Mouse" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        DelayTextField.setText("Delay");
+        DelayTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                DelayTextFieldActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 90, -1));
+        jPanel3.add(DelayTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 90, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("resources/easymacButton.png"));
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 50, -1, -1));
+        ButtonTextField.setText("Button");
+        ButtonTextField.setToolTipText("");
+        ButtonTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButtonTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 90, -1));
 
-        jButton3.setText("Stop Macro");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+        ButtonLabel.setBackground(new java.awt.Color(232, 208, 51));
+        ButtonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ButtonLabel.setText("Key");
+        ButtonLabel.setOpaque(true);
+        jPanel3.add(ButtonLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 80, 20));
 
-        jButton4.setText("Start Macro");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        NodeTypeLabel.setBackground(new java.awt.Color(232, 208, 51));
+        NodeTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NodeTypeLabel.setText("Type");
+        NodeTypeLabel.setOpaque(true);
+        jPanel3.add(NodeTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 20));
 
-        jTextField2.setText("X");
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
+        DelayLabel.setBackground(new java.awt.Color(232, 208, 51));
+        DelayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DelayLabel.setText("Delay");
+        DelayLabel.setOpaque(true);
+        jPanel3.add(DelayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, 20));
 
-        jLabel5.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("X");
-        jLabel5.setOpaque(true);
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 80, 20));
+        PressReleaseLabel.setBackground(new java.awt.Color(232, 208, 51));
+        PressReleaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PressReleaseLabel.setText("Press/Release");
+        PressReleaseLabel.setOpaque(true);
+        jPanel3.add(PressReleaseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 80, 20));
 
-        jTextField4.setText("Y");
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 90, -1));
+        NodeTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keyboard", "Mouse" }));
+        NodeTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NodeTypeComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel3.add(NodeTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 90, -1));
 
-        jLabel7.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Y");
-        jLabel7.setOpaque(true);
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
+        StopButton.setText("Stop Macro");
+        jPanel3.add(StopButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+
+        StartButton.setText("Start Macro");
+        jPanel3.add(StartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+
+        XTextField.setText("X");
+        jPanel3.add(XTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
+
+        XLabel.setBackground(new java.awt.Color(232, 208, 51));
+        XLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        XLabel.setText("X");
+        XLabel.setOpaque(true);
+        jPanel3.add(XLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 80, 20));
+
+        YTextField.setText("Y");
+        jPanel3.add(YTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 90, -1));
+
+        YLabel.setBackground(new java.awt.Color(232, 208, 51));
+        YLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        YLabel.setText("Y");
+        YLabel.setOpaque(true);
+        jPanel3.add(YLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
+
+        NodeDisplay.setIcon(new javax.swing.ImageIcon("C:\\Users\\wkilp\\Documents\\GitHub\\Easy-Mac\\EasyMac\\src\\main\\java\\resources\\easymacButton.png")); // NOI18N
+        NodeDisplay.setText("jLabel8");
+        jPanel3.add(NodeDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 130, 120));
 
         jTabbedPane1.addTab("Edit", jPanel3);
 
@@ -257,24 +271,6 @@ public class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
-        // open a filechooser dialog menu.
-        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-        if (fileChooser.showOpenDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
-            // load from file
-            currentFile = fileChooser.getSelectedFile();
-            fileName.setText(currentFile.getName());
-        }
-    }//GEN-LAST:event_openButtonActionPerformed
-
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newButtonActionPerformed
@@ -286,24 +282,49 @@ public class MainGUI extends javax.swing.JFrame {
         } else {
             //else default to save as... functionality
         }
-
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
-        removeLeftArrow(leftArrow);
+    private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
+        // open a filechooser dialog menu.
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        if (fileChooser.showOpenDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+            // load from file
+            currentFile = fileChooser.getSelectedFile();
+            fileName.setText(currentFile.getName());
+        }
+    }//GEN-LAST:event_openButtonActionPerformed
+
+    private void NodeTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NodeTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NodeTypeComboBoxActionPerformed
+
+    private void PressReleaseComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PressReleaseComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PressReleaseComboBoxActionPerformed
+
+    private void RightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightArrowActionPerformed
+        removeRightArrow(RightArrow);
+        /*if (currentNode.getNextNode() != null) {
+            //            currentNode = currentNode.getNextNode();
+            //            return currentNode;
+        }*/
+    }//GEN-LAST:event_RightArrowActionPerformed
+
+    private void LeftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftButtonActionPerformed
+        removeLeftArrow(LeftButton);
         /*if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
             return currentNode;
         }*/
-    }//GEN-LAST:event_leftArrowActionPerformed
+    }//GEN-LAST:event_LeftButtonActionPerformed
 
-    private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-        removeRightArrow(rightArrow);  
-        /*if (currentNode.getNextNode() != null) {
-//            currentNode = currentNode.getNextNode();
-//            return currentNode;
-        }*/
-    }//GEN-LAST:event_rightArrowActionPerformed
+    private void DelayTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelayTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DelayTextFieldActionPerformed
+
+    private void ButtonTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonTextFieldActionPerformed
 
     /**
      *When there are no longer any next nodes, the button to access the next node disappears.
@@ -364,22 +385,28 @@ public class MainGUI extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ButtonLabel;
+    private javax.swing.JTextField ButtonTextField;
+    private javax.swing.JLabel DelayLabel;
+    private javax.swing.JTextField DelayTextField;
+    private javax.swing.JButton LeftButton;
+    private javax.swing.JLabel NodeDisplay;
+    private javax.swing.JComboBox<String> NodeTypeComboBox;
+    private javax.swing.JLabel NodeTypeLabel;
+    private javax.swing.JComboBox<String> PressReleaseComboBox;
+    private javax.swing.JLabel PressReleaseLabel;
+    private javax.swing.JButton RightArrow;
+    private javax.swing.JButton StartButton;
+    private javax.swing.JButton StopButton;
+    private javax.swing.JLabel XLabel;
+    private javax.swing.JTextField XTextField;
+    private javax.swing.JLabel YLabel;
+    private javax.swing.JTextField YTextField;
     private javax.swing.JLabel fileLabel;
     private javax.swing.JTextPane fileName;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -387,14 +414,8 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JButton leftArrow;
     private javax.swing.JButton newButton;
     private javax.swing.JButton openButton;
-    private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
