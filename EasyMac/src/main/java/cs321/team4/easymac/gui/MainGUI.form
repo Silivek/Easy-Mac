@@ -245,7 +245,7 @@
                   <Color blue="33" green="d0" red="e8" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.ImageIcon(&quot;resources\leftArrow.png&quot;)" type="code"/>
+                  <Connection code="new javax.swing.ImageIcon(&quot;resources/leftArrow.png&quot;)" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -263,7 +263,7 @@
                   <Color blue="33" green="d0" red="e8" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.ImageIcon(&quot;resources\leftArrow.png&quot;)" type="code"/>
+                  <Connection code="new javax.swing.ImageIcon(&quot;resources/rightArrow.png&quot;)" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -400,8 +400,8 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/easymacButton.png"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.ImageIcon(&quot;resources/easymacButton.png&quot;)" type="code"/>
                 </Property>
               </Properties>
               <Constraints>

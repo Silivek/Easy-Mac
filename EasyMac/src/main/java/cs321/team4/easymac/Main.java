@@ -131,7 +131,7 @@ public class Main {
  
     public static void main(String args[]) {
         
-        new MainGUI();
+        new MainGUI().setVisible(true);
 //        introMenu();
 //        optionMenu();
 

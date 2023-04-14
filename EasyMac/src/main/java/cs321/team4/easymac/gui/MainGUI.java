@@ -146,7 +146,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftArrow.setBackground(new java.awt.Color(232, 208, 51));
-        leftArrow.setIcon(new javax.swing.ImageIcon("resources\leftArrow.png"));
+        leftArrow.setIcon(new javax.swing.ImageIcon("resources/leftArrow.png"));
         leftArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leftArrowActionPerformed(evt);
@@ -155,7 +155,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.add(leftArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
 
         rightArrow.setBackground(new java.awt.Color(232, 208, 51));
-        rightArrow.setIcon(new javax.swing.ImageIcon("resources\leftArrow.png"));
+        rightArrow.setIcon(new javax.swing.ImageIcon("resources/rightArrow.png"));
         rightArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rightArrowActionPerformed(evt);
@@ -210,7 +210,7 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 90, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/easymacButton.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("resources/easymacButton.png"));
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 50, -1, -1));
 
         jButton3.setText("Stop Macro");
@@ -291,18 +291,18 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
         removeLeftArrow(leftArrow);
-        if (currentNode.getPrevNode() != null) {
+        /*if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
             return currentNode;
-        }
+        }*/
     }//GEN-LAST:event_leftArrowActionPerformed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
         removeRightArrow(rightArrow);  
-        if (currentNode.getNextNode() != null) {
+        /*if (currentNode.getNextNode() != null) {
 //            currentNode = currentNode.getNextNode();
 //            return currentNode;
-        }
+        }*/
     }//GEN-LAST:event_rightArrowActionPerformed
 
     /**
@@ -310,34 +310,34 @@ public class MainGUI extends javax.swing.JFrame {
      * @param rightArrow which is the button to access the next node.
      */
     public void removeRightArrow(JButton rightArrow) {
-        if (currentNode.getNextNode().equals(null)) {
+        /*if (currentNode.getNextNode().equals(null)) {
             rightArrow.setVisible(false);
         } else {
             rightArrow.setVisible(true);
-        }
+        }*/
     }
     /**
      * When there are no longer any more previous nodes, the button to access the previous node disappears.
      * @param leftArrow the button to access the previous node.
      */
     public void removeLeftArrow(JButton leftArrow) {
-        if (curretNode.getPrevNode().equals(null)) {
+        /*if (curretNode.getPrevNode().equals(null)) {
             leftArrow.setVisible(false);
         } else {
             leftArrow.setVisible(true);
-        }
+        }*/
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    //public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -356,12 +356,12 @@ public class MainGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGUI().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fileLabel;
