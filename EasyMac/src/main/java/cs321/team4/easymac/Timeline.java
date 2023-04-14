@@ -41,11 +41,7 @@ public class Timeline {
     /**
      * Updates the current node in the timeline.
      */
-    void updateCurrentNode() {
-        if (currentNode != null) {
-            currentNode = currentNode.getNextNode();
-        }
-    }
+    
     // TODO fix addNode to be passed a node instead of parameters
     //Adds a node to the end of the timeline
 
@@ -186,6 +182,28 @@ public class Timeline {
                 return;
             }
         }
+    }
+    
+    //Return the timeline's current node
+    Node getCurrentNode() {
+        return currentNode;
+    }
+    
+    //Set the timeline's current node
+    void setCurrentNode(Node node) {
+        currentNode = node;
+    }
+    
+    //Set timeline's current node to the previous node
+    Node prevNode() {
+        currentNode = currentNode.getPrevNode();
+        return currentNode;
+    }
+    
+    //Set timeline's current node to the next node
+    Node nextNode() {
+        currentNode = currentNode.getNextNode();
+        return currentNode;
     }
     //TODO update comments
 }
