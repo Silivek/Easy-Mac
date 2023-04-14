@@ -105,7 +105,7 @@ public class Timeline {
      * @param currentNode the current node location.
      * @param delay ????
      */
-    public void insertBeforeNode(Node currentNode, int delay) {
+     public void insertBeforeNode(Node currentNode, Node newNode, int delay) {
         //Prevent user from exceeding node limit
         if (num_of_nodes > MAX_SIZE) {
             System.out.println("Cannot exceed node limit.");
@@ -113,20 +113,29 @@ public class Timeline {
         }
 
         //Create new node
-        Node newNode;
-        newNode = new Node(currentNode, null, delay);
         num_of_nodes++;
 
+        //Set delay of new node
+        newNode.setDelayDuration(delay);
+        
+        //Connect new node to node it was inserted after...
+        newNode.setPrevNode(currentNode.getPrevNode());
+        //...and before
+        newNode.setNextNode(currentNode);
+
         //Connect prev node to new node
-        if (currentNode.getPrevNode() == null) {
-            currentNode.getPrevNode().setNextNode(newNode);
+        if (currentNode.getPrevNode() != null) {
+            currentNode.getPrevNode().setNextNode(newNode);           
         } else { //Set new starting node if necessary
             this.startNode = newNode;
         }
+        
+        //Connect the current node to the new node
+        currentNode.setPrevNode(newNode);
 
-        //Connect new node to node it was inserted before
-        newNode.setNextNode(currentNode);
     }
+
+
 
     //Print timeline to console
     /**
