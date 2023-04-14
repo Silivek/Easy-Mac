@@ -93,13 +93,14 @@ public class Timeline {
         endNode = prevNode;
     }
 
-    //Insert a node before the specified node (?)
+    
     // TODO fix functionality to pass a node and use currently displayed node (unimplemented)
     /**
-     * Inserting a new node
+     * Inserting a new node before the designated node
      *
      * @param currentNode the current node location.
      * @param delay ????
+     * @param newNode is the node that will be inserted
      */
      public void insertBeforeNode(Node currentNode, Node newNode, int delay) {
         //Prevent user from exceeding node limit
@@ -131,9 +132,6 @@ public class Timeline {
 
     }
 
-
-
-    //Print timeline to console
     /**
      * Prints the timeline to the console.
      */
@@ -149,7 +147,7 @@ public class Timeline {
         } while (currentNode != this.endNode);
     }
 
-    //Runs the delay time using another object of robot
+  
     /**
      * Runs the delay time using another object of robot.
      */
@@ -164,7 +162,6 @@ public class Timeline {
         }
     }
 
-    //Runs the timeline
     /**
      * Runs the timeline.
      */
@@ -184,23 +181,36 @@ public class Timeline {
         }
     }
     
-    //Return the timeline's current node
+    /**
+     * Provides access to the timeline's current node
+     * @return the current node
+     */
     Node getCurrentNode() {
         return currentNode;
     }
     
-    //Set the timeline's current node
+    /**
+     * Sets the timeline's current node
+     * @param node to be set
+     */
     void setCurrentNode(Node node) {
         currentNode = node;
     }
     
-    //Set timeline's current node to the previous node
+    /**
+     * Set timeline's current node to the previous node
+     * @return the previous node
+     */
     Node prevNode() {
         currentNode = currentNode.getPrevNode();
         return currentNode;
     }
     
-    //Set timeline's current node to the next node
+    
+    /**
+     * Set timeline's current node to the next node
+     * @return the next node
+     */
     Node nextNode() {
         currentNode = currentNode.getNextNode();
         return currentNode;
