@@ -146,7 +146,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftArrow.setBackground(new java.awt.Color(232, 208, 51));
-        leftArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/leftArrow.png"))); // NOI18N
+        leftArrow.setIcon(new javax.swing.ImageIcon("resources\leftArrow.png"));
         leftArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 leftArrowActionPerformed(evt);
@@ -155,7 +155,7 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel3.add(leftArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 120));
 
         rightArrow.setBackground(new java.awt.Color(232, 208, 51));
-        rightArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/rightArrow.png"))); // NOI18N
+        rightArrow.setIcon(new javax.swing.ImageIcon("resources\leftArrow.png"));
         rightArrow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rightArrowActionPerformed(evt);
