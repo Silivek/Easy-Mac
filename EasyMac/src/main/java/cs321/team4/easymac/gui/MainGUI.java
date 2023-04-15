@@ -5,7 +5,10 @@
 package cs321.team4.easymac.gui;
 
 import cs321.team4.easymac.nodes.Node;
+import cs321.team4.easymac.nodes.InputNode;
+import cs321.team4.easymac.Timeline;
 import javax.swing.JButton;
+import cs321.team4.easymac.nodes.MouseInputNode;
 
 /**
  *
@@ -20,6 +23,31 @@ public class MainGUI extends javax.swing.JFrame {
      */
     public MainGUI() {
         initComponents();
+    }
+
+    Timeline testingTimeline;
+    Node currentNode;
+
+    public MainGUI(Timeline timeline) {
+        initComponents();
+        testingTimeline = timeline;
+        currentNode = testingTimeline.getStartNode();
+
+        if (currentNode instanceof MouseInputNode) {
+            MouseInputNode mouseNode = (MouseInputNode) currentNode;
+            KeyorMouseComboBox.setSelectedIndex(1);
+            xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+            yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+        } else {
+            KeyorMouseComboBox.setSelectedIndex(0);
+        }
+        if (currentNode.getPressRelease() == false) {
+            PressOrRelease.setSelectedIndex(1);
+        } else {
+            PressOrRelease.setSelectedIndex(0);
+        }
+        KeyEntry.setText(String.valueOf(currentNode.getButton()));
+        DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
 
     /**
@@ -44,24 +72,24 @@ public class MainGUI extends javax.swing.JFrame {
         fileName = new javax.swing.JTextPane();
         fileLabel = new javax.swing.JLabel();
         newButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        SaveAsButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         leftArrow = new javax.swing.JButton();
         rightArrow = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        PressOrRelease = new javax.swing.JComboBox<>();
+        DelayDisplay = new javax.swing.JTextField();
+        KeyEntry = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        KeyorMouseComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        xCoordinate = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        yCoordinate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
@@ -137,8 +165,8 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jPanel1.add(newButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        jButton5.setText("Save As...");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        SaveAsButton.setText("Save As...");
+        jPanel1.add(SaveAsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         jTabbedPane1.addTab("File", jPanel1);
 
@@ -163,20 +191,20 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jPanel3.add(rightArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 120, 120));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        PressOrRelease.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Press", "Release" }));
+        PressOrRelease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                PressOrReleaseActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 90, -1));
+        jPanel3.add(PressOrRelease, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 90, -1));
 
-        jTextField1.setText("Delay");
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 90, -1));
+        DelayDisplay.setText("Delay");
+        jPanel3.add(DelayDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 90, -1));
 
-        jTextField3.setText("Button");
-        jTextField3.setToolTipText("");
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 90, -1));
+        KeyEntry.setText("Button");
+        KeyEntry.setToolTipText("");
+        jPanel3.add(KeyEntry, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 90, -1));
 
         jLabel1.setBackground(new java.awt.Color(232, 208, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -202,13 +230,13 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 80, 20));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keyboard", "Mouse" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        KeyorMouseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keyboard", "Mouse" }));
+        KeyorMouseComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                KeyorMouseComboBoxActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 90, -1));
+        jPanel3.add(KeyorMouseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 90, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon("resources/easymacButton.png"));
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 50, -1, -1));
@@ -219,8 +247,8 @@ public class MainGUI extends javax.swing.JFrame {
         jButton4.setText("Start Macro");
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
-        jTextField2.setText("X");
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
+        xCoordinate.setText("X");
+        jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
 
         jLabel5.setBackground(new java.awt.Color(232, 208, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,8 +256,8 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel5.setOpaque(true);
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 80, 20));
 
-        jTextField4.setText("Y");
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 90, -1));
+        yCoordinate.setText("Y");
+        jPanel3.add(yCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 90, -1));
 
         jLabel7.setBackground(new java.awt.Color(232, 208, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -237,7 +265,7 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel7.setOpaque(true);
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
 
-        jTabbedPane1.addTab("Edit", jPanel3);
+        jTabbedPane1.addTab("Edit", null, jPanel3, "");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,13 +285,13 @@ public class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void PressOrReleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PressOrReleaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_PressOrReleaseActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void KeyorMouseComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeyorMouseComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_KeyorMouseComboBoxActionPerformed
 
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
         // open a filechooser dialog menu.
@@ -289,55 +317,100 @@ public class MainGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_saveButtonActionPerformed
 
+
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
-        removeLeftArrow(leftArrow);
-        /*if (currentNode.getPrevNode() != null) {
+        updateLeftArrow(leftArrow);
+        updateRightArrow(rightArrow);
+        if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
-            return currentNode;
-        }*/
+            // send model info to viewer
+            if (currentNode instanceof MouseInputNode) {
+                MouseInputNode mouseNode = (MouseInputNode) currentNode;
+                KeyorMouseComboBox.setSelectedIndex(1);
+                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+            } else {
+                KeyorMouseComboBox.setSelectedIndex(0);
+            }
+            if (currentNode.getPressRelease() == false) {
+                PressOrRelease.setSelectedIndex(1);
+            } else {
+                PressOrRelease.setSelectedIndex(0);
+            }
+            KeyEntry.setText(String.valueOf(currentNode.getButton()));
+            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+        }
     }//GEN-LAST:event_leftArrowActionPerformed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-        removeRightArrow(rightArrow);  
-        /*if (currentNode.getNextNode() != null) {
-//            currentNode = currentNode.getNextNode();
-//            return currentNode;
-        }*/
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
+        if (currentNode.getNextNode() != null) {
+            currentNode = currentNode.getNextNode();
+            // send model info to viewer
+            if (currentNode instanceof MouseInputNode) {
+                MouseInputNode mouseNode = (MouseInputNode) currentNode;
+                KeyorMouseComboBox.setSelectedIndex(1);
+                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+            } else {
+                KeyorMouseComboBox.setSelectedIndex(0);
+            }
+            if (currentNode.getPressRelease() == false) {
+                PressOrRelease.setSelectedIndex(1);
+            } else {
+                PressOrRelease.setSelectedIndex(0);
+            }
+            KeyEntry.setText(String.valueOf(currentNode.getButton()));
+            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+        }
+        // how to send this to the viewer...
     }//GEN-LAST:event_rightArrowActionPerformed
 
+    Timeline timeline;
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
     /**
-     *When there are no longer any next nodes, the button to access the next node disappears.
+     * When there are no longer any next nodes, the button to access the next
+     * node disappears.
+     *
      * @param rightArrow which is the button to access the next node.
      */
-    public void removeRightArrow(JButton rightArrow) {
-        /*if (currentNode.getNextNode().equals(null)) {
+    public void updateRightArrow(JButton rightArrow) {
+        if (currentNode == testingTimeline.getEndNode()) {
             rightArrow.setVisible(false);
         } else {
             rightArrow.setVisible(true);
-        }*/
+        }
     }
+
     /**
-     * When there are no longer any more previous nodes, the button to access the previous node disappears.
+     * When there are no longer any more previous nodes, the button to access
+     * the previous node disappears.
+     *
      * @param leftArrow the button to access the previous node.
      */
-    public void removeLeftArrow(JButton leftArrow) {
-        /*if (curretNode.getPrevNode().equals(null)) {
+    public void updateLeftArrow(JButton leftArrow) {
+        if (currentNode == testingTimeline.getStartNode()) {
             leftArrow.setVisible(false);
         } else {
             leftArrow.setVisible(true);
-        }*/
+        }
     }
 
     /**
      * @param args the command line arguments
      */
     //public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*try {
+     */
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -356,7 +429,7 @@ public class MainGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGUI().setVisible(true);
             }
@@ -364,13 +437,15 @@ public class MainGUI extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DelayDisplay;
+    private javax.swing.JTextField KeyEntry;
+    private javax.swing.JComboBox<String> KeyorMouseComboBox;
+    private javax.swing.JComboBox<String> PressOrRelease;
+    private javax.swing.JButton SaveAsButton;
     private javax.swing.JLabel fileLabel;
     private javax.swing.JTextPane fileName;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -387,14 +462,12 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton leftArrow;
     private javax.swing.JButton newButton;
     private javax.swing.JButton openButton;
     private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
+    private javax.swing.JTextField xCoordinate;
+    private javax.swing.JTextField yCoordinate;
     // End of variables declaration//GEN-END:variables
 }

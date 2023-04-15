@@ -26,6 +26,7 @@ public class Timeline {
     final int MAX_SIZE = 100;
     int num_of_nodes = 0;
     Node startNode, endNode, currentNode; //startNode and endNode are for structuring, currentNode is for running the Timeline
+    
 
     int delayTimer; //Timer for playback (May be unused?)
 
@@ -37,6 +38,7 @@ public class Timeline {
         endNode = null;
         currentNode = null;
     }
+   
 
     /**
      * Updates the current node in the timeline.
@@ -72,7 +74,6 @@ public class Timeline {
         }
     }
 
-    //Removes the last node in the timeline
     /**
      * Removes the last node in the timeline.
      */
@@ -185,15 +186,26 @@ public class Timeline {
      * Provides access to the timeline's current node
      * @return the current node
      */
-    Node getCurrentNode() {
+    public Node getCurrentNode() {
         return currentNode;
     }
     
     /**
+     * Returns the last node in the timeline
+     * @return the last node
+     */
+     public Node getEndNode() {
+        return endNode;
+    }
+     
+     public Node getStartNode(){
+         return startNode;
+     }
+    /**
      * Sets the timeline's current node
      * @param node to be set
      */
-    void setCurrentNode(Node node) {
+    public void setCurrentNode(Node node) {
         currentNode = node;
     }
     
