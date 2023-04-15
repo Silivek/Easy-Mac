@@ -30,16 +30,6 @@ public class MouseInputNode extends InputNode {
     public MouseInputNode(Node prev, int button) {
         super(prev, button);
     }
-    
-    public int getXCoordinate(){
-        return x;
-    }
-    
-   
-    public int getYCoordinate(){
-        return y;
-    }
-    
 
     /**
      * Constructs a MouseInputNode object specifying the previous node, the

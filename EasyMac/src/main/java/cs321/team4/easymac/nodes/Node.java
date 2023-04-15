@@ -15,9 +15,7 @@ public class Node {
     Node prevNode;
     Node nextNode;
     int delayDuration; //Delay in milliseconds
-    int button;
-    boolean pressRelease; // true indicates to press our button, false to release
-  
+
     /**
      * Constructs a Node object.
      */
@@ -26,16 +24,6 @@ public class Node {
         nextNode = null;
         delayDuration = 50;
     }
-    
-    public int getButton(){
-        return button;
-    }
-    
-    public boolean getPressRelease(){
-        return pressRelease;
-    }
-    
-   
 
     /**
      * Constructs a Node object specifying the timing until the next node is
