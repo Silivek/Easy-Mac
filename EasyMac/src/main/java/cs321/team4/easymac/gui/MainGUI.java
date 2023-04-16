@@ -41,8 +41,8 @@ public class MainGUI extends javax.swing.JFrame {
             yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
         } else {
             KeyorMouseComboBox.setSelectedIndex(0);
-            xCoordinate.setVisible(false);
-            yCoordinate.setVisible(false);
+            xCoordinate.setText("n/a");
+            yCoordinate.setText("n/a");
         }
         if (currentNode.getPressRelease() == false) {
             PressOrRelease.setSelectedIndex(1);
@@ -334,8 +334,8 @@ public class MainGUI extends javax.swing.JFrame {
                 yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
             } else {
                 KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setVisible(false);
-                yCoordinate.setVisible(false);
+                xCoordinate.setText("n/a");
+                yCoordinate.setText("n/a");
             }
             if (currentNode.getPressRelease() == false) {
                 PressOrRelease.setSelectedIndex(1);
@@ -360,14 +360,14 @@ public class MainGUI extends javax.swing.JFrame {
                 KeyorMouseComboBox.setSelectedIndex(1);
                 int temp = 5;
                 char a = Character.forDigit(temp, 16);
-                
+
                 xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-                
+
                 yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
             } else {
                 KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setVisible(false);
-                yCoordinate.setVisible(false);
+                xCoordinate.setText("n/a");
+                yCoordinate.setText("n/a");
             }
             if (currentNode.getPressRelease() == false) {
                 PressOrRelease.setSelectedIndex(1);
