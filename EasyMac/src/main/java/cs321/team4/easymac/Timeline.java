@@ -181,11 +181,19 @@ public class Timeline {
         }
     }
     
+    public Node getStartNode(){
+        return startNode;
+    }
+    
+    public Node getEndNode(){
+        return endNode;
+    }
+    
     /**
      * Provides access to the timeline's current node
      * @return the current node
      */
-    Node getCurrentNode() {
+    public Node getCurrentNode() {
         return currentNode;
     }
     
@@ -193,7 +201,7 @@ public class Timeline {
      * Sets the timeline's current node
      * @param node to be set
      */
-    void setCurrentNode(Node node) {
+    public void setCurrentNode(Node node) {
         currentNode = node;
     }
     

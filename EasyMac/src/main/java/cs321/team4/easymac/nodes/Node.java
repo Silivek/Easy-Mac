@@ -15,6 +15,8 @@ public class Node {
     Node prevNode;
     Node nextNode;
     int delayDuration; //Delay in milliseconds
+    boolean pressRelease;
+    int button;
 
     /**
      * Constructs a Node object.
@@ -78,6 +80,14 @@ public class Node {
      */
     public int getDelayDuration() {
         return delayDuration;
+    }
+    
+    public boolean getPressRelease(){
+        return pressRelease;
+    }
+    
+    public int getButton(){
+        return button;
     }
 
     /**
