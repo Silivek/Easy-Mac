@@ -32,7 +32,7 @@ public class MainGUI extends javax.swing.JFrame {
         initComponents();
         testingTimeline = timeline;
         currentNode = testingTimeline.getStartNode();
-
+        leftArrow.setVisible(false);
         if (currentNode instanceof MouseInputNode) {
             MouseInputNode mouseNode = (MouseInputNode) currentNode;
             KeyorMouseComboBox.setSelectedIndex(1);
@@ -319,8 +319,6 @@ public class MainGUI extends javax.swing.JFrame {
 
 
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
-        updateLeftArrow(leftArrow);
-        updateRightArrow(rightArrow);
         if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
             // send model info to viewer
@@ -340,11 +338,11 @@ public class MainGUI extends javax.swing.JFrame {
             KeyEntry.setText(String.valueOf(currentNode.getButton()));
             DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
         }
+        updateLeftArrow(leftArrow);
+        updateRightArrow(rightArrow);
     }//GEN-LAST:event_leftArrowActionPerformed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-        updateRightArrow(rightArrow);
-        updateLeftArrow(leftArrow);
         if (currentNode.getNextNode() != null) {
             currentNode = currentNode.getNextNode();
             // send model info to viewer
@@ -364,7 +362,8 @@ public class MainGUI extends javax.swing.JFrame {
             KeyEntry.setText(String.valueOf(currentNode.getButton()));
             DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
         }
-        // how to send this to the viewer...
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
     }//GEN-LAST:event_rightArrowActionPerformed
 
     Timeline timeline;
