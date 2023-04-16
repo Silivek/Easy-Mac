@@ -9,6 +9,7 @@ import cs321.team4.easymac.nodes.InputNode;
 import cs321.team4.easymac.Timeline;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
+import java.util.Arrays;
 
 /**
  *
@@ -40,13 +41,17 @@ public class MainGUI extends javax.swing.JFrame {
             yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
         } else {
             KeyorMouseComboBox.setSelectedIndex(0);
+            xCoordinate.setVisible(false);
+            yCoordinate.setVisible(false);
         }
         if (currentNode.getPressRelease() == false) {
             PressOrRelease.setSelectedIndex(1);
         } else {
             PressOrRelease.setSelectedIndex(0);
         }
-        KeyEntry.setText(String.valueOf(currentNode.getButton()));
+        int temp = currentNode.getButton();
+        char asciiValues[] = Character.toChars(temp);
+        KeyEntry.setText(Arrays.toString(asciiValues));
         DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
 
@@ -329,13 +334,17 @@ public class MainGUI extends javax.swing.JFrame {
                 yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
             } else {
                 KeyorMouseComboBox.setSelectedIndex(0);
+                xCoordinate.setVisible(false);
+                yCoordinate.setVisible(false);
             }
             if (currentNode.getPressRelease() == false) {
                 PressOrRelease.setSelectedIndex(1);
             } else {
                 PressOrRelease.setSelectedIndex(0);
             }
-            KeyEntry.setText(String.valueOf(currentNode.getButton()));
+            int temp = currentNode.getButton();
+            char asciiValues[] = Character.toChars(temp);
+            KeyEntry.setText(Arrays.toString(asciiValues));
             DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
         }
         updateLeftArrow(leftArrow);
@@ -349,17 +358,25 @@ public class MainGUI extends javax.swing.JFrame {
             if (currentNode instanceof MouseInputNode) {
                 MouseInputNode mouseNode = (MouseInputNode) currentNode;
                 KeyorMouseComboBox.setSelectedIndex(1);
+                int temp = 5;
+                char a = Character.forDigit(temp, 16);
+                
                 xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+                
                 yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
             } else {
                 KeyorMouseComboBox.setSelectedIndex(0);
+                xCoordinate.setVisible(false);
+                yCoordinate.setVisible(false);
             }
             if (currentNode.getPressRelease() == false) {
                 PressOrRelease.setSelectedIndex(1);
             } else {
                 PressOrRelease.setSelectedIndex(0);
             }
-            KeyEntry.setText(String.valueOf(currentNode.getButton()));
+            int temp = currentNode.getButton();
+            char asciiValues[] = Character.toChars(temp);
+            KeyEntry.setText(Arrays.toString(asciiValues));
             DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
         }
         updateRightArrow(rightArrow);
