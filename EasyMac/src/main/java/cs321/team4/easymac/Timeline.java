@@ -92,6 +92,47 @@ public class Timeline {
         //Update new endNode
         endNode = prevNode;
     }
+    
+    /**
+     * Removes a node from the timeline and connects the surrounding nodes
+     *
+     * @param node node to remove
+     */
+    public void removeNode(Node node) {
+        
+        //Get surrounding nodes
+        Node prevNode, nextNode;
+        prevNode = node.getPrevNode();
+        nextNode = node.getNextNode();
+        
+        //Connect previous node to next node
+        prevNode.setNextNode(nextNode);
+        
+        //Connect next node to previous node
+        nextNode.setPrevNode(prevNode);
+        
+        num_of_nodes--;
+    }
+    
+    /**
+     * Removes the current node from the timeline and connects the surrounding nodes
+     * (Mainly for convenience)
+     */
+    public void removeCurrentNode() {
+        
+        //Get surrounding nodes
+        Node prevNode, nextNode;
+        prevNode = currentNode.getPrevNode();
+        nextNode = currentNode.getNextNode();
+        
+        //Connect previous node to next node
+        prevNode.setNextNode(nextNode);
+        
+        //Connect next node to previous node
+        nextNode.setPrevNode(prevNode);
+        
+        num_of_nodes--;
+    }
 
     
     // TODO fix functionality to pass a node and use currently displayed node (unimplemented)
