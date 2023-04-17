@@ -66,7 +66,7 @@ public class Main {
                 } else if (keyPress.equals("right") || keyPress.equals("Right")) {
                     MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON2_DOWN_MASK); // right click node
                     userCreatedTimeline.addNode(nodeToAdd);
-                } else //key node, all VK values are ASCII capital letters KeyEvent.VK_$
+                } else if (!keyPress.equals("-1")) //key node, all VK values are ASCII capital letters KeyEvent.VK_$
                 {
                     keyPress = keyPress.toUpperCase();
                     char vkValueChar = keyPress.toCharArray()[0];
