@@ -76,10 +76,10 @@ public class MouseInputNode extends InputNode {
      *
      * @param delayDuration indicates how long until the next node is called in
      * milliseconds.
-     * @param button indicates the key being pressed
+     * @param button indicates the key being pressed.
      * @param pressRelease True indicates to press the key, false to release it.
-     * @param x the x value of the mouse action location
-     * @param y the y value of the mouse action location
+     * @param x the x value of the mouse action location.
+     * @param y the y value of the mouse action location.
      */
     public void setInput(int delayDuration, int button, boolean pressRelease, int x, int y) {
         this.delayDuration = delayDuration;
