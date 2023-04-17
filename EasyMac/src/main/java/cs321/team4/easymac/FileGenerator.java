@@ -23,13 +23,24 @@ public class FileGenerator {
      */
     public static void fileGeneration(Timeline tLine, String filePath) {
         try {
-            FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
+            //FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
+            FileOutputStream fout = new FileOutputStream("C:\\Class\\obj.txt");
             try (ObjectOutputStream oOut = new ObjectOutputStream(fout)) //creates the object printer
             {
-                oOut.writeObject(tLine);  //write the timeline to the file
+                Object billy = tLine.startNode;
+                oOut.writeObject(billy);  //write the timeline to the file
+                tLine.currentNode = tLine.startNode;
+                for(int i = 1; i <6; i++)
+                {
+                    oOut.writeObject(billy);
+                    billy = tLine.currentNode.getNextNode();
+                    System.out.println(i);
+                }
+                oOut.close();
+                fout.close();
             } //write the timeline to the file
         } catch (IOException ex) {
-            System.out.println("An error occurred.");
+            ex.printStackTrace();  
         }
     }
 }
