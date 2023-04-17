@@ -5,17 +5,22 @@
 package cs321.team4.easymac.gui;
 
 import cs321.team4.easymac.nodes.Node;
+import java.awt.event.MouseEvent;
+import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.InputNode;
+import cs321.team4.easymac.Main;
+import static cs321.team4.easymac.Main.createNewMacro;
 import cs321.team4.easymac.Timeline;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
  * @author wkilp
  */
-public class MainGUI extends javax.swing.JFrame {
+public class MainGUI extends javax.swing.JFrame{
 
     java.io.File currentFile;
 
@@ -28,6 +33,8 @@ public class MainGUI extends javax.swing.JFrame {
 
     Timeline testingTimeline;
     Node currentNode;
+    String keyPress;
+    Scanner userSelection = new Scanner(System.in);
 
     public MainGUI(Timeline timeline) {
         initComponents();
@@ -362,6 +369,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
+        
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -440,17 +448,22 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
+        //keyPress.equals("-1");
+       // Scanner userSelection = new Scanner(System.in);
+        createNewMacro(-1, testingTimeline, userSelection);
         mainTextDisplay.setText("Recording completed. ");
     }//GEN-LAST:event_stopButtonActionPerformed
 
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
         mainTextDisplay.setText("Recording in process...");
+        //Scanner userSelection = new Scanner(System.in);
+        //int selection = userSelection.nextInt();
+        createNewMacro(1, testingTimeline, userSelection);
     }//GEN-LAST:event_recordButtonActionPerformed
 
-    Timeline timeline;
-
+    // this may not be necessary since it is a global variable in this file
     public Timeline getTimeline() {
-        return timeline;
+        return testingTimeline;
     }
 
     /**
