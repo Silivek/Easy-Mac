@@ -89,10 +89,18 @@ public class MouseInputNode extends InputNode {
         this.y = y;
     }
     
+    /**
+     * Provides the value for the x coordinate.
+     * @return x value.
+     */
     public int getXCoordinate(){
         return x;
     }
     
+    /** 
+     * Provides the value for the y coordinate.
+     * @return y value.
+     */
     public int getYCoordinate(){
         return y;
     }
