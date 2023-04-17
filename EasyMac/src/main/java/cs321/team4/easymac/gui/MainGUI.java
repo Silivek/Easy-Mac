@@ -78,6 +78,11 @@ public class MainGUI extends javax.swing.JFrame {
         fileLabel = new javax.swing.JLabel();
         newButton = new javax.swing.JButton();
         SaveAsButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        mainTextDisplay = new javax.swing.JTextArea();
+        recordButton = new javax.swing.JButton();
+        playBackButton = new javax.swing.JButton();
+        stopButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         leftArrow = new javax.swing.JButton();
         rightArrow = new javax.swing.JButton();
@@ -175,6 +180,36 @@ public class MainGUI extends javax.swing.JFrame {
 
         SaveAsButton.setText("Save As...");
         jPanel1.add(SaveAsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+
+        mainTextDisplay.setColumns(20);
+        mainTextDisplay.setRows(5);
+        jScrollPane2.setViewportView(mainTextDisplay);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 340, 80));
+
+        recordButton.setText("Record");
+        recordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(recordButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+
+        playBackButton.setText("Playback");
+        playBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playBackButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(playBackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
+
+        stopButton.setText("Stop");
+        stopButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(stopButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         jTabbedPane1.addTab("File", jPanel1);
 
@@ -326,7 +361,7 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_openButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
-        // TODO add your handling code here:
+        mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -399,6 +434,18 @@ public class MainGUI extends javax.swing.JFrame {
         updateRightArrow(rightArrow);
         updateLeftArrow(leftArrow);
     }//GEN-LAST:event_rightArrowActionPerformed
+
+    private void playBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBackButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBackButtonActionPerformed
+
+    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
+        mainTextDisplay.setText("Recording completed. ");
+    }//GEN-LAST:event_stopButtonActionPerformed
+
+    private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
+        mainTextDisplay.setText("Recording in process...");
+    }//GEN-LAST:event_recordButtonActionPerformed
 
     Timeline timeline;
 
@@ -489,17 +536,22 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel keyEntryLabel;
     private javax.swing.JButton leftArrow;
+    private javax.swing.JTextArea mainTextDisplay;
     private javax.swing.JButton newButton;
     private javax.swing.JButton openButton;
+    private javax.swing.JButton playBackButton;
     private javax.swing.JLabel pressOrReleaseLabel;
+    private javax.swing.JButton recordButton;
     private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
     private javax.swing.JButton saveNodeButton;
     private javax.swing.JButton startMacroButton;
+    private javax.swing.JButton stopButton;
     private javax.swing.JButton stopMacroButton;
     private javax.swing.JTextField xCoordinate;
     private javax.swing.JLabel xLabel;
