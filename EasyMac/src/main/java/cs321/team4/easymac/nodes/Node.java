@@ -82,10 +82,18 @@ public class Node {
         return delayDuration;
     }
     
+    /**
+     * Indicates if a button is being pressed or released.
+     * @return true or false if a button is being pressed (true) or released (false).
+     */
     public boolean getPressRelease(){
         return pressRelease;
     }
     
+    /**
+     * Provides the value for the button that was pressed.
+     * @return the pressed button.
+     */
     public int getButton(){
         return button;
     }
@@ -118,7 +126,6 @@ public class Node {
         this.delayDuration = delayDuration;
     }
 
-    //Essentially a function prototype of runNode, which performs the node's action.
     /**
      * Abstract method to run the contents of a node.
      */
