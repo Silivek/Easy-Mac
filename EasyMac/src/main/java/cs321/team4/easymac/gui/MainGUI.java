@@ -84,18 +84,20 @@ public class MainGUI extends javax.swing.JFrame {
         PressOrRelease = new javax.swing.JComboBox<>();
         DelayDisplay = new javax.swing.JTextField();
         KeyEntry = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        keyEntryLabel = new javax.swing.JLabel();
+        KeyorMouseLabel = new javax.swing.JLabel();
+        delayLabel = new javax.swing.JLabel();
+        pressOrReleaseLabel = new javax.swing.JLabel();
         KeyorMouseComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        stopMacroButton = new javax.swing.JButton();
+        saveNodeButton = new javax.swing.JButton();
         xCoordinate = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        xLabel = new javax.swing.JLabel();
         yCoordinate = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        yLabel = new javax.swing.JLabel();
+        startMacroButton = new javax.swing.JButton();
+        addNodeButton = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -211,29 +213,29 @@ public class MainGUI extends javax.swing.JFrame {
         KeyEntry.setToolTipText("");
         jPanel3.add(KeyEntry, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 90, -1));
 
-        jLabel1.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Key");
-        jLabel1.setOpaque(true);
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 80, 20));
+        keyEntryLabel.setBackground(new java.awt.Color(232, 208, 51));
+        keyEntryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        keyEntryLabel.setText("Key");
+        keyEntryLabel.setOpaque(true);
+        jPanel3.add(keyEntryLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 80, 20));
 
-        jLabel2.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Type");
-        jLabel2.setOpaque(true);
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 20));
+        KeyorMouseLabel.setBackground(new java.awt.Color(232, 208, 51));
+        KeyorMouseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        KeyorMouseLabel.setText("Type");
+        KeyorMouseLabel.setOpaque(true);
+        jPanel3.add(KeyorMouseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 20));
 
-        jLabel3.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Delay");
-        jLabel3.setOpaque(true);
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, 20));
+        delayLabel.setBackground(new java.awt.Color(232, 208, 51));
+        delayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        delayLabel.setText("Delay");
+        delayLabel.setOpaque(true);
+        jPanel3.add(delayLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, 20));
 
-        jLabel4.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Press/Release");
-        jLabel4.setOpaque(true);
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 80, 20));
+        pressOrReleaseLabel.setBackground(new java.awt.Color(232, 208, 51));
+        pressOrReleaseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pressOrReleaseLabel.setText("Press/Release");
+        pressOrReleaseLabel.setOpaque(true);
+        jPanel3.add(pressOrReleaseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 80, 20));
 
         KeyorMouseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keyboard", "Mouse" }));
         KeyorMouseComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -246,29 +248,35 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon("resources/easymacButton.png"));
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 50, -1, -1));
 
-        jButton3.setText("Stop Macro");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+        stopMacroButton.setText("Stop Macro");
+        jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
 
-        jButton4.setText("Start Macro");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        saveNodeButton.setText("Save Node");
+        jPanel3.add(saveNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 90, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
 
-        jLabel5.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("X");
-        jLabel5.setOpaque(true);
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 80, 20));
+        xLabel.setBackground(new java.awt.Color(232, 208, 51));
+        xLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xLabel.setText("X");
+        xLabel.setOpaque(true);
+        jPanel3.add(xLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 80, 20));
 
         yCoordinate.setText("Y");
         jPanel3.add(yCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 90, -1));
 
-        jLabel7.setBackground(new java.awt.Color(232, 208, 51));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Y");
-        jLabel7.setOpaque(true);
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
+        yLabel.setBackground(new java.awt.Color(232, 208, 51));
+        yLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        yLabel.setText("Y");
+        yLabel.setOpaque(true);
+        jPanel3.add(yLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
+
+        startMacroButton.setText("Start Macro");
+        jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+
+        addNodeButton.setText("Add Node");
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 90, -1));
 
         jTabbedPane1.addTab("Edit", null, jPanel3, "");
 
@@ -456,21 +464,16 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField DelayDisplay;
     private javax.swing.JTextField KeyEntry;
     private javax.swing.JComboBox<String> KeyorMouseComboBox;
+    private javax.swing.JLabel KeyorMouseLabel;
     private javax.swing.JComboBox<String> PressOrRelease;
     private javax.swing.JButton SaveAsButton;
+    private javax.swing.JButton addNodeButton;
+    private javax.swing.JLabel delayLabel;
     private javax.swing.JLabel fileLabel;
     private javax.swing.JTextPane fileName;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -478,12 +481,19 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel keyEntryLabel;
     private javax.swing.JButton leftArrow;
     private javax.swing.JButton newButton;
     private javax.swing.JButton openButton;
+    private javax.swing.JLabel pressOrReleaseLabel;
     private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton saveNodeButton;
+    private javax.swing.JButton startMacroButton;
+    private javax.swing.JButton stopMacroButton;
     private javax.swing.JTextField xCoordinate;
+    private javax.swing.JLabel xLabel;
     private javax.swing.JTextField yCoordinate;
+    private javax.swing.JLabel yLabel;
     // End of variables declaration//GEN-END:variables
 }
