@@ -39,10 +39,6 @@ public class Timeline implements Serializable{
         currentNode = null;
     }
 
-    /**
-     * Updates the current node in the timeline.
-     */
-    
     // TODO fix addNode to be passed a node instead of parameters
     //Adds a node to the end of the timeline
 
@@ -73,7 +69,6 @@ public class Timeline implements Serializable{
         }
     }
 
-    //Removes the last node in the timeline
     /**
      * Removes the last node in the timeline.
      */
@@ -223,10 +218,18 @@ public class Timeline implements Serializable{
         }
     }
     
+    /**
+     * Finds and returns the starting node
+     * @return the node that starts the timeline
+     */
     public Node getStartNode(){
         return startNode;
     }
     
+    /**
+     * Finds and returns the last node
+     * @return the node that ends the timeline
+     */
     public Node getEndNode(){
         return endNode;
     }
