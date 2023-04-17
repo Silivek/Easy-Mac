@@ -51,9 +51,12 @@ public class KeyInputNode extends InputNode implements Serializable {
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             try {
-                robot.keyPress(button);
-                robot.delay(delayDuration);
-                robot.keyRelease(button);
+                if(pressRelease) {
+                    robot.keyPress(button);  
+                }
+                else {
+                    robot.keyRelease(button);
+                }
             } catch (IllegalArgumentException ilEx) {
                 System.out.println("An invalid character was used in a node.");
                 Logger.getLogger(MouseInputNode.class.getName()).log(Level.SEVERE, null, ilEx);
