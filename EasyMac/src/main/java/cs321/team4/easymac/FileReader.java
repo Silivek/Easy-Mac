@@ -4,6 +4,7 @@
  */
 package cs321.team4.easymac;
 
+import cs321.team4.easymac.nodes.Node;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,19 +22,29 @@ public class FileReader {
     * @param filePath where the saved macro is located.
     * @throws ClassNotFoundException if file is not found.
     */
-    public static void ReadTimeline(String filePath) throws ClassNotFoundException {
+    public static Timeline ReadTimeline(String filePath) throws ClassNotFoundException {
+        
+        System.out.println("File Should Have been read");
         try {
-            FileInputStream fIn = new FileInputStream(filePath + ".ezm"); //designates the location to read from
+            FileInputStream fIn = new FileInputStream("C:\\Class\\obj.txt"); //designates the location to read from
+            Timeline orange = new Timeline();
             try (ObjectInputStream oIn = new ObjectInputStream(fIn)) //creates the object reader
             {
-                while (oIn.available() != 0) //Runs as long as there are objects in the file
+                for (int i = 0; i < 3; i++) //Runs as long as there are objects in the file
                 {
                     Object tLine = (ObjectInputStream) oIn.readObject();  //set an object equal to a line
+                    orange.addNode((Node) tLine);
+                    orange.currentNode.runNode();
                     System.out.println(tLine); //print the object
+                    System.out.println("File Should Have been read");
                 }
+                oIn.close();
+                fIn.close();
+                return orange;
             }
         } catch (IOException ex) {
-            System.out.println("An error occurred.");
+            ex.printStackTrace();  
+            return null;
         }
     }
 }

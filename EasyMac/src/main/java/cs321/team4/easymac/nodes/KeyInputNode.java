@@ -8,6 +8,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.Serializable;
 
 /**
  * A class for creating an input node for key strokes.
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * @author wkilp
  */
 // TODO determine if KeyInputNode requires more methods
-public class KeyInputNode extends InputNode {
+public class KeyInputNode extends InputNode implements Serializable {
 
     /**
      * Constructs a KeyInputNode object specifying the previous node and the

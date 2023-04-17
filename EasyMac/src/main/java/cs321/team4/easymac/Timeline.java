@@ -11,13 +11,14 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.Serializable;
 
 /**
  * A class that creates the stores the node elements in a timeline.
  *
  * @author benspurlock
  */
-public class Timeline {
+public class Timeline implements Serializable{
     //TODO Test timeline
     //TODO Ensure addNode() and insertNode() can store key info
     //TODO print node contents to console
