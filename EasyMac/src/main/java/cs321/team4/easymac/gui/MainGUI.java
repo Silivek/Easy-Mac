@@ -98,6 +98,7 @@ public class MainGUI extends javax.swing.JFrame {
         yLabel = new javax.swing.JLabel();
         startMacroButton = new javax.swing.JButton();
         addNodeButton = new javax.swing.JButton();
+        RemoveButton = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -248,11 +249,13 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon("resources/easymacButton.png"));
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 50, -1, -1));
 
+        stopMacroButton.setBackground(new java.awt.Color(153, 0, 0));
+        stopMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         stopMacroButton.setText("Stop Macro");
-        jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+        jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         saveNodeButton.setText("Save Node");
-        jPanel3.add(saveNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 90, -1));
+        jPanel3.add(saveNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -272,11 +275,17 @@ public class MainGUI extends javax.swing.JFrame {
         yLabel.setOpaque(true);
         jPanel3.add(yLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 80, 20));
 
+        startMacroButton.setBackground(new java.awt.Color(0, 153, 51));
+        startMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         startMacroButton.setText("Start Macro");
-        jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
+        jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
-        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 90, -1));
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
+
+        RemoveButton.setBackground(new java.awt.Color(255, 0, 0));
+        RemoveButton.setText("Remove Node");
+        jPanel3.add(RemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
 
         jTabbedPane1.addTab("Edit", null, jPanel3, "");
 
@@ -466,6 +475,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> KeyorMouseComboBox;
     private javax.swing.JLabel KeyorMouseLabel;
     private javax.swing.JComboBox<String> PressOrRelease;
+    private javax.swing.JButton RemoveButton;
     private javax.swing.JButton SaveAsButton;
     private javax.swing.JButton addNodeButton;
     private javax.swing.JLabel delayLabel;
