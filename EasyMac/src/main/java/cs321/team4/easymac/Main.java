@@ -108,21 +108,6 @@ public class Main {
 
     ;
     
-    
-    //TODO write editTimeline function
-    /**
-     * Edits the timeline object.
-     * @param recordedTimeline the timeline to be edited.
-     * @return the edited timeline.
-     */
-    public Timeline editTimeline(Timeline recordedTimeline) {
-        // find and return timeline
-        // use the Timeline functions to edit timeline
-        // save to tile
-        return recordedTimeline;
-    }
-
-    ;
      // @param args
      
     /**
