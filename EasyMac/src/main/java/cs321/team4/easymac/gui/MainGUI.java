@@ -103,14 +103,14 @@ public class MainGUI extends javax.swing.JFrame{
         KeyorMouseComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         stopMacroButton = new javax.swing.JButton();
-        saveNodeButton = new javax.swing.JButton();
+        applyChangesButton = new javax.swing.JButton();
         xCoordinate = new javax.swing.JTextField();
         xLabel = new javax.swing.JLabel();
         yCoordinate = new javax.swing.JTextField();
         yLabel = new javax.swing.JLabel();
         startMacroButton = new javax.swing.JButton();
         addNodeButton = new javax.swing.JButton();
-        RemoveButton = new javax.swing.JButton();
+        removeNodeButton = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -296,8 +296,13 @@ public class MainGUI extends javax.swing.JFrame{
         stopMacroButton.setText("Stop Macro");
         jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
-        saveNodeButton.setText("Save Node");
-        jPanel3.add(saveNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
+        applyChangesButton.setText("Apply Changes");
+        applyChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyChangesButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -323,11 +328,21 @@ public class MainGUI extends javax.swing.JFrame{
         jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
+        addNodeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNodeButtonActionPerformed(evt);
+            }
+        });
         jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
 
-        RemoveButton.setBackground(new java.awt.Color(255, 0, 0));
-        RemoveButton.setText("Remove Node");
-        jPanel3.add(RemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
+        removeNodeButton.setBackground(new java.awt.Color(255, 0, 0));
+        removeNodeButton.setText("Remove Node");
+        removeNodeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeNodeButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(removeNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
 
         jTabbedPane1.addTab("Edit", null, jPanel3, "");
 
@@ -461,6 +476,23 @@ public class MainGUI extends javax.swing.JFrame{
         createNewMacro(1, testingTimeline, userSelection);
     }//GEN-LAST:event_recordButtonActionPerformed
 
+    private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
+        // TODO add your handling code here:
+        //Check if currentNode is endnode
+        //If so then use addNode
+        //else use insertBeforeNode
+    }//GEN-LAST:event_addNodeButtonActionPerformed
+
+    private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
+        // TODO add your handling code here:
+        //Apply changes to currentNode
+    }//GEN-LAST:event_applyChangesButtonActionPerformed
+
+    private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
+        // TODO add your handling code here:
+        //Remove current node
+    }//GEN-LAST:event_removeNodeButtonActionPerformed
+
     // this may not be necessary since it is a global variable in this file
     public Timeline getTimeline() {
         return testingTimeline;
@@ -535,9 +567,9 @@ public class MainGUI extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> KeyorMouseComboBox;
     private javax.swing.JLabel KeyorMouseLabel;
     private javax.swing.JComboBox<String> PressOrRelease;
-    private javax.swing.JButton RemoveButton;
     private javax.swing.JButton SaveAsButton;
     private javax.swing.JButton addNodeButton;
+    private javax.swing.JButton applyChangesButton;
     private javax.swing.JLabel delayLabel;
     private javax.swing.JLabel fileLabel;
     private javax.swing.JTextPane fileName;
@@ -560,9 +592,9 @@ public class MainGUI extends javax.swing.JFrame{
     private javax.swing.JButton playBackButton;
     private javax.swing.JLabel pressOrReleaseLabel;
     private javax.swing.JButton recordButton;
+    private javax.swing.JButton removeNodeButton;
     private javax.swing.JButton rightArrow;
     private javax.swing.JButton saveButton;
-    private javax.swing.JButton saveNodeButton;
     private javax.swing.JButton startMacroButton;
     private javax.swing.JButton stopButton;
     private javax.swing.JButton stopMacroButton;
