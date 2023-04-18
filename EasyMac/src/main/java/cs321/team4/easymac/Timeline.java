@@ -124,10 +124,14 @@ public class Timeline implements Serializable{
         nextNode = currentNode.getNextNode();
         
         //Connect previous node to next node
-        prevNode.setNextNode(nextNode);
+        if (prevNode != null) {
+            prevNode.setNextNode(nextNode);
+        }
         
         //Connect next node to previous node
-        nextNode.setPrevNode(prevNode);
+        if (nextNode != null) {
+            nextNode.setPrevNode(prevNode);
+        }
         
         num_of_nodes--;
     }
