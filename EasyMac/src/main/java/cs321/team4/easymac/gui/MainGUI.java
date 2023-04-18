@@ -13,14 +13,20 @@ import static cs321.team4.easymac.Main.createNewMacro;
 import cs321.team4.easymac.Timeline;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
+
 import java.util.Arrays;
 import java.util.Scanner;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
+import utilities.KeyListener;
 
 /**
  *
  * @author wkilp
  */
-public class MainGUI extends javax.swing.JFrame{
+public class MainGUI extends javax.swing.JFrame {
 
     java.io.File currentFile;
 
@@ -35,6 +41,7 @@ public class MainGUI extends javax.swing.JFrame{
     Node currentNode;
     String keyPress;
     Scanner userSelection = new Scanner(System.in);
+    KeyListener listener = new KeyListener();
 
     public MainGUI(Timeline timeline) {
         initComponents();
@@ -61,6 +68,31 @@ public class MainGUI extends javax.swing.JFrame{
         KeyEntry.setText(Arrays.toString(asciiValues));
         DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
+    
+
+   
+        
+//    public void nativeKeyPressed(NativeKeyEvent e) {
+//        int keyCode = e.getKeyCode();
+//        //char vkValueChar = keyPress.toCharArray()[0];
+//        //int vkValueInt = vkValueChar;
+//        KeyInputNode nodeToAdd = new KeyInputNode(null, keyCode);
+//        testingTimeline.addNode(nodeToAdd);
+//    }
+
+    
+//    public void nativeKeyTyped(NativeKeyEvent e) {
+//
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//
+//    public void nativeKeyReleased(NativeKeyEvent e) {
+//        String value = NativeKeyEvent.getKeyText(e.getKeyCode());
+//        System.out.println(value);
+//        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -384,7 +416,7 @@ public class MainGUI extends javax.swing.JFrame{
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
-        
+
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -464,16 +496,28 @@ public class MainGUI extends javax.swing.JFrame{
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         //keyPress.equals("-1");
-       // Scanner userSelection = new Scanner(System.in);
-        createNewMacro(-1, testingTimeline, userSelection);
+        // Scanner userSelection = new Scanner(System.in);
+        //createNewMacro(-1, testingTimeline, userSelection);
+        //GlobalScreen.removeNativeKeyListener(KeyListener);
+        //GlobalScreen.unregisterNativeHook();
+        GlobalScreen.removeNativeKeyListener(listener);
         mainTextDisplay.setText("Recording completed. ");
     }//GEN-LAST:event_stopButtonActionPerformed
 
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
         mainTextDisplay.setText("Recording in process...");
+        try{
+            GlobalScreen.registerNativeHook();
+        }catch (NativeHookException e){
+            e.printStackTrace();
+        }
+        
+        GlobalScreen.addNativeKeyListener(listener);
+        
+         
         //Scanner userSelection = new Scanner(System.in);
         //int selection = userSelection.nextInt();
-        createNewMacro(1, testingTimeline, userSelection);
+        //createNewMacro(1, testingTimeline, userSelection);
     }//GEN-LAST:event_recordButtonActionPerformed
 
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
