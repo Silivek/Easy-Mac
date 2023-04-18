@@ -37,7 +37,30 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     String keyPress;
     Scanner userSelection = new Scanner(System.in);
     boolean stopMacro;
-
+    
+    /**
+     * refreshes the GUI to show the current data held in currentNode
+     */
+    private void refreshCurrentNode() {
+       if (currentNode instanceof MouseInputNode) {
+           MouseInputNode mouseNode = (MouseInputNode) currentNode;
+           KeyorMouseComboBox.setSelectedIndex(1);
+           xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+           yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+       } else {
+           KeyorMouseComboBox.setSelectedIndex(0);
+           xCoordinate.setText("n/a");
+           yCoordinate.setText("n/a");
+       }
+       if (currentNode.getPressRelease() == false) {
+           PressOrRelease.setSelectedIndex(1);
+       } else {
+           PressOrRelease.setSelectedIndex(0);
+       }
+       char asciiValue = (char)currentNode.getButton();
+       KeyEntry.setText(""+asciiValue);
+       DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+    }
     public MainGUI(Timeline timeline) {
         initComponents();
         testingTimeline = timeline;
@@ -48,25 +71,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             rightArrow.setVisible(false);
         }
                 
-        if (currentNode instanceof MouseInputNode) {
-            MouseInputNode mouseNode = (MouseInputNode) currentNode;
-            KeyorMouseComboBox.setSelectedIndex(1);
-            xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-            yCoordinate.setText(String. valueOf(mouseNode.getYCoordinate()));
-        } else {
-            KeyorMouseComboBox.setSelectedIndex(0);
-            xCoordinate.setText("n/a");
-            yCoordinate.setText("n/a");
-        }
-        if (currentNode.getPressRelease() == false) {
-            PressOrRelease.setSelectedIndex(1);
-        } else {
-            PressOrRelease.setSelectedIndex(0);
-        }
-        int temp = currentNode.getButton();
-        char asciiValues[] = Character.toChars(temp);
-        KeyEntry.setText(Arrays.toString(asciiValues));
-        DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+        refreshCurrentNode();
     }
 
     /**
@@ -414,30 +419,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     }//GEN-LAST:event_saveButtonActionPerformed
 
-
+    
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
         if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
             // send model info to viewer
-            if (currentNode instanceof MouseInputNode) {
-                MouseInputNode mouseNode = (MouseInputNode) currentNode;
-                KeyorMouseComboBox.setSelectedIndex(1);
-                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-            } else {
-                KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setText("n/a");
-                yCoordinate.setText("n/a");
-            }
-            if (currentNode.getPressRelease() == false) {
-                PressOrRelease.setSelectedIndex(1);
-            } else {
-                PressOrRelease.setSelectedIndex(0);
-            }
-            int temp = currentNode.getButton();
-            char asciiValues[] = Character.toChars(temp);
-            KeyEntry.setText(Arrays.toString(asciiValues));
-            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+            refreshCurrentNode();
         }
         updateLeftArrow(leftArrow);
         updateRightArrow(rightArrow);
@@ -447,29 +434,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         if (currentNode.getNextNode() != null) {
             currentNode = currentNode.getNextNode();
             // send model info to viewer
-            if (currentNode instanceof MouseInputNode) {
-                MouseInputNode mouseNode = (MouseInputNode) currentNode;
-                KeyorMouseComboBox.setSelectedIndex(1);
-                int temp = 5;
-                char a = Character.forDigit(temp, 16);
-
-                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-
-                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-            } else {
-                KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setText("n/a");
-                yCoordinate.setText("n/a");
-            }
-            if (currentNode.getPressRelease() == false) {
-                PressOrRelease.setSelectedIndex(1);
-            } else {
-                PressOrRelease.setSelectedIndex(0);
-            }
-            int temp = currentNode.getButton();
-            char asciiValues[] = Character.toChars(temp);
-            KeyEntry.setText(Arrays.toString(asciiValues));
-            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+            refreshCurrentNode();
         }
         updateRightArrow(rightArrow);
         updateLeftArrow(leftArrow);
