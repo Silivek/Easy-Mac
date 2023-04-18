@@ -43,6 +43,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         testingTimeline = timeline;
         currentNode = testingTimeline.getStartNode();
         leftArrow.setVisible(false);
+        
+        if (currentNode.getNextNode() == null) {
+            rightArrow.setVisible(false);
+        }
+                
         if (currentNode instanceof MouseInputNode) {
             MouseInputNode mouseNode = (MouseInputNode) currentNode;
             KeyorMouseComboBox.setSelectedIndex(1);
@@ -502,6 +507,9 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             testingTimeline.insertBeforeNode(currentNode, newNode, 0);
         }
         
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
+        
     }//GEN-LAST:event_addNodeButtonActionPerformed
 
     private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
@@ -513,6 +521,10 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
         // TODO add your handling code here:
         //Remove current node
+        
+        if (currentNode.getNextNode() == null) {
+            rightArrow.setVisible(false);
+        }
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
     private void startMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMacroActionPerformed
