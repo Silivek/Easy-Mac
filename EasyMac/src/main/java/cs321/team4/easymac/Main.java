@@ -58,7 +58,7 @@ public class Main {
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
                 if (keyPress.equals("-2")) {
-                    userCreatedTimeline.runTimeline();
+                    //userCreatedTimeline.runTimeline();
                 } else if (keyPress.equals("left") || keyPress.equals("Left")) {
                     MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON1_DOWN_MASK); // left click node
                     userCreatedTimeline.addNode(nodeToAdd);
@@ -138,7 +138,7 @@ public class Main {
                 System.out.print("Enter an input: ");
                 keyPress = userSelection.next();
                 if (keyPress.equals("-2")) {
-                    userCreatedTimeline.runTimeline();
+                    //userCreatedTimeline.runTimeline();
                 } else if (keyPress.equals("left") || keyPress.equals("Left")) {
                     MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON1_DOWN_MASK); // left click node
                     userCreatedTimeline.addNode(nodeToAdd);

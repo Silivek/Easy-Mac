@@ -15,12 +15,13 @@ import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import java.util.Arrays;
 import java.util.Scanner;
+import cs321.team4.easymac.interfaces.IActionCanceller;
 
 /**
  *
  * @author wkilp
  */
-public class MainGUI extends javax.swing.JFrame{
+public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     java.io.File currentFile;
 
@@ -35,6 +36,7 @@ public class MainGUI extends javax.swing.JFrame{
     Node currentNode;
     String keyPress;
     Scanner userSelection = new Scanner(System.in);
+    boolean stopMacro;
 
     public MainGUI(Timeline timeline) {
         initComponents();
@@ -294,6 +296,11 @@ public class MainGUI extends javax.swing.JFrame{
         stopMacroButton.setBackground(new java.awt.Color(153, 0, 0));
         stopMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         stopMacroButton.setText("Stop Macro");
+        stopMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         applyChangesButton.setText("Apply Changes");
@@ -325,6 +332,11 @@ public class MainGUI extends javax.swing.JFrame{
         startMacroButton.setBackground(new java.awt.Color(0, 153, 51));
         startMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         startMacroButton.setText("Start Macro");
+        startMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
@@ -503,6 +515,30 @@ public class MainGUI extends javax.swing.JFrame{
         //Remove current node
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
+    private void startMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMacroActionPerformed
+        stopMacro = false;
+        Thread t = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                testingTimeline.runTimeline(MainGUI.this);
+            }
+        };
+        t.start();
+    }//GEN-LAST:event_startMacroActionPerformed
+
+    private void stopMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopMacroActionPerformed
+        cancelAction();
+    }//GEN-LAST:event_stopMacroActionPerformed
+    @Override
+    public synchronized void cancelAction() {
+        stopMacro = true;
+    }
+    @Override
+    public synchronized boolean actionCancelled() {
+        return stopMacro;
+    }
     // this may not be necessary since it is a global variable in this file
     public Timeline getTimeline() {
         return testingTimeline;

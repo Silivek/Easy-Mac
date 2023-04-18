@@ -29,6 +29,8 @@ public class MouseInputNode extends InputNode {
      */
     public MouseInputNode(Node prev, int button) {
         super(prev, button);
+        this.pressRelease = true;
+        this.delayDuration = 500;
     }
 
     /**
