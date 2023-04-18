@@ -45,7 +45,7 @@ public class MainGUI extends javax.swing.JFrame{
             MouseInputNode mouseNode = (MouseInputNode) currentNode;
             KeyorMouseComboBox.setSelectedIndex(1);
             xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-            yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+            yCoordinate.setText(String. valueOf(mouseNode.getYCoordinate()));
         } else {
             KeyorMouseComboBox.setSelectedIndex(0);
             xCoordinate.setText("n/a");
@@ -479,13 +479,23 @@ public class MainGUI extends javax.swing.JFrame{
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
         // TODO add your handling code here:
         //Check if currentNode is endnode
-        //If so then use addNode
-        //else use insertBeforeNode
+        Node newNode = new Node();
+        testingTimeline.setCurrentNode(currentNode); //Sync current nodes (!!)
+        
+        if (testingTimeline.getCurrentNode() == testingTimeline.getEndNode()) {
+            //If so then use addNode 
+            testingTimeline.addNode(newNode);
+        } else {
+            //else use insertBeforeNode
+            testingTimeline.insertBeforeNode(currentNode, newNode, 0);
+        }
+        
     }//GEN-LAST:event_addNodeButtonActionPerformed
 
     private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
         // TODO add your handling code here:
         //Apply changes to currentNode
+        //In other words, replace it. Insert the new node and delete the current node.
     }//GEN-LAST:event_applyChangesButtonActionPerformed
 
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
