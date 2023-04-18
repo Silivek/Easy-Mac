@@ -4,6 +4,7 @@
  */
 package cs321.team4.easymac;
 
+import cs321.team4.easymac.gui.MainGUI;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
@@ -12,6 +13,7 @@ import java.awt.Robot;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.Serializable;
+import cs321.team4.easymac.interfaces.IActionCanceller;
 
 /**
  * A class that creates the stores the node elements in a timeline.
@@ -187,12 +189,13 @@ public class Timeline implements Serializable{
   
     /**
      * Runs the delay time using another object of robot.
+     * @param cur
      */
-    public void runNodeDelay() {
+    public void runNodeDelay(Node cur) {
 
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            robot.delay(currentNode.getDelayDuration());
+            robot.delay(cur.getDelayDuration());
         } catch (AWTException ex) {
             System.out.println("Robot Error in Timeline.");
             Logger.getLogger(Timeline.class.getName()).log(Level.SEVERE, null, ex);
@@ -201,18 +204,23 @@ public class Timeline implements Serializable{
 
     /**
      * Runs the timeline.
+     * @param actionRunner passed to allow cancellation during thread execution
      */
-    public void runTimeline() {
+    public void runTimeline(IActionCanceller actionRunner) {
         if (startNode == null) {
             return;
         }
-        currentNode = startNode;
+        Node cur = startNode;
         while (true) {
-            currentNode.runNode();
+            if (actionRunner.actionCancelled())
+                break;
+            cur.runNode();
+            runNodeDelay(cur);
             // TODO use runNodeDelay(); once pressRelease is implemented
-            if (currentNode != endNode) {
-                currentNode = currentNode.getNextNode();
+            if (cur != endNode) {
+                cur = cur.getNextNode();
             } else {
+                actionRunner.cancelAction();
                 return;
             }
         }

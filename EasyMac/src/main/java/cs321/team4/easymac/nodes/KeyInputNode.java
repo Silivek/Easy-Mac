@@ -27,6 +27,8 @@ public class KeyInputNode extends InputNode implements Serializable {
      */
     public KeyInputNode(Node prev, int button) {
         super(prev, button);
+        this.pressRelease = true;
+        this.delayDuration = 500;
     }
 
     /**
