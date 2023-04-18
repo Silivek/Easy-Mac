@@ -521,9 +521,35 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
         // TODO add your handling code here:
         //Remove current node
-        
+        if (currentNode != null) {
+            //if (currentNode == testingTimeline.getStartNode())
+                //testingTimeline.setStartNode();
+            testingTimeline.setCurrentNode(currentNode); //Sync current nodes
+            
+            if (currentNode.getPrevNode() == null) {
+                currentNode = currentNode.getNextNode(); //Set new current node (for GUI only)
+            } else {
+                currentNode = currentNode.getPrevNode(); //Set new current node (for GUI only)
+            }
+            
+            if (testingTimeline.getCurrentNode() != testingTimeline.getEndNode()) {
+                testingTimeline.removeCurrentNode();
+            } else {
+                testingTimeline.removeEndNode();
+            }
+            /*
+            *  Note, because of this implementation, currentNode in the timeline
+            *  and currentNode in the gui will not always return the same node.
+            *  This shouldn't be an issue, but it will be necessary to call
+            *  testingTimeline.setCurrentNode(currentNode) whenever you want use
+            *  the timeline's currentNode, like in the case of removeCurrentNode().
+            */
+        }
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
+
         if (currentNode.getNextNode() == null) {
-            rightArrow.setVisible(false);
+                rightArrow.setVisible(false);
         }
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
