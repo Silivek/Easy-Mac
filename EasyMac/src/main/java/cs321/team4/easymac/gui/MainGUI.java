@@ -302,7 +302,7 @@ public class MainGUI extends javax.swing.JFrame{
                 applyChangesButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
+        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 110, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -333,7 +333,7 @@ public class MainGUI extends javax.swing.JFrame{
                 addNodeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
 
         removeNodeButton.setBackground(new java.awt.Color(255, 0, 0));
         removeNodeButton.setText("Remove Node");
