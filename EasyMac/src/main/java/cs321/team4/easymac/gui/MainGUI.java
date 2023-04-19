@@ -414,7 +414,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
-        
+        testingTimeline = new Timeline();
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void SaveAs(java.awt.event.ActionEvent evt) {
