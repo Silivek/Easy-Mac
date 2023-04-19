@@ -46,7 +46,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     String keyPress;
     KeyListener listener = new KeyListener();
     Scanner userSelection = new Scanner(System.in);
-    boolean stopMacro;
+    boolean stopMacro = false;
     
     /**
      * refreshes the GUI to show the current data held in currentNode
@@ -546,7 +546,10 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         }
         testingTimeline.setCurrentNode(currentNode);
         testingTimeline.insertBeforeNode(currentNode, newNode, delayDuration);
-        testingTimeline.removeCurrentNode();
+        if (currentNode.getNextNode() == null)
+            testingTimeline.removeEndNode();
+        else
+            testingTimeline.removeCurrentNode();
         currentNode = newNode;
         refreshCurrentNode();
     }//GEN-LAST:event_applyChangesButtonActionPerformed

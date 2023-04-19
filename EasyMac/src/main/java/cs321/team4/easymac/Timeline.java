@@ -188,12 +188,13 @@ public class Timeline implements Serializable{
   
     /**
      * Runs the delay time using another object of robot.
+     * @param cur node to read delay from
      */
-    public void runNodeDelay() {
+    public void runNodeDelay(Node cur) {
 
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            robot.delay(currentNode.getDelayDuration());
+            robot.delay(cur.getDelayDuration());
         } catch (AWTException ex) {
             System.out.println("Robot Error in Timeline.");
             Logger.getLogger(Timeline.class.getName()).log(Level.SEVERE, null, ex);
@@ -202,22 +203,22 @@ public class Timeline implements Serializable{
 
     /**
      * Runs the timeline.
-     * @param aC using IActionCanceller to stop running the timeline when necessary
+     * @param actionRunner using IActionCanceller to stop running the timeline when necessary
      */
-    public void runTimeline(IActionCanceller aC) {
+    public void runTimeline(IActionCanceller actionRunner) {
         if (startNode == null) {
             return;
         }
-        currentNode = startNode;
+        Node cur = startNode;
         while (true) {
-            if (aC.actionCancelled())
+            if (actionRunner.actionCancelled())
                 return;
-            currentNode.runNode();
-            // TODO use runNodeDelay(); once pressRelease is implemented
-            if (currentNode != endNode) {
-                currentNode = currentNode.getNextNode();
+            cur.runNode();
+            runNodeDelay(cur);
+            if (cur != endNode) {
+                cur = cur.getNextNode();
             } else {
-                aC.cancelAction();
+                actionRunner.cancelAction();
                 return;
             }
         }

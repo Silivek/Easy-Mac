@@ -59,7 +59,7 @@ public class KeyListener implements NativeKeyListener{
                // System.out.println("Value in char array in KeyListener" + vkValueChar);
                 int vkValueInt = vkValueChar;
                // System.out.println("Integer value from KeyListener: " + vkValueInt);
-                KeyInputNode nodeToAdd = new KeyInputNode(null, vkValueInt);
+                KeyInputNode nodeToAdd = new KeyInputNode(null, 500, true, vkValueInt);
                 userCreatedTimeline.addNode(nodeToAdd);
             }
         //char vkValueChar = keyCode.toCharArray()[0];
