@@ -18,14 +18,14 @@ import cs321.team4.easymac.nodes.MouseInputNode;
  * @author Melissa
  */
 public class KeyListener implements NativeKeyListener{
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         try{
             GlobalScreen.registerNativeHook();
         }catch (NativeHookException e){
             e.printStackTrace();
         }
         GlobalScreen.addNativeKeyListener(new KeyListener());       
-    }
+    }*/
 
     @Override
     public void nativeKeyTyped(NativeKeyEvent e) {

@@ -469,6 +469,9 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         testingTimeline = listener.getCreatedTimeline();
         currentNode = testingTimeline.getStartNode();
         mainTextDisplay.setText("Recording completed. ");
+        refreshCurrentNode();
+        updateLeftArrow(leftArrow);
+        updateRightArrow(rightArrow);
     }//GEN-LAST:event_stopButtonActionPerformed
 
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
