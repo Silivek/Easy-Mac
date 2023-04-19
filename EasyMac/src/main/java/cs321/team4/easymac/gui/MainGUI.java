@@ -28,7 +28,7 @@ import utilities.KeyListener;
  *
  * @author wkilp
  */
-public class MainGUI extends javax.swing.JFrame {
+public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     java.io.File currentFile;
 
@@ -39,41 +39,47 @@ public class MainGUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    
-   // Scanner userSelection = new Scanner(System.in);
-    KeyListener listener = new KeyListener();
     Timeline testingTimeline;
     Node currentNode;
+    String keyPress;
     Scanner userSelection = new Scanner(System.in);
     boolean stopMacro;
-
+    
+    /**
+     * refreshes the GUI to show the current data held in currentNode
+     */
+    private void refreshCurrentNode() {
+       if (currentNode instanceof MouseInputNode) {
+           MouseInputNode mouseNode = (MouseInputNode) currentNode;
+           KeyorMouseComboBox.setSelectedIndex(1);
+           xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+           yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+       } else {
+           KeyorMouseComboBox.setSelectedIndex(0);
+           xCoordinate.setText("n/a");
+           yCoordinate.setText("n/a");
+       }
+       if (currentNode.getPressRelease() == false) {
+           PressOrRelease.setSelectedIndex(1);
+       } else {
+           PressOrRelease.setSelectedIndex(0);
+       }
+       char asciiValue = (char)currentNode.getButton();
+       KeyEntry.setText(""+asciiValue);
+       DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+    }
     public MainGUI(Timeline timeline) {
         initComponents();
         testingTimeline = timeline;
         currentNode = testingTimeline.getStartNode();
         leftArrow.setVisible(false);
-        if (currentNode instanceof MouseInputNode) {
-            MouseInputNode mouseNode = (MouseInputNode) currentNode;
-            KeyorMouseComboBox.setSelectedIndex(1);
-            xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-            yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-        } else {
-            KeyorMouseComboBox.setSelectedIndex(0);
-            xCoordinate.setText("n/a");
-            yCoordinate.setText("n/a");
+        
+        if (currentNode.getNextNode() == null) {
+            rightArrow.setVisible(false);
         }
-        if (currentNode.getPressRelease() == false) {
-            PressOrRelease.setSelectedIndex(1);
-        } else {
-            PressOrRelease.setSelectedIndex(0);
-        }
-        int temp = currentNode.getButton();
-        char asciiValues[] = Character.toChars(temp);
-        KeyEntry.setText(Arrays.toString(asciiValues));
-        DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+                
+        refreshCurrentNode();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -312,6 +318,11 @@ public class MainGUI extends javax.swing.JFrame {
         stopMacroButton.setBackground(new java.awt.Color(153, 0, 0));
         stopMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         stopMacroButton.setText("Stop Macro");
+        stopMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         applyChangesButton.setText("Apply Changes");
@@ -320,7 +331,7 @@ public class MainGUI extends javax.swing.JFrame {
                 applyChangesButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
+        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 110, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -343,6 +354,11 @@ public class MainGUI extends javax.swing.JFrame {
         startMacroButton.setBackground(new java.awt.Color(0, 153, 51));
         startMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         startMacroButton.setText("Start Macro");
+        startMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
@@ -351,7 +367,7 @@ public class MainGUI extends javax.swing.JFrame {
                 addNodeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
 
         removeNodeButton.setBackground(new java.awt.Color(255, 0, 0));
         removeNodeButton.setText("Remove Node");
@@ -407,7 +423,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
-
+        
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void SaveAs(java.awt.event.ActionEvent evt) {
@@ -430,30 +446,12 @@ public class MainGUI extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_saveButtonActionPerformed
 
-
+    
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
         if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
             // send model info to viewer
-            if (currentNode instanceof MouseInputNode) {
-                MouseInputNode mouseNode = (MouseInputNode) currentNode;
-                KeyorMouseComboBox.setSelectedIndex(1);
-                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-            } else {
-                KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setText("n/a");
-                yCoordinate.setText("n/a");
-            }
-            if (currentNode.getPressRelease() == false) {
-                PressOrRelease.setSelectedIndex(1);
-            } else {
-                PressOrRelease.setSelectedIndex(0);
-            }
-            int temp = currentNode.getButton();
-            char asciiValues[] = Character.toChars(temp);
-            KeyEntry.setText(Arrays.toString(asciiValues));
-            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+            refreshCurrentNode();
         }
         updateLeftArrow(leftArrow);
         updateRightArrow(rightArrow);
@@ -463,29 +461,7 @@ public class MainGUI extends javax.swing.JFrame {
         if (currentNode.getNextNode() != null) {
             currentNode = currentNode.getNextNode();
             // send model info to viewer
-            if (currentNode instanceof MouseInputNode) {
-                MouseInputNode mouseNode = (MouseInputNode) currentNode;
-                KeyorMouseComboBox.setSelectedIndex(1);
-                int temp = 5;
-                char a = Character.forDigit(temp, 16);
-
-                xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-
-                yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-            } else {
-                KeyorMouseComboBox.setSelectedIndex(0);
-                xCoordinate.setText("n/a");
-                yCoordinate.setText("n/a");
-            }
-            if (currentNode.getPressRelease() == false) {
-                PressOrRelease.setSelectedIndex(1);
-            } else {
-                PressOrRelease.setSelectedIndex(0);
-            }
-            int temp = currentNode.getButton();
-            char asciiValues[] = Character.toChars(temp);
-            KeyEntry.setText(Arrays.toString(asciiValues));
-            DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+            refreshCurrentNode();
         }
         updateRightArrow(rightArrow);
         updateLeftArrow(leftArrow);
@@ -496,44 +472,103 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
-        GlobalScreen.removeNativeKeyListener(listener);
-        testingTimeline = listener.getCreatedTimeline();
-        currentNode = testingTimeline.getStartNode();
+        //keyPress.equals("-1");
+       // Scanner userSelection = new Scanner(System.in);
+        createNewMacro(-1, testingTimeline, userSelection);
         mainTextDisplay.setText("Recording completed. ");
     }//GEN-LAST:event_stopButtonActionPerformed
 
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
         mainTextDisplay.setText("Recording in process...");
-        try{
-            GlobalScreen.registerNativeHook();
-        }catch (NativeHookException e){
-            e.printStackTrace();
-        }
-        
-        GlobalScreen.addNativeKeyListener(listener);
+        //Scanner userSelection = new Scanner(System.in);
+        //int selection = userSelection.nextInt();
+        createNewMacro(1, testingTimeline, userSelection);
     }//GEN-LAST:event_recordButtonActionPerformed
 
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
         // TODO add your handling code here:
         //Check if currentNode is endnode
-        //If so then use addNode
-        //else use insertBeforeNode
+        Node newNode = new Node();
+        testingTimeline.setCurrentNode(currentNode); //Sync current nodes (!!)
+        
+        if (testingTimeline.getCurrentNode() == testingTimeline.getEndNode()) {
+            //If so then use addNode 
+            testingTimeline.addNode(newNode);
+        } else {
+            //else use insertBeforeNode
+            testingTimeline.insertBeforeNode(currentNode, newNode, 0);
+        }
+        
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
+        
     }//GEN-LAST:event_addNodeButtonActionPerformed
 
     private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
         // TODO add your handling code here:
         //Apply changes to currentNode
+        //In other words, replace it. Insert the new node and delete the current node.
     }//GEN-LAST:event_applyChangesButtonActionPerformed
 
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
         // TODO add your handling code here:
         //Remove current node
+        if (currentNode != null) {
+            //if (currentNode == testingTimeline.getStartNode())
+                //testingTimeline.setStartNode();
+            testingTimeline.setCurrentNode(currentNode); //Sync current nodes
+            
+            if (currentNode.getPrevNode() == null) {
+                currentNode = currentNode.getNextNode(); //Set new current node (for GUI only)
+            } else {
+                currentNode = currentNode.getPrevNode(); //Set new current node (for GUI only)
+            }
+            
+            if (testingTimeline.getCurrentNode() != testingTimeline.getEndNode()) {
+                testingTimeline.removeCurrentNode();
+            } else {
+                testingTimeline.removeEndNode();
+            }
+            /*
+            *  Note, because of this implementation, currentNode in the timeline
+            *  and currentNode in the gui will not always return the same node.
+            *  This shouldn't be an issue, but it will be necessary to call
+            *  testingTimeline.setCurrentNode(currentNode) whenever you want use
+            *  the timeline's currentNode, like in the case of removeCurrentNode().
+            */
+        }
+        updateRightArrow(rightArrow);
+        updateLeftArrow(leftArrow);
+
+        if (currentNode.getNextNode() == null) {
+                rightArrow.setVisible(false);
+        }
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
-    private void SaveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsButtonActionPerformed
-        SaveAs(evt);
-    }//GEN-LAST:event_SaveAsButtonActionPerformed
+    private void startMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMacroActionPerformed
+        stopMacro = false;
+        Thread t = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                testingTimeline.runTimeline(MainGUI.this);
+            }
+        };
+        t.start();
+    }//GEN-LAST:event_startMacroActionPerformed
 
+    private void stopMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopMacroActionPerformed
+        cancelAction();
+    }//GEN-LAST:event_stopMacroActionPerformed
+    @Override
+    public synchronized void cancelAction() {
+        stopMacro = true;
+    }
+    @Override
+    public synchronized boolean actionCancelled() {
+        return stopMacro;
+    }
     // this may not be necessary since it is a global variable in this file
     public Timeline getTimeline() {
         return testingTimeline;
