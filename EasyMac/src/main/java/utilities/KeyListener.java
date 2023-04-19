@@ -15,7 +15,7 @@ import cs321.team4.easymac.nodes.MouseInputNode;
 
 /**
  *
- * @author moosi
+ * @author Melissa
  */
 public class KeyListener implements NativeKeyListener{
     public static void main(String[] args){
