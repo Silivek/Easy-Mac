@@ -4,6 +4,8 @@
  */
 package cs321.team4.easymac.gui;
 
+import cs321.team4.easymac.FileGenerator;
+import cs321.team4.easymac.FileReader;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.event.MouseEvent;
 import cs321.team4.easymac.nodes.KeyInputNode;
@@ -195,6 +197,11 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel1.add(newButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         SaveAsButton.setText("Save As...");
+        SaveAsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveAsButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(SaveAsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         mainTextDisplay.setColumns(20);
@@ -385,9 +392,14 @@ public class MainGUI extends javax.swing.JFrame {
         // open a filechooser dialog menu.
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
         if (fileChooser.showOpenDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
-            // load from file
+            // load from selected file
             currentFile = fileChooser.getSelectedFile();
             fileName.setText(currentFile.getName());
+        }
+        try {
+            testingTimeline = FileReader.ReadTimeline(currentFile.getAbsolutePath());
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_openButtonActionPerformed
 
@@ -396,14 +408,24 @@ public class MainGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_newButtonActionPerformed
 
+    private void SaveAs(java.awt.event.ActionEvent evt) {
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+            if (fileChooser.showSaveDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+                currentFile = fileChooser.getSelectedFile();
+                fileName.setText(currentFile.getName());
+                //save to selected file
+                FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
+            }    
+    }      
+    
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+    // TODO add your handling code here:
         if (currentFile != null) {
             //save timeline to preexisting file if it exists
         } else {
             //else default to save as... functionality
-        }
-
+            SaveAs(evt);
+            }
     }//GEN-LAST:event_saveButtonActionPerformed
 
 
@@ -506,6 +528,10 @@ public class MainGUI extends javax.swing.JFrame {
         //Remove current node
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
+    private void SaveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsButtonActionPerformed
+        SaveAs(evt);
+    }//GEN-LAST:event_SaveAsButtonActionPerformed
+
     // this may not be necessary since it is a global variable in this file
     public Timeline getTimeline() {
         return testingTimeline;
@@ -542,13 +568,13 @@ public class MainGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    //public static void main(String args[]) {
+    public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
      */
- /*try {
+ try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -567,12 +593,12 @@ public class MainGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
- /*java.awt.EventQueue.invokeLater(new Runnable() {
+    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGUI().setVisible(true);
             }
         });
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DelayDisplay;
