@@ -318,11 +318,6 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         stopMacroButton.setBackground(new java.awt.Color(153, 0, 0));
         stopMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         stopMacroButton.setText("Stop Macro");
-        stopMacroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopMacroActionPerformed(evt);
-            }
-        });
         jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         applyChangesButton.setText("Apply Changes");
@@ -331,7 +326,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
                 applyChangesButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 110, -1));
+        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -354,11 +349,6 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         startMacroButton.setBackground(new java.awt.Color(0, 153, 51));
         startMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         startMacroButton.setText("Start Macro");
-        startMacroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startMacroActionPerformed(evt);
-            }
-        });
         jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
@@ -367,7 +357,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
                 addNodeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 110, -1));
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
 
         removeNodeButton.setBackground(new java.awt.Color(255, 0, 0));
         removeNodeButton.setText("Remove Node");
@@ -561,6 +551,10 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     private void stopMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopMacroActionPerformed
         cancelAction();
     }//GEN-LAST:event_stopMacroActionPerformed
+
+    private void SaveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsButtonActionPerformed
+        SaveAs(evt);
+    }//GEN-LAST:event_SaveAsButtonActionPerformed
     @Override
     public synchronized void cancelAction() {
         stopMacro = true;
