@@ -37,11 +37,11 @@ public class MainGUI extends javax.swing.JFrame {
         initComponents();
     }
 
+    String keyPress;
+   // Scanner userSelection = new Scanner(System.in);
+    KeyListener listener = new KeyListener();
     Timeline testingTimeline;
     Node currentNode;
-    String keyPress;
-    Scanner userSelection = new Scanner(System.in);
-    KeyListener listener = new KeyListener();
 
     public MainGUI(Timeline timeline) {
         initComponents();
@@ -69,29 +69,6 @@ public class MainGUI extends javax.swing.JFrame {
         DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
     
-
-   
-        
-//    public void nativeKeyPressed(NativeKeyEvent e) {
-//        int keyCode = e.getKeyCode();
-//        //char vkValueChar = keyPress.toCharArray()[0];
-//        //int vkValueInt = vkValueChar;
-//        KeyInputNode nodeToAdd = new KeyInputNode(null, keyCode);
-//        testingTimeline.addNode(nodeToAdd);
-//    }
-
-    
-//    public void nativeKeyTyped(NativeKeyEvent e) {
-//
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-//
-//
-//    public void nativeKeyReleased(NativeKeyEvent e) {
-//        String value = NativeKeyEvent.getKeyText(e.getKeyCode());
-//        System.out.println(value);
-//        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
     
 
     /**
@@ -495,12 +472,9 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
-        //keyPress.equals("-1");
-        // Scanner userSelection = new Scanner(System.in);
-        //createNewMacro(-1, testingTimeline, userSelection);
-        //GlobalScreen.removeNativeKeyListener(KeyListener);
-        //GlobalScreen.unregisterNativeHook();
         GlobalScreen.removeNativeKeyListener(listener);
+        testingTimeline = listener.getCreatedTimeline();
+        currentNode = testingTimeline.getStartNode();
         mainTextDisplay.setText("Recording completed. ");
     }//GEN-LAST:event_stopButtonActionPerformed
 
@@ -513,11 +487,6 @@ public class MainGUI extends javax.swing.JFrame {
         }
         
         GlobalScreen.addNativeKeyListener(listener);
-        
-         
-        //Scanner userSelection = new Scanner(System.in);
-        //int selection = userSelection.nextInt();
-        //createNewMacro(1, testingTimeline, userSelection);
     }//GEN-LAST:event_recordButtonActionPerformed
 
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
