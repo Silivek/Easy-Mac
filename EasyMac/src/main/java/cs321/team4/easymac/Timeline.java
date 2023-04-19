@@ -4,6 +4,7 @@
  */
 package cs321.team4.easymac;
 
+import cs321.team4.easymac.interfaces.IActionCanceller;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
@@ -201,18 +202,22 @@ public class Timeline implements Serializable{
 
     /**
      * Runs the timeline.
+     * @param aC using IActionCanceller to stop running the timeline when necessary
      */
-    public void runTimeline() {
+    public void runTimeline(IActionCanceller aC) {
         if (startNode == null) {
             return;
         }
         currentNode = startNode;
         while (true) {
+            if (aC.actionCancelled())
+                return;
             currentNode.runNode();
             // TODO use runNodeDelay(); once pressRelease is implemented
             if (currentNode != endNode) {
                 currentNode = currentNode.getNextNode();
             } else {
+                aC.cancelAction();
                 return;
             }
         }

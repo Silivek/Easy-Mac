@@ -13,6 +13,7 @@ import cs321.team4.easymac.nodes.InputNode;
 import cs321.team4.easymac.Main;
 import static cs321.team4.easymac.Main.createNewMacro;
 import cs321.team4.easymac.Timeline;
+import cs321.team4.easymac.interfaces.IActionCanceller;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
 
