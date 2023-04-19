@@ -467,6 +467,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         GlobalScreen.removeNativeKeyListener(listener);
+        try {
+            GlobalScreen.unregisterNativeHook();
+        } catch (NativeHookException ex) {
+            ex.printStackTrace();
+        }
         testingTimeline = listener.getCreatedTimeline();
         currentNode = testingTimeline.getStartNode();
         mainTextDisplay.setText("Recording completed. ");
