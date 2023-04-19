@@ -43,6 +43,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     Timeline testingTimeline;
     Node currentNode;
     String keyPress;
+    KeyListener listener = new KeyListener();
     Scanner userSelection = new Scanner(System.in);
     boolean stopMacro;
     
@@ -464,17 +465,21 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
-        //keyPress.equals("-1");
-       // Scanner userSelection = new Scanner(System.in);
-        createNewMacro(-1, testingTimeline, userSelection);
+        GlobalScreen.removeNativeKeyListener(listener);
+        testingTimeline = listener.getCreatedTimeline();
+        currentNode = testingTimeline.getStartNode();
         mainTextDisplay.setText("Recording completed. ");
     }//GEN-LAST:event_stopButtonActionPerformed
 
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
         mainTextDisplay.setText("Recording in process...");
-        //Scanner userSelection = new Scanner(System.in);
-        //int selection = userSelection.nextInt();
-        createNewMacro(1, testingTimeline, userSelection);
+        try{
+            GlobalScreen.registerNativeHook();
+        }catch (NativeHookException e){
+            e.printStackTrace();
+        }
+        
+        GlobalScreen.addNativeKeyListener(listener);
     }//GEN-LAST:event_recordButtonActionPerformed
 
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
