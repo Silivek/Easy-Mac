@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -328,7 +329,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
                 applyChangesButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
+        jPanel3.add(applyChangesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 120, -1));
 
         xCoordinate.setText("X");
         jPanel3.add(xCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, -1));
@@ -359,7 +360,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
                 addNodeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, -1));
+        jPanel3.add(addNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 120, -1));
 
         removeNodeButton.setBackground(new java.awt.Color(255, 0, 0));
         removeNodeButton.setText("Remove Node");
@@ -368,7 +369,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
                 removeNodeButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(removeNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
+        jPanel3.add(removeNodeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 120, -1));
 
         jTabbedPane1.addTab("Edit", null, jPanel3, "");
 
@@ -461,7 +462,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }//GEN-LAST:event_rightArrowActionPerformed
 
     private void playBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBackButtonActionPerformed
-        // TODO add your handling code here:
+        testingTimeline.runTimeline(this);
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
@@ -505,9 +506,34 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }//GEN-LAST:event_addNodeButtonActionPerformed
 
     private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
-        // TODO add your handling code here:
-        //Apply changes to currentNode
-        //In other words, replace it. Insert the new node and delete the current node.
+        Node newNode;
+        int delayDuration = Integer.parseInt(DelayDisplay.getText());
+        boolean pressRelease = PressOrRelease.getSelectedIndex() == 1;
+        if (KeyorMouseComboBox.getSelectedIndex() == 1) {
+            int button;
+            if (KeyEntry.getText().toLowerCase().equals("left"))
+                button = MouseEvent.BUTTON1_DOWN_MASK;
+            else if (KeyEntry.getText().toLowerCase().equals("right"))
+                button = MouseEvent.BUTTON2_DOWN_MASK;
+            else if (KeyEntry.getText().toLowerCase().equals("middle"))
+                button = MouseEvent.BUTTON3_DOWN_MASK;
+            else {
+                KeyEntry.setText("Invalid Entry");
+                return;
+            }
+            int x = Integer.parseInt(xCoordinate.getText()),
+                y = Integer.parseInt(yCoordinate.getText());
+            newNode = new MouseInputNode(null, delayDuration, pressRelease, button, x, y);
+        }
+        else {
+            int button = (int)KeyEntry.getText().toUpperCase().charAt(0);
+            newNode = new KeyInputNode(null, delayDuration, pressRelease, button);
+        }
+        testingTimeline.setCurrentNode(currentNode);
+        testingTimeline.insertBeforeNode(currentNode, newNode, delayDuration);
+        testingTimeline.removeCurrentNode();
+        currentNode = newNode;
+        refreshCurrentNode();
     }//GEN-LAST:event_applyChangesButtonActionPerformed
 
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
