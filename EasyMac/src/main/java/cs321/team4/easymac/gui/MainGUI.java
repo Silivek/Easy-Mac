@@ -62,7 +62,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
            xCoordinate.setText("n/a");
            yCoordinate.setText("n/a");
        }
-       if (currentNode.getPressRelease() == false) {
+       if (currentNode.getPressRelease()) {
            PressOrRelease.setSelectedIndex(1);
        } else {
            PressOrRelease.setSelectedIndex(0);
@@ -321,6 +321,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         stopMacroButton.setBackground(new java.awt.Color(153, 0, 0));
         stopMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         stopMacroButton.setText("Stop Macro");
+        stopMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(stopMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         applyChangesButton.setText("Apply Changes");
@@ -352,6 +357,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         startMacroButton.setBackground(new java.awt.Color(0, 153, 51));
         startMacroButton.setForeground(new java.awt.Color(242, 242, 242));
         startMacroButton.setText("Start Macro");
+        startMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startMacroActionPerformed(evt);
+            }
+        });
         jPanel3.add(startMacroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
         addNodeButton.setText("Add Node");
