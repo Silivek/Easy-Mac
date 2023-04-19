@@ -431,6 +431,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     // TODO add your handling code here:
         if (currentFile != null) {
             //save timeline to preexisting file if it exists
+            FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
         } else {
             //else default to save as... functionality
             SaveAs(evt);
