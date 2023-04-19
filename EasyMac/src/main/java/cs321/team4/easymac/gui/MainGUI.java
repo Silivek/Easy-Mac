@@ -37,11 +37,13 @@ public class MainGUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    String keyPress;
+    
    // Scanner userSelection = new Scanner(System.in);
     KeyListener listener = new KeyListener();
     Timeline testingTimeline;
     Node currentNode;
+    Scanner userSelection = new Scanner(System.in);
+    boolean stopMacro;
 
     public MainGUI(Timeline timeline) {
         initComponents();
