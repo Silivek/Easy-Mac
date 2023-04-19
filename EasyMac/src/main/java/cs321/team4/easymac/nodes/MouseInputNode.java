@@ -30,7 +30,25 @@ public class MouseInputNode extends InputNode {
     public MouseInputNode(Node prev, int button) {
         super(prev, button);
     }
-
+    
+    /**
+     * Constructs a MouseInputNode object specifying the previous node, the
+     * delay time until the next node is called, the mouse clicks, and if the
+     * action is to click or release.
+     *
+     * @param prev the previous node in the list.
+     * @param delayDuration how long until the next node is called in
+     * milliseconds.
+     * @param button the identifier for the type of mouse press.
+     * @param pressRelease true indicates to press our button, false to release
+     * it.
+     */
+    public MouseInputNode(Node prev, int delayDuration, boolean pressRelease, int button) {
+        super(prev, delayDuration, pressRelease, button);
+        this.x = -1;
+        this.y = -1;
+    }
+    
     /**
      * Constructs a MouseInputNode object specifying the previous node, the
      * delay time until the next node is called, the mouse clicks, and if the
@@ -58,11 +76,12 @@ public class MouseInputNode extends InputNode {
     public void runNode() { //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            if(pressRelease){
+            if(pressRelease && x >=0 && y >= 0){
                 robot.mouseMove(x,y);
                 robot.mousePress(button);
-            }
-            else {
+            } else if (pressRelease) {
+                robot.mousePress(button);
+            } else {
                 robot.mouseRelease(button);
             }
         } catch (AWTException ex) {

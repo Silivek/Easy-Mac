@@ -9,21 +9,14 @@ import cs321.team4.easymac.FileReader;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.event.MouseEvent;
 import cs321.team4.easymac.nodes.KeyInputNode;
-import cs321.team4.easymac.nodes.InputNode;
-import cs321.team4.easymac.Main;
-import static cs321.team4.easymac.Main.createNewMacro;
 import cs321.team4.easymac.Timeline;
 import cs321.team4.easymac.interfaces.IActionCanceller;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
 import utilities.KeyListener;
 
 /**
