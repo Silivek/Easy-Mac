@@ -24,7 +24,7 @@ public class FileGenerator {
     public static void fileGeneration(Timeline tLine, String filePath) {
         try {
             //FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
-            FileOutputStream fout = new FileOutputStream("C:\\Class\\obj.txt");
+            FileOutputStream fout = new FileOutputStream(filePath);
             try (ObjectOutputStream oOut = new ObjectOutputStream(fout)) //creates the object printer
             {
                 Object billy = tLine.startNode;
