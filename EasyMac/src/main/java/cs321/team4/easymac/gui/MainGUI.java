@@ -4,6 +4,7 @@
  */
 package cs321.team4.easymac.gui;
 
+import cs321.team4.easymac.FileGenerator;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.event.MouseEvent;
 import cs321.team4.easymac.nodes.KeyInputNode;
@@ -13,6 +14,7 @@ import static cs321.team4.easymac.Main.createNewMacro;
 import cs321.team4.easymac.Timeline;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
+import java.awt.event.ActionEvent;
 import java.util.Arrays;
 import java.util.Scanner;
 import cs321.team4.easymac.interfaces.IActionCanceller;
@@ -198,6 +200,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         jPanel1.add(newButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         SaveAsButton.setText("Save As...");
+        SaveAsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveAsButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(SaveAsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         mainTextDisplay.setColumns(20);
@@ -398,7 +405,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         // open a filechooser dialog menu.
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
         if (fileChooser.showOpenDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
-            // load from file
+            // load from selected file
             currentFile = fileChooser.getSelectedFile();
             fileName.setText(currentFile.getName());
         }
@@ -407,7 +414,19 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
         
+        // TODO add your handling code here:
+        testingTimeline = new Timeline();
     }//GEN-LAST:event_newButtonActionPerformed
+
+    private void SaveAs(java.awt.event.ActionEvent evt) {
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+            if (fileChooser.showSaveDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+                currentFile = fileChooser.getSelectedFile();
+                fileName.setText(currentFile.getName());
+                //save to selected file
+                FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
+            }    
+    }                                            
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
@@ -415,8 +434,8 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             //save timeline to preexisting file if it exists
         } else {
             //else default to save as... functionality
-        }
-
+            SaveAs(evt);
+            }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     
@@ -443,6 +462,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     private void playBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBackButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_playBackButtonActionPerformed
+    private void SaveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsButtonActionPerformed
+        SaveAs(evt);
+    }//GEN-LAST:event_SaveAsButtonActionPerformed
+
+    Timeline timeline;
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         //keyPress.equals("-1");
@@ -578,13 +602,13 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     /**
      * @param args the command line arguments
      */
-    //public static void main(String args[]) {
+    public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
      */
- /*try {
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -603,12 +627,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         //</editor-fold>
 
         /* Create and display the form */
- /*java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGUI().setVisible(true);
             }
         });
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DelayDisplay;
