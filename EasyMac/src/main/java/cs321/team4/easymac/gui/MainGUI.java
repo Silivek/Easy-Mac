@@ -39,7 +39,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     String keyPress;
     KeyListener listener = new KeyListener();
     Scanner userSelection = new Scanner(System.in);
-    boolean stopMacro = false;
+    boolean stopMacro = true;
     
     /**
      * refreshes the GUI to show the current data held in currentNode
