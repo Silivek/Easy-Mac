@@ -430,6 +430,8 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         testingTimeline.addNode(new KeyInputNode(null, 0));
         currentNode = testingTimeline.getStartNode();
         refreshCurrentNode();
+        updateLeftArrow(leftArrow);
+        updateRightArrow(rightArrow);
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void SaveAs(java.awt.event.ActionEvent evt) {
