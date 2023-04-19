@@ -26,7 +26,7 @@ public class FileReader {
         
         System.out.println("File Should Have been read");
         try {
-            FileInputStream fIn = new FileInputStream("C:\\Class\\obj.txt"); //designates the location to read from
+            FileInputStream fIn = new FileInputStream(filePath); //designates the location to read from
             Timeline orange = new Timeline();
             try (ObjectInputStream oIn = new ObjectInputStream(fIn)) //creates the object reader
             {
