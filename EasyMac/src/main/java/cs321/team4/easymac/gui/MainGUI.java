@@ -477,7 +477,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }//GEN-LAST:event_rightArrowActionPerformed
 
     private void playBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBackButtonActionPerformed
-        testingTimeline.runTimeline(this);
+        startMacroActionPerformed(evt);
     }//GEN-LAST:event_playBackButtonActionPerformed
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
