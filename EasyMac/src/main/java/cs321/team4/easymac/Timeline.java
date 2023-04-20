@@ -17,7 +17,7 @@ import java.io.Serializable;
 /**
  * A class that creates the stores the node elements in a timeline.
  *
- * @author benspurlock
+ * @author Ben Spurlock
  */
 public class Timeline implements Serializable {
 

@@ -7,7 +7,7 @@ package cs321.team4.easymac.interfaces;
 /**
  * Class that manages the running of the macro????
  *
- * @author wkilp
+ * @author Liam Kilpatrick
  */
 public interface IActionCanceller {
 

@@ -9,7 +9,7 @@ import java.awt.Color;
 /**
  * A class that defines the color scheme for the macro.
  *
- * @author Melissa
+ * @author Melissa Burel
  */
 public enum ColorBrand {
     /**

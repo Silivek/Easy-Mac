@@ -18,8 +18,13 @@ import org.jnativehook.NativeHookException;
 import utilities.KeyListener;
 
 /**
- *
- * @author wkilp
+ * Class for the graphic user interface.
+ * 
+ * @author Liam Kilpatrick
+ * @author Melissa Burel
+ * @author Ben Spurlock
+ * @author Brian Boggs
+ * @author Logan Price
  */
 public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 

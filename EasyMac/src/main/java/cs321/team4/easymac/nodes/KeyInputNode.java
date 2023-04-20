@@ -13,7 +13,7 @@ import java.io.Serializable;
 /**
  * A class for creating an input node for key strokes.
  *
- * @author wkilp
+ * @author Liam Kilpatrick
  */
 public class KeyInputNode extends InputNode implements Serializable {
 

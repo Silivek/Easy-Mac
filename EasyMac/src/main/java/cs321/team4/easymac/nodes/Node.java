@@ -7,7 +7,7 @@ package cs321.team4.easymac.nodes;
 /**
  * A class for producing nodes.
  *
- * @author benspurlock
+ * @author Ben Spurlock
  */
 public class Node {
 

@@ -7,7 +7,7 @@ package cs321.team4.easymac.nodes;
 /**
  * A class for creating an input node.
  *
- * @author Brian
+ * @author Brian Boggs
  */
 public class InputNode extends Node {
 

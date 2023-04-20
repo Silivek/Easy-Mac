@@ -16,7 +16,7 @@ import cs321.team4.easymac.nodes.MouseInputNode;
 /**
  * A class for implementing NativeKeyListener
  *
- * @author Melissa
+ * @author Melissa Burel
  */
 public class KeyListener implements NativeKeyListener {
 

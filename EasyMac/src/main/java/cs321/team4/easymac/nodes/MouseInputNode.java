@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 /**
  * A class for creating an input node for mouse inputs.
  *
- * @author wkilp
+ * @author Liam Kilpatrick
  */
 public class MouseInputNode extends InputNode {
 

@@ -13,7 +13,8 @@ import cs321.team4.easymac.gui.MainGUI;
 /**
  * A class to run the EasyMac program in the command line.
  *
- * @author Melissa
+ * @author Melissa Burel
+ * @author Liam Kilpatrick
  */
 public class Main {
 

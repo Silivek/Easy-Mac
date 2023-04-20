@@ -7,7 +7,7 @@ package cs321.team4.easymac.nodes;
 /**
  * A class that provides looping capabilities for the macro.
  *
- * @author Brian
+ * @author Brian Boggs
  */
 public class LoopNode extends Node {
 
