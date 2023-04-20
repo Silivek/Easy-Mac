@@ -13,8 +13,6 @@ import cs321.team4.easymac.Timeline;
 import cs321.team4.easymac.interfaces.IActionCanceller;
 import javax.swing.JButton;
 import cs321.team4.easymac.nodes.MouseInputNode;
-
-import java.util.Scanner;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import utilities.KeyListener;
@@ -36,44 +34,43 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     Timeline testingTimeline;
     Node currentNode;
-    String keyPress;
     KeyListener listener = new KeyListener();
-    Scanner userSelection = new Scanner(System.in);
     boolean stopMacro = true;
-    
+
     /**
      * refreshes the GUI to show the current data held in currentNode
      */
     private void refreshCurrentNode() {
-       if (currentNode instanceof MouseInputNode) {
-           MouseInputNode mouseNode = (MouseInputNode) currentNode;
-           KeyorMouseComboBox.setSelectedIndex(1);
-           xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
-           yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
-       } else {
-           KeyorMouseComboBox.setSelectedIndex(0);
-           xCoordinate.setText("n/a");
-           yCoordinate.setText("n/a");
-       }
-       if (currentNode.getPressRelease()) {
-           PressOrRelease.setSelectedIndex(1);
-       } else {
-           PressOrRelease.setSelectedIndex(0);
-       }
-       char asciiValue = (char)currentNode.getButton();
-       KeyEntry.setText(""+asciiValue);
-       DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
+        if (currentNode instanceof MouseInputNode) {
+            MouseInputNode mouseNode = (MouseInputNode) currentNode;
+            KeyorMouseComboBox.setSelectedIndex(1);
+            xCoordinate.setText(String.valueOf(mouseNode.getXCoordinate()));
+            yCoordinate.setText(String.valueOf(mouseNode.getYCoordinate()));
+        } else {
+            KeyorMouseComboBox.setSelectedIndex(0);
+            xCoordinate.setText("n/a");
+            yCoordinate.setText("n/a");
+        }
+        if (currentNode.getPressRelease()) {
+            PressOrRelease.setSelectedIndex(1);
+        } else {
+            PressOrRelease.setSelectedIndex(0);
+        }
+        char asciiValue = (char) currentNode.getButton();
+        KeyEntry.setText("" + asciiValue);
+        DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
+
     public MainGUI(Timeline timeline) {
         initComponents();
         testingTimeline = timeline;
         currentNode = testingTimeline.getStartNode();
         leftArrow.setVisible(false);
-        
+
         if (currentNode.getNextNode() == null) {
             rightArrow.setVisible(false);
         }
-                
+
         refreshCurrentNode();
     }
 
@@ -402,6 +399,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         // TODO add your handling code here:
     }//GEN-LAST:event_KeyorMouseComboBoxActionPerformed
 
+    /**
+     * Button opens the file chooser menu to allow the user to select a file to
+     * load.
+     *
+     * @param evt the action of clicking on the open button.
+     */
     private void openButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openButtonActionPerformed
         // open a filechooser dialog menu.
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
@@ -417,6 +420,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         }
     }//GEN-LAST:event_openButtonActionPerformed
 
+    /**
+     * This button informs the user of their next steps to make a timeline while
+     * preparing the environment to create the timeline.
+     *
+     * @param evt the action of clicking on the new button.
+     */
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         mainTextDisplay.setText("Press Record to begin recording your macro. Press stop when you are finished.");
         testingTimeline = new Timeline();
@@ -427,28 +436,43 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         updateRightArrow(rightArrow);
     }//GEN-LAST:event_newButtonActionPerformed
 
+    /**
+     * Allows the user to save a file with a user-selected name.
+     *
+     * @param evt the action of clicking on the save as button.
+     */
     private void SaveAs(java.awt.event.ActionEvent evt) {
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-            if (fileChooser.showSaveDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
-                currentFile = fileChooser.getSelectedFile();
-                fileName.setText(currentFile.getName());
-                //save to selected file
-                FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
-            }    
-    }      
-    
+        if (fileChooser.showSaveDialog(MainGUI.this) == javax.swing.JFileChooser.APPROVE_OPTION) {
+            currentFile = fileChooser.getSelectedFile();
+            fileName.setText(currentFile.getName());
+            //save to selected file
+            FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
+        }
+    }
+
+    /**
+     * Enables the user to save their timeline.
+     *
+     * @param evt the action of clicking on the save button.
+     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-    // TODO add your handling code here:
+        // TODO add your handling code here:
         if (currentFile != null) {
             //save timeline to preexisting file if it exists
             FileGenerator.fileGeneration(testingTimeline, currentFile.getAbsolutePath());
         } else {
             //else default to save as... functionality
             SaveAs(evt);
-            }
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    
+    /**
+     * Enables the user to click through the nodes in the timeline to the left
+     * (or earlier in the timeline).
+     *
+     * @param evt the action of clicking on the left arrow button.
+     */
     private void leftArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftArrowActionPerformed
         if (currentNode.getPrevNode() != null) {
             currentNode = currentNode.getPrevNode();
@@ -458,7 +482,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         updateLeftArrow(leftArrow);
         updateRightArrow(rightArrow);
     }//GEN-LAST:event_leftArrowActionPerformed
-
+    /**
+     * Enables the user to click through the nodes in the timeline to the right
+     * (or later in the timeline).
+     *
+     * @param evt the action of clicking on the right arrow button.
+     */
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
         if (currentNode.getNextNode() != null) {
             currentNode = currentNode.getNextNode();
@@ -469,10 +498,20 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         updateLeftArrow(leftArrow);
     }//GEN-LAST:event_rightArrowActionPerformed
 
+    /**
+     * Performs the contents of the timeline.
+     *
+     * @param evt the action of clicking on the playback button.
+     */
     private void playBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBackButtonActionPerformed
         startMacroActionPerformed(evt);
     }//GEN-LAST:event_playBackButtonActionPerformed
 
+    /**
+     * Stops the recording of the macro.
+     *
+     * @param evt the action of clicking on the stop button.
+     */
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         GlobalScreen.removeNativeKeyListener(listener);
         try {
@@ -488,23 +527,31 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         updateRightArrow(rightArrow);
     }//GEN-LAST:event_stopButtonActionPerformed
 
+    /**
+     * Starts recording the actions for the macro.
+     *
+     * @param evt the action of clicking on the record button.
+     */
     private void recordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtonActionPerformed
         mainTextDisplay.setText("Recording in process...");
-        try{
+        try {
             GlobalScreen.registerNativeHook();
-        }catch (NativeHookException e){
+        } catch (NativeHookException e) {
             e.printStackTrace();
         }
-        
+
         GlobalScreen.addNativeKeyListener(listener);
     }//GEN-LAST:event_recordButtonActionPerformed
 
+    /**
+     * Adds a node to the timeline of the macro.
+     *
+     * @param evt the action of clicking on the add node button.
+     */
     private void addNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNodeButtonActionPerformed
-        // TODO add your handling code here:
-        //Check if currentNode is endnode
         Node newNode = new Node();
         testingTimeline.setCurrentNode(currentNode); //Sync current nodes (!!)
-        
+
         if (testingTimeline.getCurrentNode() == testingTimeline.getEndNode()) {
             //If so then use addNode 
             testingTimeline.addNode(newNode);
@@ -512,60 +559,69 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             //else use insertBeforeNode
             testingTimeline.insertBeforeNode(currentNode, newNode, 0);
         }
-        
+
         updateRightArrow(rightArrow);
         updateLeftArrow(leftArrow);
-        
     }//GEN-LAST:event_addNodeButtonActionPerformed
 
+    /**
+     * Saves changes to an edited node.
+     *
+     * @param evt the action of clicking on the apply changes button.
+     */
     private void applyChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyChangesButtonActionPerformed
         Node newNode;
         int delayDuration = Integer.parseInt(DelayDisplay.getText());
         boolean pressRelease = PressOrRelease.getSelectedIndex() == 1;
         if (KeyorMouseComboBox.getSelectedIndex() == 1) {
             int button;
-            if (KeyEntry.getText().toLowerCase().equals("left"))
+            if (KeyEntry.getText().toLowerCase().equals("left")) {
                 button = MouseEvent.BUTTON1_DOWN_MASK;
-            else if (KeyEntry.getText().toLowerCase().equals("right"))
+            } else if (KeyEntry.getText().toLowerCase().equals("right")) {
                 button = MouseEvent.BUTTON2_DOWN_MASK;
-            else if (KeyEntry.getText().toLowerCase().equals("middle"))
+            } else if (KeyEntry.getText().toLowerCase().equals("middle")) {
                 button = MouseEvent.BUTTON3_DOWN_MASK;
-            else {
+            } else {
                 KeyEntry.setText("Invalid Entry");
                 return;
             }
             int x = Integer.parseInt(xCoordinate.getText()),
-                y = Integer.parseInt(yCoordinate.getText());
+                    y = Integer.parseInt(yCoordinate.getText());
             newNode = new MouseInputNode(null, delayDuration, pressRelease, button, x, y);
-        }
-        else {
-            int button = (int)KeyEntry.getText().toUpperCase().charAt(0);
+        } else {
+            int button = (int) KeyEntry.getText().toUpperCase().charAt(0);
             newNode = new KeyInputNode(null, delayDuration, pressRelease, button);
         }
         testingTimeline.setCurrentNode(currentNode);
         testingTimeline.insertBeforeNode(currentNode, newNode, delayDuration);
-        if (currentNode.getNextNode() == null)
+        if (currentNode.getNextNode() == null) {
             testingTimeline.removeEndNode();
-        else
+        } else {
             testingTimeline.removeCurrentNode();
+        }
         currentNode = newNode;
         refreshCurrentNode();
     }//GEN-LAST:event_applyChangesButtonActionPerformed
 
+    /**
+     * Removes a node from the timeline.
+     *
+     * @param evt the action of clicking on the remove node button.
+     */
     private void removeNodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeNodeButtonActionPerformed
         // TODO add your handling code here:
         //Remove current node
         if (currentNode != null) {
             //if (currentNode == testingTimeline.getStartNode())
-                //testingTimeline.setStartNode();
+            //testingTimeline.setStartNode();
             testingTimeline.setCurrentNode(currentNode); //Sync current nodes
-            
+
             if (currentNode.getPrevNode() == null) {
                 currentNode = currentNode.getNextNode(); //Set new current node (for GUI only)
             } else {
                 currentNode = currentNode.getPrevNode(); //Set new current node (for GUI only)
             }
-            
+
             if (testingTimeline.getCurrentNode() != testingTimeline.getEndNode()) {
                 testingTimeline.removeCurrentNode();
             } else {
@@ -577,47 +633,67 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             *  This shouldn't be an issue, but it will be necessary to call
             *  testingTimeline.setCurrentNode(currentNode) whenever you want use
             *  the timeline's currentNode, like in the case of removeCurrentNode().
-            */
+             */
         }
         updateRightArrow(rightArrow);
         updateLeftArrow(leftArrow);
 
         if (currentNode.getNextNode() == null) {
-                rightArrow.setVisible(false);
+            rightArrow.setVisible(false);
         }
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
+    /**
+     * Plays the macro.
+     *
+     * @param evt the action of clicking on the start macro button.
+     */
     private void startMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMacroActionPerformed
         stopMacro = false;
-        Thread t = new Thread()
-        {
+        Thread t = new Thread() {
             @Override
-            public void run()
-            {
+            public void run() {
                 testingTimeline.runTimeline(MainGUI.this);
             }
         };
         t.start();
     }//GEN-LAST:event_startMacroActionPerformed
 
+    /**
+     * Stops the timeline when it is running.
+     *
+     * @param evt the action of clicking on the stop macro button.
+     */
     private void stopMacroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopMacroActionPerformed
         cancelAction();
     }//GEN-LAST:event_stopMacroActionPerformed
 
+    /**
+     * Saves the macro with a name provided by the user.
+     *
+     * @param evt the action of clicking on the save as button.
+     */
     private void SaveAsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsButtonActionPerformed
         SaveAs(evt);
     }//GEN-LAST:event_SaveAsButtonActionPerformed
+
+    /**
+     * Assigns true to the value of stopMacro to cancel the running of the
+     * macro.
+     */
     @Override
     public synchronized void cancelAction() {
         stopMacro = true;
     }
+
+    /**
+     * Returns the Boolean value to show if the macro has been stopped.
+     *
+     * @return Boolean value to indicate if the macro has stopped.
+     */
     @Override
     public synchronized boolean actionCancelled() {
         return stopMacro;
-    }
-    // this may not be necessary since it is a global variable in this file
-    public Timeline getTimeline() {
-        return testingTimeline;
     }
 
     /**
@@ -649,15 +725,17 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }
 
     /**
-     * @param args the command line arguments
+     * Runs the program's execution.
+     *
+     * @param args the command line arguments.
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
- try {
+         */
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -676,7 +754,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         //</editor-fold>
 
         /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGUI().setVisible(true);
             }
