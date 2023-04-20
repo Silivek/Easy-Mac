@@ -76,7 +76,7 @@ public class LoopNode extends Node {
     }
 
     /**
-     * Gets the repeat count.
+     * Sets the repeat count.
      *
      * @param repeatCount the number of times the node will loop before
      * reverting.

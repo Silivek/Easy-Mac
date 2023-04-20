@@ -14,7 +14,6 @@ import java.util.logging.Logger;
  *
  * @author wkilp
  */
-// TODO determine if MouseInputNode requires more methods
 public class MouseInputNode extends InputNode {
 
     int x;
@@ -30,7 +29,7 @@ public class MouseInputNode extends InputNode {
     public MouseInputNode(Node prev, int button) {
         super(prev, button);
     }
-    
+
     /**
      * Constructs a MouseInputNode object specifying the previous node, the
      * delay time until the next node is called, the mouse clicks, and if the
@@ -48,7 +47,7 @@ public class MouseInputNode extends InputNode {
         this.x = -1;
         this.y = -1;
     }
-    
+
     /**
      * Constructs a MouseInputNode object specifying the previous node, the
      * delay time until the next node is called, the mouse clicks, and if the
@@ -76,8 +75,8 @@ public class MouseInputNode extends InputNode {
     public void runNode() { //runs node contents
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
-            if(pressRelease && x >=0 && y >= 0){
-                robot.mouseMove(x,y);
+            if (pressRelease && x >= 0 && y >= 0) {
+                robot.mouseMove(x, y);
                 robot.mousePress(button);
             } else if (pressRelease) {
                 robot.mousePress(button);
@@ -107,20 +106,22 @@ public class MouseInputNode extends InputNode {
         this.x = x;
         this.y = y;
     }
-    
+
     /**
-     * Provides the value for the x coordinate.
+     * Returns the value for the x coordinate.
+     *
      * @return x value.
      */
-    public int getXCoordinate(){
+    public int getXCoordinate() {
         return x;
     }
-    
-    /** 
-     * Provides the value for the y coordinate.
+
+    /**
+     * Returns the value for the y coordinate.
+     *
      * @return y value.
      */
-    public int getYCoordinate(){
+    public int getYCoordinate() {
         return y;
     }
 }

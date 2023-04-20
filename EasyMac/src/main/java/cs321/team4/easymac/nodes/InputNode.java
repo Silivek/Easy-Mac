@@ -22,7 +22,7 @@ public class InputNode extends Node {
      * @param next The next node in the list.
      * @param delayDuration How long until the next node is called in
      * milliseconds.
-     * @param pressRelease True indicates to press our button, false to release
+     * @param pressRelease True indicates to press the button, false to release
      * it.
      * @param button Identifier for mouse button or key.
      *
@@ -81,7 +81,7 @@ public class InputNode extends Node {
     /**
      * Indicates if a button has been released.
      *
-     * @return boolean value where true indicates to press our button, false to
+     * @return Boolean value where true indicates to press the button, false to
      * release it.
      */
     public boolean getPressRelease() {
@@ -89,7 +89,8 @@ public class InputNode extends Node {
     }
 
     /**
-     * Stores the boolean value to indicate if the press release has occurred.
+     * Stores the Boolean value to indicate if the press or release has
+     * occurred.
      *
      * @param pressRelease stores the pressRelease.
      */

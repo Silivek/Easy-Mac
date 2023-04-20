@@ -15,7 +15,6 @@ import java.io.Serializable;
  *
  * @author wkilp
  */
-// TODO determine if KeyInputNode requires more methods
 public class KeyInputNode extends InputNode implements Serializable {
 
     /**
@@ -51,10 +50,9 @@ public class KeyInputNode extends InputNode implements Serializable {
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             try {
-                if(pressRelease) {
-                    robot.keyPress(button);  
-                }
-                else {
+                if (pressRelease) {
+                    robot.keyPress(button);
+                } else {
                     robot.keyRelease(button);
                 }
             } catch (IllegalArgumentException ilEx) {
