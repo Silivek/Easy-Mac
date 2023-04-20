@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 /**
- * A class to create a file path for storing a user's macro
+ * A class to create a file path for storing a user's macro.
  *
  * @author Logan Price
  */
@@ -30,8 +30,7 @@ public class FileGenerator {
                 Object billy = tLine.startNode;
                 oOut.writeObject(billy);  //write the timeline to the file
                 tLine.currentNode = tLine.startNode;
-                for(int i = 1; i <6; i++)
-                {
+                for (int i = 1; i < 6; i++) {
                     oOut.writeObject(billy);
                     billy = tLine.currentNode.getNextNode();
                     System.out.println(i);
@@ -40,7 +39,7 @@ public class FileGenerator {
                 fout.close();
             } //write the timeline to the file
         } catch (IOException ex) {
-            ex.printStackTrace();  
+            ex.printStackTrace();
         }
     }
 }

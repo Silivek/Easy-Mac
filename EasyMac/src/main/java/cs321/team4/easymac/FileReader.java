@@ -16,14 +16,14 @@ import java.io.ObjectInputStream;
  */
 public class FileReader {
 
-    // TODO set up the File Reader classes
-   /**
-    * Reads the macro from the file.
-    * @param filePath where the saved macro is located.
-    * @throws ClassNotFoundException if file is not found.
-    */
+    /**
+     * Reads the macro from the file.
+     *
+     * @param filePath where the saved macro is located.
+     * @throws ClassNotFoundException if file is not found.
+     */
     public static Timeline ReadTimeline(String filePath) throws ClassNotFoundException {
-        
+
         System.out.println("File Should Have been read");
         try {
             FileInputStream fIn = new FileInputStream(filePath); //designates the location to read from
@@ -43,7 +43,7 @@ public class FileReader {
                 return orange;
             }
         } catch (IOException ex) {
-            ex.printStackTrace();  
+            ex.printStackTrace();
             return null;
         }
     }

@@ -19,17 +19,11 @@ import java.io.Serializable;
  *
  * @author benspurlock
  */
-public class Timeline implements Serializable{
-    //TODO Test timeline
-    //TODO Ensure addNode() and insertNode() can store key info
-    //TODO print node contents to console
-    //TODO Undo/redo functionality?
+public class Timeline implements Serializable {
 
     final int MAX_SIZE = 100;
     int num_of_nodes = 0;
     Node startNode, endNode, currentNode; //startNode and endNode are for structuring, currentNode is for running the Timeline
-
-    int delayTimer; //Timer for playback (May be unused?)
 
     /**
      * Constructs a Timeline object to store nodes.
@@ -39,9 +33,6 @@ public class Timeline implements Serializable{
         endNode = null;
         currentNode = null;
     }
-
-    // TODO fix addNode to be passed a node instead of parameters
-    //Adds a node to the end of the timeline
 
     /**
      * Adds a node to the end of the timeline.
@@ -89,58 +80,56 @@ public class Timeline implements Serializable{
         //Update new endNode
         endNode = prevNode;
     }
-    
+
     /**
-     * Removes a node from the timeline and connects the surrounding nodes
+     * Removes a node from the timeline and connects the surrounding nodes.
      *
-     * @param node node to remove
+     * @param node node to remove.
      */
     public void removeNode(Node node) {
-        
+
         //Get surrounding nodes
         Node prevNode, nextNode;
         prevNode = node.getPrevNode();
         nextNode = node.getNextNode();
-        
+
         //Connect previous node to next node
         prevNode.setNextNode(nextNode);
-        
+
         //Connect next node to previous node
         nextNode.setPrevNode(prevNode);
-        
+
         num_of_nodes--;
     }
-    
+
     /**
-     * Removes the current node from the timeline and connects the surrounding nodes
-     * (Mainly for convenience)
+     * Removes the current node from the timeline and connects the surrounding
+     * nodes.
+     *
      */
     public void removeCurrentNode() {
-        
         //Get surrounding nodes
         Node prevNode, nextNode;
         prevNode = currentNode.getPrevNode();
         nextNode = currentNode.getNextNode();
-        
+
         //Connect previous node to next node
         prevNode.setNextNode(nextNode);
-        
+
         //Connect next node to previous node
         nextNode.setPrevNode(prevNode);
-        
+
         num_of_nodes--;
     }
 
-    
-    // TODO fix functionality to pass a node and use currently displayed node (unimplemented)
     /**
-     * Inserting a new node before the designated node
+     * Inserts a new node before the designated node.
      *
      * @param currentNode the current node location.
-     * @param delay ????
+     * @param delay how long until the next node is called in milliseconds.
      * @param newNode is the node that will be inserted
      */
-     public void insertBeforeNode(Node currentNode, Node newNode, int delay) {
+    public void insertBeforeNode(Node currentNode, Node newNode, int delay) {
         //Prevent user from exceeding node limit
         if (num_of_nodes > MAX_SIZE) {
             System.out.println("Cannot exceed node limit.");
@@ -152,7 +141,7 @@ public class Timeline implements Serializable{
 
         //Set delay of new node
         newNode.setDelayDuration(delay);
-        
+
         //Connect new node to node it was inserted after...
         newNode.setPrevNode(currentNode.getPrevNode());
         //...and before
@@ -160,14 +149,13 @@ public class Timeline implements Serializable{
 
         //Connect prev node to new node
         if (currentNode.getPrevNode() != null) {
-            currentNode.getPrevNode().setNextNode(newNode);           
+            currentNode.getPrevNode().setNextNode(newNode);
         } else { //Set new starting node if necessary
             this.startNode = newNode;
         }
-        
+
         //Connect the current node to the new node
         currentNode.setPrevNode(newNode);
-
     }
 
     /**
@@ -185,13 +173,12 @@ public class Timeline implements Serializable{
         } while (currentNode != this.endNode);
     }
 
-  
     /**
      * Runs the delay time using another object of robot.
-     * @param cur node to read delay from
+     *
+     * @param cur node to read delay from.
      */
     public void runNodeDelay(Node cur) {
-
         try { // try/catch in case Robot is in wrong environment
             Robot robot = new Robot();
             robot.delay(cur.getDelayDuration());
@@ -203,7 +190,9 @@ public class Timeline implements Serializable{
 
     /**
      * Runs the timeline.
-     * @param actionRunner using IActionCanceller to stop running the timeline when necessary
+     *
+     * @param actionRunner using IActionCanceller to stop running the timeline
+     * when necessary.
      */
     public void runTimeline(IActionCanceller actionRunner) {
         if (startNode == null) {
@@ -211,8 +200,9 @@ public class Timeline implements Serializable{
         }
         Node cur = startNode;
         while (true) {
-            if (actionRunner.actionCancelled())
+            if (actionRunner.actionCancelled()) {
                 return;
+            }
             cur.runNode();
             runNodeDelay(cur);
             if (cur != endNode) {
@@ -223,56 +213,60 @@ public class Timeline implements Serializable{
             }
         }
     }
-    
+
     /**
-     * Finds and returns the starting node
-     * @return the node that starts the timeline
+     * Finds and returns the starting node.
+     *
+     * @return the node that starts the timeline.
      */
-    public Node getStartNode(){
+    public Node getStartNode() {
         return startNode;
     }
-    
+
     /**
-     * Finds and returns the last node
-     * @return the node that ends the timeline
+     * Finds and returns the last node.
+     *
+     * @return the node that ends the timeline.
      */
-    public Node getEndNode(){
+    public Node getEndNode() {
         return endNode;
     }
-    
+
     /**
-     * Provides access to the timeline's current node
-     * @return the current node
+     * Provides access to the timeline's current node.
+     *
+     * @return the current node.
      */
     public Node getCurrentNode() {
         return currentNode;
     }
-    
+
     /**
-     * Sets the timeline's current node
-     * @param node to be set
+     * Sets the timeline's current node.
+     *
+     * @param node to be set.
      */
     public void setCurrentNode(Node node) {
         currentNode = node;
     }
-    
+
     /**
-     * Set timeline's current node to the previous node
-     * @return the previous node
+     * Set timeline's current node to the previous node.
+     *
+     * @return the previous node.
      */
     Node prevNode() {
         currentNode = currentNode.getPrevNode();
         return currentNode;
     }
-    
-    
+
     /**
-     * Set timeline's current node to the next node
-     * @return the next node
+     * Set timeline's current node to the next node.
+     *
+     * @return the next node.
      */
     Node nextNode() {
         currentNode = currentNode.getNextNode();
         return currentNode;
     }
-    //TODO update comments
 }

@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import cs321.team4.easymac.gui.MainGUI;
 
 /**
- * A class to run the EasyMac program.
+ * A class to run the EasyMac program in the command line.
  *
  * @author Melissa
  */
@@ -20,7 +20,7 @@ public class Main {
     /**
      * Provides the opening menu for the command line
      */
-    public static void introMenu(){
+    public static void introMenu() {
         System.out.println("*********************************************");
         System.out.println("*                                           *");
         System.out.println("*             Welcome to EasyMac            *");
@@ -30,26 +30,27 @@ public class Main {
         System.out.println("*                                           *");
         System.out.println("*********************************************");
     }
-    
+
     /**
-     *  Provides the menu for navigating macro options
+     * Provides the menu for navigating macro options
      */
-    public static void optionMenu(){
-         System.out.println("*********************************************");
+    public static void optionMenu() {
+        System.out.println("*********************************************");
         System.out.println("*                                           *");
         System.out.println("*            1. Create a new macro          *");
         // System.out.println("*            2. Load a saved macro          *");
         System.out.println("*                                           *");
         System.out.println("*********************************************");
     }
-    
+
     /**
      * Adds elements to the timeline based on user selection and input
+     *
      * @param selection the option chosen by the user for their next action
      * @param userCreatedTimeline the timeline that the user is building
      * @param userSelection reads in the user's selections
      */
-    public static void createNewMacro(int selection, Timeline userCreatedTimeline, Scanner userSelection){
+    public static void createNewMacro(int selection, Timeline userCreatedTimeline, Scanner userSelection) {
         if (selection == 1) {
             String keyPress = "";
             System.out.println("Enter -1 to stop entering values. Press -2 at any time to run your macro. Currently accepted inputs are Left, Right, and any non-special character (although some do work). Left and Right designate Mouse Clicks");
@@ -73,55 +74,24 @@ public class Main {
                     int vkValueInt = vkValueChar;
                     KeyInputNode nodeToAdd = new KeyInputNode(null, vkValueInt);
                     userCreatedTimeline.addNode(nodeToAdd);
-
                 }
             }
         }
     }
-    
-    /**
-     * Saves a recorded timeline.
-     * @param name the name of the timeline provided by the user.
-     * @param recordedTimeline the timeline created by the user.
-     */
-    public void saveTimeline(String name, Timeline recordedTimeline) {
-        // write timeline Object to file
-        // use name for name of file
-    }
 
-    ;
-    
-    //TODO write loadTimeline function
-    /**
-     * Loads the timeline object from the file.
-     * @param name the name of the timeline to load.
-     * @return the timeline
-     */
-    public Timeline loadTimeline(String name) {
-        // find file on file path
-        // return timeline object
-        Timeline timelineToLoad = new Timeline();
-        // look to see if the file is there
-        // if the file is there, store it in timelineToLoad
-        return timelineToLoad;
-    }
-
-    ;
-    
-     // @param args
-     
+    // @param args
     /**
      * Runs the program execution.
-     * @param args 
+     *
+     * @param args
      */
- 
     public static void main(String args[]) {
-        
+
         new MainGUI().setVisible(true);
 //        introMenu();
 //        optionMenu();
 
-      // When we get to creating the macro in the gui, this will need to go in that portion
+        // When we get to creating the macro in the gui, this will need to go in that portion
         // create a scanner object
 //        Scanner userSelection = new Scanner(System.in);
 ////        // prompt user
@@ -153,11 +123,10 @@ public class Main {
 //                    int vkValueInt = vkValueChar;
 //                    KeyInputNode nodeToAdd = new KeyInputNode(null, vkValueInt);
 //                    userCreatedTimeline.addNode(nodeToAdd);
-
 //                }
 //            }
 //            
-            /*System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
+        /*System.out.println("Would you like to save your macro? Press 1 for yes or 2 for no");
             keyPress = userSelection.next();
             if(keyPress.equals("1")){
                 System.out.println("Please enter the name of your macro");
@@ -166,10 +135,8 @@ public class Main {
                 
                 FileGenerator.fileGeneration(userCreatedTimeline, name);
             }*/
-
 //        }
 //        new MainGUI(userCreatedTimeline).setVisible(true);
     }
-    
-}
 
+}
