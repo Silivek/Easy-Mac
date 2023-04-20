@@ -16,7 +16,13 @@ import java.util.logging.Logger;
  */
 public class MouseInputNode extends InputNode {
 
+    /**
+     * The coordinate for the x value of a mouse click.
+     */
     int x;
+    /**
+     * The coordinate for the y value of a mouse click.
+     */
     int y; //coordinates for mouse clicks
 
     /**

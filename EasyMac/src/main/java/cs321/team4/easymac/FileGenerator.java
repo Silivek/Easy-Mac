@@ -20,6 +20,7 @@ public class FileGenerator {
      *
      * @param tLine the timeline to be saved.
      * @param filePath the name of the file.
+     * @throws IOException.
      */
     public static void fileGeneration(Timeline tLine, String filePath) {
         try {

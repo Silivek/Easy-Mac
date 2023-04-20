@@ -21,9 +21,26 @@ import java.io.Serializable;
  */
 public class Timeline implements Serializable {
 
+    /**
+     * The maximum number of nodes in the timeline.
+     */
     final int MAX_SIZE = 100;
+    /**
+     * The number of nodes in the timeline.
+     */
     int num_of_nodes = 0;
-    Node startNode, endNode, currentNode; //startNode and endNode are for structuring, currentNode is for running the Timeline
+    /**
+     * The node the timeline begins with.
+     */
+    Node startNode;
+    /**
+     * The node the timeline ends with.
+     */
+    Node endNode;
+    /**
+     * The node that is currently being pointed to.
+     */
+    Node currentNode;
 
     /**
      * Constructs a Timeline object to store nodes.

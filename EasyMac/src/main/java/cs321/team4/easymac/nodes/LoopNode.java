@@ -11,7 +11,13 @@ package cs321.team4.easymac.nodes;
  */
 public class LoopNode extends Node {
 
+    /**
+     * Number of times a loop repeats.
+     */
     int repeatCount;
+    /**
+     * The next node after the loop.
+     */
     Node actualNext;
 
     /**

@@ -19,7 +19,7 @@ import utilities.KeyListener;
 
 /**
  * Class for the graphic user interface.
- * 
+ *
  * @author Liam Kilpatrick
  * @author Melissa Burel
  * @author Ben Spurlock
@@ -28,6 +28,9 @@ import utilities.KeyListener;
  */
 public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
+    /**
+     * Current file for reading in and out.
+     */
     java.io.File currentFile;
 
     /**
@@ -37,9 +40,21 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         initComponents();
     }
 
+    /**
+     * Contains the timeline being constructed or edited.
+     */
     Timeline testingTimeline;
+    /**
+     * The node the program is currently pointing to.
+     */
     Node currentNode;
+    /**
+     * KeyListener object that enables key listening.
+     */
     KeyListener listener = new KeyListener();
+    /**
+     * Indicates if the macro is stopped.
+     */
     boolean stopMacro = true;
 
     /**
@@ -68,7 +83,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     /**
      * Constructor for the GUI that uses an already-created timeline.
-     * 
+     *
      * @param timeline that has already been created (like in the command line).
      */
     public MainGUI(Timeline timeline) {

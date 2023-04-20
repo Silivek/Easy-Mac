@@ -11,10 +11,25 @@ package cs321.team4.easymac.nodes;
  */
 public class Node {
 
+    /**
+     * The previous node in the timeline.
+     */
     Node prevNode;
+    /**
+     * The next node in the timeline.
+     */
     Node nextNode;
-    int delayDuration; //Delay in milliseconds
+    /**
+     * The delay between nodes in milliseconds.
+     */
+    int delayDuration;
+    /**
+     * Indicates if the key is being pressed or released.
+     */
     boolean pressRelease;
+    /**
+     * The button being pressed or released.
+     */
     int button;
 
     /**

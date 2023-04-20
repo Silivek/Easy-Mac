@@ -11,8 +11,14 @@ package cs321.team4.easymac.nodes;
  */
 public class InputNode extends Node {
 
-    boolean pressRelease; //true for press, false for release
-    int button; //Keystroke or button press
+    /**
+     * Has true if the button is pressed and false for release.
+     */
+    boolean pressRelease;
+    /**
+     * The keystroke or button being pressed.
+     */
+    int button;
 
     /**
      * Constructs an InputNode object specifying previous node, next node, the

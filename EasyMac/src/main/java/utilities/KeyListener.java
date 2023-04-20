@@ -20,6 +20,9 @@ import cs321.team4.easymac.nodes.MouseInputNode;
  */
 public class KeyListener implements NativeKeyListener {
 
+    /**
+     * Timeline that is being built by the macro.
+     */
     Timeline userCreatedTimeline = new Timeline();
 
     /**
