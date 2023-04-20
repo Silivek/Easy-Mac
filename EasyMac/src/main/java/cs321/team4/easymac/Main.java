@@ -84,7 +84,7 @@ public class Main {
     /**
      * Runs the program execution.
      *
-     * @param args
+     * @param args the command line arguments.
      */
     public static void main(String args[]) {
 

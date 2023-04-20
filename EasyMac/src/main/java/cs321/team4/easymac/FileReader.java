@@ -21,6 +21,7 @@ public class FileReader {
      *
      * @param filePath where the saved macro is located.
      * @throws ClassNotFoundException if file is not found.
+     * @return Timeline to be loaded.
      */
     public static Timeline ReadTimeline(String filePath) throws ClassNotFoundException {
 

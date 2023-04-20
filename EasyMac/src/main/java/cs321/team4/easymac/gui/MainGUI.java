@@ -66,6 +66,11 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         DelayDisplay.setText(String.valueOf(currentNode.getDelayDuration()));
     }
 
+    /**
+     * Constructor for the GUI that uses an already-created timeline.
+     * 
+     * @param timeline that has already been created (like in the command line).
+     */
     public MainGUI(Timeline timeline) {
         initComponents();
         testingTimeline = timeline;
