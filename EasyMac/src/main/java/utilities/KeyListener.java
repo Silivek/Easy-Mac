@@ -14,66 +14,69 @@ import java.awt.event.MouseEvent;
 import cs321.team4.easymac.nodes.MouseInputNode;
 
 /**
+ * A class for implementing NativeKeyListener
  *
  * @author Melissa
  */
-public class KeyListener implements NativeKeyListener{
-    /*public static void main(String[] args){
-        try{
-            GlobalScreen.registerNativeHook();
-        }catch (NativeHookException e){
-            e.printStackTrace();
-        }
-        GlobalScreen.addNativeKeyListener(new KeyListener());       
-    }*/
+public class KeyListener implements NativeKeyListener {
 
+    Timeline userCreatedTimeline = new Timeline();
+
+    /**
+     * Returns the created timeline.
+     *
+     * @return the created timeline.
+     */
+    public Timeline getCreatedTimeline() {
+        return userCreatedTimeline;
+    }
+
+    /**
+     * Takes the "native key typed" event ID. This was not utilized in this
+     * project.
+     *
+     * @param e is the key that is pressed.
+     */
     @Override
     public void nativeKeyTyped(NativeKeyEvent e) {
-        
+
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    Timeline userCreatedTimeline = new Timeline();
-    public Timeline getCreatedTimeline(){
-        return userCreatedTimeline;
-    }
-    
+    /**
+     * Takes key presses, converts them to their ASCII value and adds them to
+     * the timeline.
+     *
+     * @param e is the key that is pressed.
+     */
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         String value = NativeKeyEvent.getKeyText(e.getKeyCode());
         if (value.equals("left") || value.equals("Left")) {
-                MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON1_DOWN_MASK); // left click node
-                userCreatedTimeline.addNode(nodeToAdd);
-            } else if (value.equals("right") || value.equals("Right")) {
-                MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON2_DOWN_MASK); // right click node
-                userCreatedTimeline.addNode(nodeToAdd);
-            } else{
-                value = value.toUpperCase();
-                //char ch = e.getKeyChar();
-                //System.out.println("Key char from getKeyChar: " + ch);
-                //int length = value.length();
-                
-               // System.out.println("Length of the string value in KeyListener: " + length);
-              // When converting toCharArray ENTER becomes E
-                char vkValueChar = value.toCharArray()[0];
-               // System.out.println("Value in char array in KeyListener" + vkValueChar);
-                int vkValueInt = vkValueChar;
-               // System.out.println("Integer value from KeyListener: " + vkValueInt);
-                KeyInputNode nodeToAdd = new KeyInputNode(null, 500, true, vkValueInt);
-                userCreatedTimeline.addNode(nodeToAdd);
-            }
-        //char vkValueChar = keyCode.toCharArray()[0];
-//        int vkValueInt = vkValueChar;
-//        KeyInputNode nodeToAdd = new KeyInputNode(null, keyCode);
-//        userCreatedTimeline.addNode(nodeToAdd);  
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON1_DOWN_MASK); // left click node
+            userCreatedTimeline.addNode(nodeToAdd);
+        } else if (value.equals("right") || value.equals("Right")) {
+            MouseInputNode nodeToAdd = new MouseInputNode(null, MouseEvent.BUTTON2_DOWN_MASK); // right click node
+            userCreatedTimeline.addNode(nodeToAdd);
+        } else {
+            value = value.toUpperCase();
+            char vkValueChar = value.toCharArray()[0];
+            int vkValueInt = vkValueChar;
+            KeyInputNode nodeToAdd = new KeyInputNode(null, 500, true, vkValueInt);
+            userCreatedTimeline.addNode(nodeToAdd);
+        }
     }
 
+    /**
+     * Takes the information from the key that is released. This was not
+     * utilized in this project.
+     *
+     * @param e the key that is released.
+     */
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
         String value = NativeKeyEvent.getKeyText(e.getKeyCode());
-        System.out.println(value);
-       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

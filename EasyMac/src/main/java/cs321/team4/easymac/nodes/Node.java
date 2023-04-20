@@ -11,7 +11,6 @@ package cs321.team4.easymac.nodes;
  */
 public class Node {
 
-    //TODO Node Class
     Node prevNode;
     Node nextNode;
     int delayDuration; //Delay in milliseconds
@@ -19,7 +18,9 @@ public class Node {
     int button;
 
     /**
-     * Constructs a Node object.
+     * Constructs a Node object with previous and next node as null and delay
+     * duration at 50 default.
+     *
      */
     public Node() {
         prevNode = null;
@@ -81,20 +82,23 @@ public class Node {
     public int getDelayDuration() {
         return delayDuration;
     }
-    
+
     /**
      * Indicates if a button is being pressed or released.
-     * @return true or false if a button is being pressed (true) or released (false).
+     *
+     * @return true or false if a button is being pressed (true) or released
+     * (false).
      */
-    public boolean getPressRelease(){
+    public boolean getPressRelease() {
         return pressRelease;
     }
-    
+
     /**
      * Provides the value for the button that was pressed.
+     *
      * @return the pressed button.
      */
-    public int getButton(){
+    public int getButton() {
         return button;
     }
 
@@ -117,7 +121,7 @@ public class Node {
     }
 
     /**
-     * Sets the delay.
+     * Sets the delay for the node.
      *
      * @param delayDuration the time in milliseconds until the next node is
      * called.
