@@ -4,11 +4,14 @@
  */
 package cs321.team4.easymac;
 
+import cs321.team4.easymac.nodes.KeyInputNode;
+import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-
+import java.util.Scanner;
+import java.io.File;
 /**
  * A class that reads saved macro files.
  *
@@ -25,24 +28,33 @@ public class FileReader {
      */
     public static Timeline ReadTimeline(String filePath) throws ClassNotFoundException {
 
-        System.out.println("File Should Have been read");
         try {
-            FileInputStream fIn = new FileInputStream(filePath); //designates the location to read from
-            Timeline orange = new Timeline();
-            try (ObjectInputStream oIn = new ObjectInputStream(fIn)) //creates the object reader
+            File file = new File(filePath);
+            Scanner read = new Scanner(file);
+            Timeline tLine = new Timeline();
+            while (read.hasNextLine())
             {
-                for (int i = 0; i < 3; i++) //Runs as long as there are objects in the file
+                int button = read.nextInt();
+                
+                if(button == 1024 || button == 2048)
                 {
-                    Object tLine = (ObjectInputStream) oIn.readObject();  //set an object equal to a line
-                    orange.addNode((Node) tLine);
-                    orange.currentNode.runNode();
-                    System.out.println(tLine); //print the object
-                    System.out.println("File Should Have been read");
+                    int delay = read.nextInt();
+                    boolean press = read.nextBoolean();
+                    int x = read.nextInt();
+                    int y = read.nextInt();
+                    MouseInputNode mouse = new MouseInputNode(null, delay, press, button, x, y);
+                    tLine.addNode(mouse);
                 }
-                oIn.close();
-                fIn.close();
-                return orange;
+                else
+                {
+                    
+                    int delay = read.nextInt();
+                    boolean press = read.nextBoolean();
+                    KeyInputNode newNode = new KeyInputNode(null, delay, press, button);
+                    tLine.addNode(newNode);
+                }
             }
+            return tLine;
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
