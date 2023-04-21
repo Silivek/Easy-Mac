@@ -669,7 +669,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }//GEN-LAST:event_removeNodeButtonActionPerformed
 
     /**
-     * Plays the macro.
+     * Starts macro playback in a separate thread.
      *
      * @param evt the action of clicking on the start macro button.
      */
