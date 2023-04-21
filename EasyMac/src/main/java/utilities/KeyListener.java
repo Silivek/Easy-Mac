@@ -8,8 +8,6 @@ import cs321.team4.easymac.Timeline;
 import cs321.team4.easymac.nodes.KeyInputNode;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
 import java.awt.event.MouseEvent;
 import cs321.team4.easymac.nodes.MouseInputNode;
 
