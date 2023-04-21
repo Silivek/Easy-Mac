@@ -30,7 +30,7 @@ public class FileGenerator {
             {
                 fOut.write(tLine.startNode.toString());
                 tLine.currentNode = tLine.startNode.getNextNode();
-                for (int i = 1; i < tLine.num_of_nodes; i++) {
+                for (int i = 1; i < tLine.numOfNodes; i++) {
                     fOut.write(tLine.currentNode.toString());
                     tLine.currentNode = tLine.currentNode.getNextNode();
                 }
