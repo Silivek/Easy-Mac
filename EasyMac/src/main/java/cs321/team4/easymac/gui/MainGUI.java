@@ -422,6 +422,10 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
         }
         try {
             testingTimeline = FileReader.ReadTimeline(currentFile.getAbsolutePath());
+            currentNode = testingTimeline.getStartNode();
+            refreshCurrentNode();
+            updateLeftArrow(leftArrow);
+            updateRightArrow(rightArrow);
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
