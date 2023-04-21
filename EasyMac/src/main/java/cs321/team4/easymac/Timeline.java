@@ -5,8 +5,6 @@
 package cs321.team4.easymac;
 
 import cs321.team4.easymac.interfaces.IActionCanceller;
-import cs321.team4.easymac.nodes.KeyInputNode;
-import cs321.team4.easymac.nodes.MouseInputNode;
 import cs321.team4.easymac.nodes.Node;
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -28,7 +26,7 @@ public class Timeline implements Serializable {
     /**
      * The number of nodes in the timeline.
      */
-    int num_of_nodes = 0;
+    int numOfNodes = 0;
     /**
      * The node the timeline begins with.
      */
@@ -58,7 +56,7 @@ public class Timeline implements Serializable {
      */
     public void addNode(Node newNode) {
         //Return an error if the node limit is reached
-        if (num_of_nodes >= MAX_SIZE) {
+        if (numOfNodes >= MAX_SIZE) {
             System.out.println("Cannot exceed node limit.");
             return;
         }
@@ -69,12 +67,12 @@ public class Timeline implements Serializable {
             newNode.setNextNode(null);
             startNode = newNode;
             endNode = startNode;
-            num_of_nodes++;
+            numOfNodes++;
         } else {
             endNode.setNextNode(newNode);
             newNode.setPrevNode(endNode);
             endNode = newNode;
-            num_of_nodes++;
+            numOfNodes++;
         }
     }
 
@@ -92,7 +90,7 @@ public class Timeline implements Serializable {
         //Unassign endNode (?)
         endNode = null;
 
-        num_of_nodes--;
+        numOfNodes--;
 
         //Update new endNode
         endNode = prevNode;
@@ -116,7 +114,7 @@ public class Timeline implements Serializable {
         //Connect next node to previous node
         nextNode.setPrevNode(prevNode);
 
-        num_of_nodes--;
+        numOfNodes--;
     }
 
     /**
@@ -136,7 +134,7 @@ public class Timeline implements Serializable {
         //Connect next node to previous node
         nextNode.setPrevNode(prevNode);
 
-        num_of_nodes--;
+        numOfNodes--;
     }
 
     /**
@@ -148,13 +146,13 @@ public class Timeline implements Serializable {
      */
     public void insertBeforeNode(Node currentNode, Node newNode, int delay) {
         //Prevent user from exceeding node limit
-        if (num_of_nodes > MAX_SIZE) {
+        if (numOfNodes > MAX_SIZE) {
             System.out.println("Cannot exceed node limit.");
             return;
         }
 
         //Create new node
-        num_of_nodes++;
+        numOfNodes++;
 
         //Set delay of new node
         newNode.setDelayDuration(delay);

@@ -5,21 +5,21 @@
 package cs321.team4.easymac.interfaces;
 
 /**
- * Class that manages the running of the macro????
+ * Interface that allows cancelling the macro during runtime
  *
  * @author Liam Kilpatrick
  */
 public interface IActionCanceller {
 
     /**
-     * Assigns a Boolean value to indicate if the macro has stopped running.
+     * Used to trigger the cancellation process, synchronized with actionCancelled when implemented
      */
     public void cancelAction();
 
     /**
-     * Returns a Boolean value to indicate if the macro is still running.
+     * Returns a Boolean value to indicate if the macro is queued for cancellation
      *
-     * @return the Boolean if the running of macro has ended.
+     * @return the Boolean if the running of macro is queued for cancellation.
      */
     public boolean actionCancelled();
 }

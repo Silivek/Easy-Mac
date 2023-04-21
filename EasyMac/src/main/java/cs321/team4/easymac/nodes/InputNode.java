@@ -90,6 +90,7 @@ public class InputNode extends Node {
      * @return Boolean value where true indicates to press the button, false to
      * release it.
      */
+    @Override
     public boolean getPressRelease() {
         return pressRelease;
     }
@@ -109,6 +110,7 @@ public class InputNode extends Node {
      *
      * @return button integer value.
      */
+    @Override
     public int getButton() {
         return button;
     }
