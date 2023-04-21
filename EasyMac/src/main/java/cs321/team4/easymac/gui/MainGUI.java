@@ -704,7 +704,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
 
     /**
      * Assigns true to the value of stopMacro to cancel the running of the
-     * macro.
+     * macro. It is synchronized across threads.
      */
     @Override
     public synchronized void cancelAction() {
@@ -712,7 +712,8 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }
 
     /**
-     * Returns the Boolean value to show if the macro has been stopped.
+     * Returns the Boolean value to show if the macro has been queued to be
+     * stopped. It is synchronized across threads.
      *
      * @return Boolean value to indicate if the macro has stopped.
      */
