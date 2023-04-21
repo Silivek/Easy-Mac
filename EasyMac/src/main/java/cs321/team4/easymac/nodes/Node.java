@@ -159,12 +159,12 @@ public class Node {
         {
             MouseInputNode mouseNode = (MouseInputNode)this;
             System.out.println(mouseNode.x);
-            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(this.pressRelease) + " " + String.valueOf(mouseNode.getXCoordinate()) + " " + String.valueOf(mouseNode.getYCoordinate()) + "\n";
+            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(getPressRelease()) + " " + String.valueOf(mouseNode.getXCoordinate()) + " " + String.valueOf(mouseNode.getYCoordinate());
             return finalList;
         }
         else
         {
-            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(this.pressRelease) + "\n";
+            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(getPressRelease());
             return finalList;
         }
     }
