@@ -28,12 +28,13 @@ public class FileGenerator {
             //FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
             try (FileWriter fOut = new FileWriter(filePath)) //creates the object printer
             {
-                fOut.write(tLine.startNode.toString());
+                fOut.write(tLine.startNode.toString() + "\n");
                 tLine.currentNode = tLine.startNode.getNextNode();
-                for (int i = 1; i < tLine.numOfNodes; i++) {
-                    fOut.write(tLine.currentNode.toString());
+                for (int i = 1; i < tLine.numOfNodes - 1; i++) {
+                    fOut.write(tLine.currentNode.toString() + "\n");
                     tLine.currentNode = tLine.currentNode.getNextNode();
                 }
+                fOut.write(tLine.currentNode.toString());
                 fOut.close();
             } //write the timeline to the file
         } catch (IOException ex) {
