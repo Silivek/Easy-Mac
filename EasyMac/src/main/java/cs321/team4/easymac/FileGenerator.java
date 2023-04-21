@@ -4,9 +4,11 @@
  */
 package cs321.team4.easymac;
 
+import cs321.team4.easymac.nodes.MouseInputNode;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.FileWriter;
 
 /**
  * A class to create a file path for storing a user's macro.
@@ -24,19 +26,15 @@ public class FileGenerator {
     public static void fileGeneration(Timeline tLine, String filePath) {
         try {
             //FileOutputStream fout = new FileOutputStream(filePath + ".ezm"); //create the file to print the object to
-            FileOutputStream fout = new FileOutputStream(filePath);
-            try (ObjectOutputStream oOut = new ObjectOutputStream(fout)) //creates the object printer
+            try (FileWriter fOut = new FileWriter(filePath)) //creates the object printer
             {
-                Object billy = tLine.startNode;
-                oOut.writeObject(billy);  //write the timeline to the file
-                tLine.currentNode = tLine.startNode;
-                for (int i = 1; i < 6; i++) {
-                    oOut.writeObject(billy);
-                    billy = tLine.currentNode.getNextNode();
-                    System.out.println(i);
+                fOut.write(tLine.startNode.toString());
+                tLine.currentNode = tLine.startNode.getNextNode();
+                for (int i = 1; i < tLine.num_of_nodes; i++) {
+                    fOut.write(tLine.currentNode.toString());
+                    tLine.currentNode = tLine.currentNode.getNextNode();
                 }
-                oOut.close();
-                fout.close();
+                fOut.close();
             } //write the timeline to the file
         } catch (IOException ex) {
             ex.printStackTrace();
