@@ -150,5 +150,23 @@ public class Node {
      */
     public void runNode() {
     }
+    
+    @Override
+    public String toString()
+    {
+        
+        if (this.getButton() == 1024 || this.getButton() == 2048)
+        {
+            MouseInputNode mouseNode = (MouseInputNode)this;
+            System.out.println(mouseNode.x);
+            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(this.pressRelease) + " " + String.valueOf(mouseNode.getXCoordinate()) + " " + String.valueOf(mouseNode.getYCoordinate()) + "\n";
+            return finalList;
+        }
+        else
+        {
+            String finalList = String.valueOf(this.getButton()) + " " + String.valueOf(this.delayDuration) + " " + String.valueOf(this.pressRelease) + "\n";
+            return finalList;
+        }
+    }
 ;
 }
