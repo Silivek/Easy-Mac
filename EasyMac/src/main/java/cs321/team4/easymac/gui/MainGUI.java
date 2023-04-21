@@ -704,12 +704,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }
 
     /**
-     * When there are no longer any next nodes, the button to access the next
+     * Updates the visibility of the right arrow. When there are no longer any next nodes, the button to access the next
      * node disappears.
      *
      * @param rightArrow which is the button to access the next node.
      */
-    public void updateRightArrow(JButton rightArrow) {
+    private void updateRightArrow(JButton rightArrow) {
         if (currentNode == testingTimeline.getEndNode()) {
             rightArrow.setVisible(false);
         } else {
@@ -718,12 +718,12 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
     }
 
     /**
-     * When there are no longer any more previous nodes, the button to access
+     * Updates the visibility of the left arrow. When there are no longer any more previous nodes, the button to access
      * the previous node disappears.
      *
      * @param leftArrow the button to access the previous node.
      */
-    public void updateLeftArrow(JButton leftArrow) {
+    private void updateLeftArrow(JButton leftArrow) {
         if (currentNode == testingTimeline.getStartNode()) {
             leftArrow.setVisible(false);
         } else {
