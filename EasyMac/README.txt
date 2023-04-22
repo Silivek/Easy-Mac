@@ -9,13 +9,18 @@ How to use the application:
 1. Click run
 2. Open Notepad
 3. In the opening screen of the gui, click the New... button
-4. Click the record button
+4. Click the Record button
 5. Type out "abcdef"
-6. In the gui, click stop
-7. Click the playback button and then put the cursor back in Notepad and watch "abcdef" type out (a may not be listed due to the focus on the GUI)
+6. In the gui, click Stop
+7. Click the Playback button and then put the cursor back in Notepad and watch "abcdef" type out (the letter a may not be listed due to the focus on the GUI)
 8. Click the Edit tab
 9. Click the right arrow and view each of the nodes for the saved inputs
-10. Click X to exit the program
+10. View the node you wish to delete.
+11. Click Remove Node.
+12. Click Start Macro and put the cursor back in Notepad and watch the edited timeline type out.
+13. Click the file tab and click Save.
+14. In the pop up window, save your macro.
+15. Click X to exit the program
 
 Developers
 Brian Boggs, 

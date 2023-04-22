@@ -6,10 +6,7 @@ package cs321.team4.easymac;
 
 import cs321.team4.easymac.nodes.KeyInputNode;
 import cs321.team4.easymac.nodes.MouseInputNode;
-import cs321.team4.easymac.nodes.Node;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Scanner;
 import java.io.File;
 /**
@@ -26,7 +23,7 @@ public class FileReader {
      * @throws ClassNotFoundException if file is not found.
      * @return Timeline to be loaded.
      */
-    public static Timeline ReadTimeline(String filePath) throws ClassNotFoundException {
+    public static Timeline readTimeline(String filePath) throws ClassNotFoundException {
 
         try {
             File file = new File(filePath);

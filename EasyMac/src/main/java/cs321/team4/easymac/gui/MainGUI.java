@@ -421,7 +421,7 @@ public class MainGUI extends javax.swing.JFrame implements IActionCanceller {
             fileName.setText(currentFile.getName());
         }
         try {
-            testingTimeline = FileReader.ReadTimeline(currentFile.getAbsolutePath());
+            testingTimeline = FileReader.readTimeline(currentFile.getAbsolutePath());
             currentNode = testingTimeline.getStartNode();
             refreshCurrentNode();
             updateLeftArrow(leftArrow);

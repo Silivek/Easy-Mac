@@ -4,10 +4,7 @@
  */
 package cs321.team4.easymac;
 
-import cs321.team4.easymac.nodes.MouseInputNode;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.FileWriter;
 
 /**
